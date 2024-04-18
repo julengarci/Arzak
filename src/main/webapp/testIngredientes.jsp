@@ -53,12 +53,12 @@
             </tr>
           </thead>
           <tbody>
-            <c:forEach items="${clientes}" var="cliente" >
+            <c:forEach items="${ingredientes}" var="ingrediente" >
                 <tr>
-                    <td>${cliente.id}</td>
-                    <td>${cliente.nombre}</td>
-                    <td>${cliente.telefono}</td>
-                    <td>${cliente.email}</td>
+                    <td>${ingrediente.id}</td>
+                    <td>${ingrediente.nombre}</td>
+                    <td>${ingrediente.alergeno}</td>
+                    <td>${reserva.numPersonas}</td>
                     <td>${reserva.alergenos}</td>
                     <td>${reserva.observaciones}</td>
                 </tr>
