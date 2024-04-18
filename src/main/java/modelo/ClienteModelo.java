@@ -1,5 +1,6 @@
 package modelo;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,9 +21,7 @@ public class ClienteModelo extends Conector{
                 
             	cliente.setId(rs.getInt("ID_CLIENTE"));
             	cliente.setNombre(rs.getString("NOMBRE_CLIENTE"));
-            	
             	cliente.setTelefono(rs.getString("TELEFONO"));
-            	
             	cliente.setEmail(rs.getString("EMAIL"));
                 
                 clientes.add(cliente);
@@ -34,4 +33,65 @@ public class ClienteModelo extends Conector{
         }
         return clientes;
     }
+	
+	public Cliente get(int id) {
+	     try {
+	         PreparedStatement pst = this.conexion.prepareStatement("SELECT * FROM CLIENTES WHERE ID_CLIENTE=?");
+	         pst.setInt(1, id);
+	         ResultSet rs = pst.executeQuery();
+
+	         if (rs.next()) {
+	             Cliente cliente = new Cliente();
+
+	             cliente.setId(rs.getInt("ID_CLIENTE"));
+	             cliente.setNombre(rs.getString("NOMBRE_CLIENTE"));
+	             cliente.setTelefono(rs.getString("TELEFONO"));
+	             cliente.setEmail(rs.getString("EMAIL"));
+	             
+	             return cliente;
+	         }
+	     } catch (SQLException e) {
+	         e.printStackTrace();
+	         return null;
+	     }
+	     return null;
+	 }
+	 
+	 public boolean delete(int id) {
+	     try {
+	         PreparedStatement pst = this.conexion.prepareStatement("DELETE FROM CLIENTES WHERE ID_CLIENTE=?");
+	         pst.setInt(1, id);
+	         pst.execute();
+	         return true;
+	     } catch (SQLException e) {
+	         e.printStackTrace();
+	         return false;
+	     }
+	 }
+	 
+	 public int update(Cliente cliente) {
+	     try {
+	         PreparedStatement pst = this.conexion.prepareStatement("UPDATE CLIENTES SET ID_CLIENTE = ?, NOMBRE_CLIENTE = ? , TELEFONO = ?, EMAIL = ?");
+	         
+	         pst.setInt(1, cliente.getId());
+	         pst.setString(2, cliente.getNombre());
+	         pst.setString(3, cliente.getTelefono());
+	         pst.setString(4, cliente.getEmail());
+
+	         return pst.executeUpdate();
+	     } catch (SQLException e) {
+	         e.printStackTrace();
+	         return 0;
+	     }
+	 }
+	 
+//	 public void insert(Reserva reserva) {
+//		 try {
+//		     PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO reserva (id, fecha, hora, numPersonas, alergenos, observaciones) VALUES (?, ?, ?, ?, ?, ?)");
+//		        
+//		     pst.execute();
+//		    } catch (SQLException e) {
+//		        e.printStackTrace();
+//		    }
+//		}
 }
