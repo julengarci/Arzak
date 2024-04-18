@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+TC:wght@100..900&family=Outfit:wght@100..900&display=swap');
+
+
+body, html {
+    height: 100%;
+}
+
+.container-fluid {
+    display: grid;
+    grid-template-rows: 10% 70% 20%;
+    height: 100%;
+    padding: 0 ;
+}
+
+.col-12{
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+
+}
+
+*{
+    font-family: "Cormorant Garamond", serif;
+}
+
+#nav{
+    background-image: linear-gradient(to bottom, #e6e6e6, #9a9898);
+}
+
+#main{
+    background-image: linear-gradient(to bottom, #9a9898, #595959);
+}
+
+#footer{
+    background-color: #3d3d3d;
+}
+
+#texto{
+    color: white;
+    justify-content: center;
+    font-size: 40px;
+    padding-top: 12%;
+    max-width: 40%;
+    margin-left: 30%;
+}
+
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e7e7e7;
+    color: #3d3d3d;
+    text-decoration: none;
+    border: none;
+    transition: background-color 0.3s ease;
+    font-size: 25px; 
+} 
+
+.boton:hover{
+    background-color: #3d3d3d;
+    color: #e7e7e7;
+}
+
+.boton a:hover{
+    color: #e7e7e7;
+}
+
+#redes{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+}
+
+#ubicacion{
+    margin-top: 1%;
+}
+
+.row p,h1{
+    color: #b0b0b0;
+}
+
+#principal{
+    background-image: url(fachada-del-restaurante-arzak.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.7;
+}
+
+#instagram,#facebook,#twitter,#ubicacion{
+    color: #b0b0b0;
+    font-size: 40px;
+}
+
+body {
+    height: 100%;
+}
+
+.col-1 {
+    height: 100%;
+}
+
+.col-11{
+    height: 100%;
+}
+
+.main-content {
+    height: 100%;
+}
+
+@media screen and (max-width: 760px) {
+    #texto {
+      font-size: 25px;
+      max-width: 70%;
+      margin-left: 15%;
+    }
+  
+    #principal {
+        display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    #footer h1 {
+      font-size: 20px;
+    }
+
+    #footer .col-6{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+  }
+  
