@@ -56,9 +56,9 @@
             <c:forEach items="${clientes}" var="cliente" >
                 <tr>
                     <td>${cliente.id}</td>
-                    <td>${reserva.fecha}</td>
-                    <td>${reserva.hora}</td>
-                    <td>${reserva.numPersonas}</td>
+                    <td>${cliente.nombre}</td>
+                    <td>${cliente.telefono}</td>
+                    <td>${cliente.email}</td>
                     <td>${reserva.alergenos}</td>
                     <td>${reserva.observaciones}</td>
                 </tr>
