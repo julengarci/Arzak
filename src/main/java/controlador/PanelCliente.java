@@ -34,7 +34,7 @@ public class PanelCliente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//llama a la base de datos y añade las reservas a la ArrayList
+		//llama a la base de datos y añade los clientes a la ArrayList
 		ClienteModelo cm = new ClienteModelo();
 		ArrayList<Cliente> clientes = cm.getTodos();
 				
