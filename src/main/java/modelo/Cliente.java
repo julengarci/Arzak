@@ -20,10 +20,10 @@ public class Cliente {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getTelefonoString() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefonoString(String telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	public String getEmail() {
@@ -35,7 +35,7 @@ public class Cliente {
 	
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", nombre=" + nombre + ", telefonoString=" + telefono + ", email=" + email
+		return "Cliente [id=" + id + ", nombre=" + nombre + ", telefono=" + telefono + ", email=" + email
 				+ "]";
 	}
 }
