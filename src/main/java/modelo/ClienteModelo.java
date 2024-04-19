@@ -85,13 +85,17 @@ public class ClienteModelo extends Conector{
 	     }
 	 }
 	 
-//	 public void insert(Reserva reserva) {
-//		 try {
-//		     PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO reserva (id, fecha, hora, numPersonas, alergenos, observaciones) VALUES (?, ?, ?, ?, ?, ?)");
-//		        
-//		     pst.execute();
-//		    } catch (SQLException e) {
-//		        e.printStackTrace();
-//		    }
-//		}
+	 public void insert(Cliente cliente) {
+		 try {
+		     PreparedStatement pst = this.conexion.prepareStatement("CALL insert_cliente(?, ?, ?)");
+		       
+		     pst.setString(1, cliente.getNombre());
+		     pst.setString(2, cliente.getTelefono());
+		     pst.setString(3, cliente.getEmail());
+		     
+		     pst.execute();
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		}
 }
