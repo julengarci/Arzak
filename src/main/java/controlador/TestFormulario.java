@@ -55,8 +55,7 @@ public class TestFormulario extends HttpServlet {
         ClienteModelo cm = new ClienteModelo();
         cm.insert(cliente);
 
-        //llama a la base de datos y añade los clientes a la ArrayList
-        
+        response.sendRedirect("PanelCliente");
 	}
 
 }
