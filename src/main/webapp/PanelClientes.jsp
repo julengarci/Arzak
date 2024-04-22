@@ -98,7 +98,7 @@
                                         <td>${cliente.telefono}</td>
                                         <td>${cliente.email}</td>
                                         <td class="acciones">
-                                        <!-- Botón que abre el modal -->
+                                        <!-- BotÃ³n que abre el modal -->
 												<button type="button" class="btn btn-primary"
 													data-bs-toggle="modal" data-bs-target="#modalDatos">
 													Visualizar Datos</button> <!-- Modal para visualizar datos -->
@@ -112,8 +112,8 @@
 																	data-bs-dismiss="modal" aria-label="Close"></button>
 															</div>
 															<div class="modal-body">
-																<!-- Aquí puedes mostrar los datos -->
-																<p>Nombre: Juan Pérez</p>
+																<!-- AquÃ­ puedes mostrar los datos -->
+																<p>Nombre: Juan PÃ©rez</p>
 																<p>Email: juan@example.com</p>
 																<p>Otros datos...</p>
 															</div>
@@ -123,7 +123,7 @@
 															</div>
 														</div>
 													</div>
-												</div> <!-- Botón que abre el modal para modificar -->
+												</div> <!-- BotÃ³n que abre el modal para modificar -->
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#modalModificar${cliente.id}">
                                                 <i class="fa-solid fa-square-pen"></i>
@@ -166,11 +166,11 @@
                                                             </form>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <!-- Botón para cancelar -->
+                                                            <!-- BotÃ³n para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal"
                                                                 style="font-size: 14px;">Cancelar</button>
-                                                            <!-- Botón para enviar el formulario -->
+                                                            <!-- BotÃ³n para enviar el formulario -->
                                                             <button type="submit" form="formularioModificar"
                                                                 class="btn btn-primary"
                                                                 style="font-size: 14px;">Enviar</button>
@@ -179,33 +179,33 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Botón que abre el modal de eliminación -->
+                                            <!-- BotÃ³n que abre el modal de eliminaciÃ³n -->
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#modalEliminar">
                                                 <i class="fa-solid fa-square-minus"></i>
                                             </button>
 
-                                            <!-- Modal de eliminación -->
+                                            <!-- Modal de eliminaciÃ³n -->
                                             <div class="modal fade" id="modalEliminar" tabindex="-1"
                                                 aria-labelledby="modalEliminarLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="modalEliminarLabel"
-                                                                style="font-size: 16px;">Confirmación de eliminación
+                                                                style="font-size: 16px;">ConfirmaciÃ³n de eliminaciÃ³n
                                                             </h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body" style="font-size: 14px;">
-                                                            ¿Estás seguro de que quieres eliminar este elemento?
+                                                            Â¿EstÃ¡s seguro de que quieres eliminar este elemento?
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <!-- Botón para cancelar -->
+                                                            <!-- BotÃ³n para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal"
                                                                 style="font-size: 14px;">Cancelar</button>
-                                                            <!-- Botón para confirmar la eliminación -->
+                                                            <!-- BotÃ³n para confirmar la eliminaciÃ³n -->
                                                             <a href="Servlet?id=${cliente.id}" class="btn btn-danger"
                                                                 style="font-size: 14px;">Eliminar</a>
                                                         </div>
