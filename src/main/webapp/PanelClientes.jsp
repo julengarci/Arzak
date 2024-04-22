@@ -165,17 +165,16 @@
                                                                         id="emailModificar" name="emailModificar"
                                                                         required value="${cliente.telefono}">
                                                                 </div>
+                                                                <div class="mb-3">
+                                                                	<!-- Boton para cancelar -->
+                                                            		<button type="button" class="btn btn-secondary"
+                                                                	data-bs-dismiss="modal"
+                                                                	style="font-size: 14px;">Cancelar</button>
+                                                            		<!-- Boton para enviar el formulario -->
+                                                                	<a href="UpdateCliente?id=${cliente.id}" class="btn btn-primary"
+                                                                style="font-size: 14px;">Enviar</a>
+                                                                </div>
                                                             </form>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <!-- Boton para cancelar -->
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal"
-                                                                style="font-size: 14px;">Cancelar</button>
-                                                            <!-- Boton para enviar el formulario -->
-                                                            <button type="submit" form="UpdateCliente?id=${cliente.id}"
-                                                                class="btn btn-primary"
-                                                                style="font-size: 14px;">Enviar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -188,27 +187,27 @@
                                                 <i class="fa-solid fa-square-minus"></i>
                                             </button>
 
-                                            <!-- Modal de eliminaci贸n -->
+                                            <!-- Modal de eliminacion -->
                                             <div class="modal fade" id="modalEliminar${cliente.id}" tabindex="-1"
                                                 aria-labelledby="modalEliminarLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="modalEliminarLabel"
-                                                                style="font-size: 16px;">Confirmaci贸n de eliminaci贸n
+                                                                style="font-size: 16px;">Confirmacion de eliminacion
                                                             </h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body" style="font-size: 14px;">
-                                                            驴Est谩s seguro de que quieres eliminar este elemento?
+                                                            縀stas seguro de que quieres eliminar este elemento?
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <!-- Bot贸n para cancelar -->
+                                                            <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal"
                                                                 style="font-size: 14px;">Cancelar</button>
-                                                            <!-- Bot贸n para confirmar la eliminaci贸n -->
+                                                            <!-- Boton para confirmar la eliminacion -->
                                                             <a href="DeleteCliente?id=${cliente.id}" class="btn btn-danger"
                                                                 style="font-size: 14px;">Eliminar</a>
                                                         </div>
