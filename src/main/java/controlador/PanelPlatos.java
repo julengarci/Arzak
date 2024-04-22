@@ -42,7 +42,7 @@ public class PanelPlatos extends HttpServlet {
 		request.setAttribute("platos", platos);
 								
 		//ejecuta la pagina
-		request.getRequestDispatcher("testPlatos.jsp").forward(request, response);
+		request.getRequestDispatcher("PanelPlatos.jsp").forward(request, response);
 	}
 
 	/**
