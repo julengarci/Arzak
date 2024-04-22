@@ -98,7 +98,7 @@
                                         <td>${cliente.telefono}</td>
                                         <td>${cliente.email}</td>
                                         <td class="acciones">
-                                        <!-- Botón que abre el modal -->
+                                        <!-- Boton que abre el modal -->
 												<button type="button" class="btn btn-primary"
 													data-bs-toggle="modal" data-bs-target="#modalDatos">
 													Visualizar Datos</button> <!-- Modal para visualizar datos -->
@@ -123,7 +123,7 @@
 															</div>
 														</div>
 													</div>
-												</div> <!-- Botón que abre el modal para modificar -->
+												</div> <!-- Boton que abre el modal para modificar -->
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#modalModificar${cliente.id}">
                                                 <i class="fa-solid fa-square-pen"></i>
@@ -141,7 +141,7 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form id="formularioModificar">
+                                                            <form id="formularioModificar" method="post" action="UpdateCliente?id=${cliente.id}">
                                                                 <div class="mb-3">
                                                                     <label for="nombreModificar" class="form-label"
                                                                         style="font-size: 14px;">Nombre:</label>
@@ -171,7 +171,7 @@
                                                                 data-bs-dismiss="modal"
                                                                 style="font-size: 14px;">Cancelar</button>
                                                             <!-- Botón para enviar el formulario -->
-                                                            <button type="submit" form="formularioModificar"
+                                                            <button type="submit" form="UpdateCliente?id=${cliente.id}"
                                                                 class="btn btn-primary"
                                                                 style="font-size: 14px;">Enviar</button>
                                                         </div>
@@ -181,12 +181,12 @@
 
                                             <!-- Botón que abre el modal de eliminación -->
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#modalEliminar">
+                                                data-bs-target="#modalEliminar${cliente.id}">
                                                 <i class="fa-solid fa-square-minus"></i>
                                             </button>
 
                                             <!-- Modal de eliminación -->
-                                            <div class="modal fade" id="modalEliminar" tabindex="-1"
+                                            <div class="modal fade" id="modalEliminar${cliente.id}" tabindex="-1"
                                                 aria-labelledby="modalEliminarLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -206,7 +206,7 @@
                                                                 data-bs-dismiss="modal"
                                                                 style="font-size: 14px;">Cancelar</button>
                                                             <!-- Botón para confirmar la eliminación -->
-                                                            <a href="Servlet?id=${cliente.id}" class="btn btn-danger"
+                                                            <a href="DeleteCliente?id=${cliente.id}" class="btn btn-danger"
                                                                 style="font-size: 14px;">Eliminar</a>
                                                         </div>
                                                     </div>
