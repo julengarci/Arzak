@@ -99,7 +99,7 @@
                                         <td>${cliente.email}</td>
                                         <td class="acciones"> 
                                             <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
+                                            <a href="UpdateCliente?id=${cliente.id}"><i class="fa-solid fa-square-pen"></i></a>
                                             <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
                                         </td>
                                     </tr>
