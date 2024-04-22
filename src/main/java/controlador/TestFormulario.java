@@ -1,11 +1,6 @@
 package controlador;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -14,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Cliente;
+import modelo.ClienteModelo;
 import modelo.Reserva;
-import modelo.ReservaModelo;
-
 
 /**
- * Servlet implementation class Prueba
+ * Servlet implementation class TestFormulario
  */
-@WebServlet("/Prueba")
-public class Prueba extends HttpServlet {
+@WebServlet("/TestFormulario")
+public class TestFormulario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Prueba() {
+    public TestFormulario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,23 +32,30 @@ public class Prueba extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReservaModelo rm = new ReservaModelo();
-		ArrayList<Reserva> reservas = rm.getTodos();
 		
-		
-		request.setAttribute("reservas", reservas);
-		
-		
-		System.out.println(reservas);
-		request.getRequestDispatcher("test.jsp").forward(request, response);				
+		response.sendRedirect("testeoFormularioCliente.jsp");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		Cliente cliente = new Cliente();
+		
+		// Obtener parámetros del formulario y actualizar la base de datos
+        String nombre = request.getParameter("nombre");
+        String telefono = request.getParameter("telefono");
+        String email = request.getParameter("email");
+        
+        //introducir los datos en el objeto
+        cliente.setNombre(nombre);
+        cliente.setEmail(email);
+        cliente.setTelefono(telefono);        
+        
+        ClienteModelo cm = new ClienteModelo();
+        cm.insert(cliente);
+
+        response.sendRedirect("PanelCliente");
 	}
 
 }
