@@ -97,29 +97,31 @@
                                         <td>${cliente.nombre}</td>
                                         <td>${cliente.telefono}</td>
                                         <td>${cliente.email}</td>
-                                        <td class="acciones">
-                                        <!-- Boton que abre el modal -->
-												<button type="button" class="btn btn-primary"
-													data-bs-toggle="modal" data-bs-target="#modalDatos">
-													Visualizar Datos</button> <!-- Modal para visualizar datos -->
-												<div class="modal fade" id="modalDatos" tabindex="-1"
+                                        <td class="acciones"> 
+                                            <!-- Boton que abre el modal para visualizar datos -->
+												<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+													data-bs-target="#modalDatos${cliente.id}">
+													<i class="fa-solid fa-eye"></i>
+												</button> <!-- Modal para visualizar datos -->
+												<div class="modal fade" id="modalDatos${cliente.id}" tabindex="-1"
 													aria-labelledby="modalDatosLabel" aria-hidden="true">
 													<div class="modal-dialog">
 														<div class="modal-content">
 															<div class="modal-header">
-																<h5 class="modal-title" id="modalDatosLabel">Datos</h5>
+																<h5 class="modal-title" id="modalDatosLabel"
+																	style="font-size: 16px;">Datos</h5>
 																<button type="button" class="btn-close"
 																	data-bs-dismiss="modal" aria-label="Close"></button>
 															</div>
 															<div class="modal-body">
-																<!-- Aquí puedes mostrar los datos -->
-																<p>Nombre: Juan Pérez</p>
-																<p>Email: juan@example.com</p>
-																<p>Otros datos...</p>
+																<!-- Aqu� puedes mostrar los datos -->
+																<p style="font-size: 14px;">Nombre: ${cliente.nombre}</p>
+																<p style="font-size: 14px;">Telefono: ${cliente.telefono}</p>
+																<p style="font-size: 14px;">Email: ${cliente.email}</p>
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-secondary"
-																	data-bs-dismiss="modal">Cerrar</button>
+																	data-bs-dismiss="modal" style="font-size: 14px;">Cerrar</button>
 															</div>
 														</div>
 													</div>
@@ -166,11 +168,11 @@
                                                             </form>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <!-- Botón para cancelar -->
+                                                            <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal"
                                                                 style="font-size: 14px;">Cancelar</button>
-                                                            <!-- Botón para enviar el formulario -->
+                                                            <!-- Boton para enviar el formulario -->
                                                             <button type="submit" form="UpdateCliente?id=${cliente.id}"
                                                                 class="btn btn-primary"
                                                                 style="font-size: 14px;">Enviar</button>
@@ -179,7 +181,8 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Botón que abre el modal de eliminación -->
+                                            <!-- Boton que abre el modal de eliminacion -->
+                                          
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#modalEliminar${cliente.id}">
                                                 <i class="fa-solid fa-square-minus"></i>
