@@ -97,37 +97,123 @@
                                         <td>${cliente.nombre}</td>
                                         <td>${cliente.telefono}</td>
                                         <td>${cliente.email}</td>
-                                        <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="UpdateCliente?id=${cliente.id}"><i class="fa-solid fa-square-pen"></i></a>
-                                            
-                                           <!-- Bot髇 que abre el modal -->
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal${cliente.id}">
-                                                    <i class="fa-solid fa-square-minus"></i>
-                                                </button>
-                                            
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal${cliente.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Confirmaci髇 de eliminaci髇</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                縀st醩 seguro de que quieres eliminar la reserva?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <!-- Bot髇 para cancelar -->
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                <!-- Bot髇 para confirmar la eliminaci髇 -->
-                                                                <a href="DeleteCliente?id=${cliente.id}" class="btn btn-danger">Eliminar cliente</a>
-                                                            </div>
+                                        <td class="acciones">
+                                        <!-- Bot贸n que abre el modal -->
+												<button type="button" class="btn btn-primary"
+													data-bs-toggle="modal" data-bs-target="#modalDatos">
+													Visualizar Datos</button> <!-- Modal para visualizar datos -->
+												<div class="modal fade" id="modalDatos" tabindex="-1"
+													aria-labelledby="modalDatosLabel" aria-hidden="true">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="modalDatosLabel">Datos</h5>
+																<button type="button" class="btn-close"
+																	data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body">
+																<!-- Aqu铆 puedes mostrar los datos -->
+																<p>Nombre: Juan P茅rez</p>
+																<p>Email: juan@example.com</p>
+																<p>Otros datos...</p>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary"
+																	data-bs-dismiss="modal">Cerrar</button>
+															</div>
+														</div>
+													</div>
+												</div> <!-- Bot贸n que abre el modal para modificar -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#modalModificar${cliente.id}">
+                                                <i class="fa-solid fa-square-pen"></i>
+                                            </button>
+
+                                            <!-- Modal para modificar -->
+                                            <div class="modal fade" id="modalModificar${cliente.id}" tabindex="-1"
+                                                aria-labelledby="modalModificarLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalModificarLabel"
+                                                                style="font-size: 16px;">Modificar</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form id="formularioModificar">
+                                                                <div class="mb-3">
+                                                                    <label for="nombreModificar" class="form-label"
+                                                                        style="font-size: 14px;">Nombre:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="nombreModificar" name="nombreModificar"
+                                                                        required value="${cliente.nombre}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="telefonoModificar" class="form-label"
+                                                                        style="font-size: 14px;">Telefono:</label>
+                                                                    <input type="email" class="form-control"
+                                                                        id="emailModificar" name="emailModificar"
+                                                                        required value="${cliente.email}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="emailModificar" class="form-label"
+                                                                        style="font-size: 14px;">Email:</label>
+                                                                    <input type="email" class="form-control"
+                                                                        id="emailModificar" name="emailModificar"
+                                                                        required value="${cliente.telefono}">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <!-- Bot贸n para cancelar -->
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                style="font-size: 14px;">Cancelar</button>
+                                                            <!-- Bot贸n para enviar el formulario -->
+                                                            <button type="submit" form="formularioModificar"
+                                                                class="btn btn-primary"
+                                                                style="font-size: 14px;">Enviar</button>
                                                         </div>
                                                     </div>
-                                                </div>    
-                                        </td>
-                                    </tr>
+                                                </div>
+                                            </div>
+
+                                            <!-- Bot贸n que abre el modal de eliminaci贸n -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#modalEliminar">
+                                                <i class="fa-solid fa-square-minus"></i>
+                                            </button>
+
+                                            <!-- Modal de eliminaci贸n -->
+                                            <div class="modal fade" id="modalEliminar" tabindex="-1"
+                                                aria-labelledby="modalEliminarLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalEliminarLabel"
+                                                                style="font-size: 16px;">Confirmaci贸n de eliminaci贸n
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body" style="font-size: 14px;">
+                                                            驴Est谩s seguro de que quieres eliminar este elemento?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <!-- Bot贸n para cancelar -->
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                style="font-size: 14px;">Cancelar</button>
+                                                            <!-- Bot贸n para confirmar la eliminaci贸n -->
+                                                            <a href="Servlet?id=${cliente.id}" class="btn btn-danger"
+                                                                style="font-size: 14px;">Eliminar</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+										</td>
+										</tr>
                                   </c:forEach>
                                 </tbody>
                             </table>
