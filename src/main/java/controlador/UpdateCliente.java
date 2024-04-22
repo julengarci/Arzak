@@ -37,8 +37,6 @@ public class UpdateCliente extends HttpServlet {
 		
 		cliente = cm.get(id);
 		
-		System.out.println(cliente);
-		
 		request.setAttribute("cliente", cliente);
 		
 		request.getRequestDispatcher("testeoFormularioCliente.jsp").forward(request, response);
