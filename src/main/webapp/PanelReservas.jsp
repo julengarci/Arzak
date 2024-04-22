@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
@@ -10,7 +11,7 @@
     <title>Arzak panel de control</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 
 <body>
@@ -26,23 +27,23 @@
                         Gestion de elementos
                     </li>
                     <li class="sidebar-item">
-                        <a href="PanelMenus.html" class="sidebar-link " 
+                        <a href="PanelMenu" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-utensils"></i>
                             Menu
                         </a>
-                        <a href="PanelReservas.html" class="sidebar-link " 
+                        <a href="PanelReserva" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-book-open"></i>
                             Reservas
                         </a>
-                        <a href="PanelClientes.html" class="sidebar-link " 
+                        <a href="PanelCliente" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-user"></i>
                             Clientes
                         </a>
-                        <a href="PanelPlatos.html" class="sidebar-link " 
+                        <a href="PanelPlato" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-drumstick-bite"></i>
                             Platos
                         </a>
-                        <a href="PanelIngredientes.html" class="sidebar-link "
+                        <a href="PanelIngrediente" class="sidebar-link "
                             aria-expanded="false"><i class="fa-solid fa-seedling"></i>
                             Ingredientes
                         </a>   
@@ -85,8 +86,8 @@
                                         <th scope="col">Hora</th>
                                         <th scope="col">Fecha</th>
                                         <th scope="col">Numero de personas</th>
-                                        <th scope="col">Observaciones</th>
                                         <th scope="col">Alergenos</th>
+                                        <th scope="col">Observaciones</th>
                                         <th scope="col">Id Cliente</th>
                                         <th scope="col">Id Menu</th>
                                         <th scope="col">Acciones</th>
@@ -94,49 +95,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+								<c:forEach items="${reservas}" var="reserva" >      
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${reserva.id}</td>
+                                        <td>${reserva.hora}</td>
+                                        <td>${reserva.fecha}</td>
+                                        <td>${reserva.numPersonas}</td>
+                                        <td>${reserva.alergenos}</td>
+                                        <td>${reserva.observaciones}</td>
+                                        <td>${reserva.cliente}</td>
+                                        <td>${reserva.menu}</td>
                                         <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
-                                            <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
-                                            <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
+                                            <a href="ReservaCrear"><i class="fa-solid fa-square-plus"></i></a>
+                                            <a href="ReservaModificar"><i class="fa-solid fa-square-pen"></i></a>
                                             
                                                 <!-- Botón que abre el modal -->
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -152,20 +123,20 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                ¿Estás seguro de que quieres eliminar este elemento?
+                                                                ¿Estás seguro de que quieres eliminar la reserva?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <!-- Botón para cancelar -->
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                                 <!-- Botón para confirmar la eliminación -->
-                                                                <a href="#" class="btn btn-danger">Eliminar</a>
+                                                                <a href="#" class="btn btn-danger">Eliminar reserva</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>    
                                         </td>
                                     </tr>
-                                    
+                                   </c:forEach>
                                 </tbody>
                             </table>
                         </div>
