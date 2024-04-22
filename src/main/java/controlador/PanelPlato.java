@@ -9,20 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Reserva;
-import modelo.ReservaModelo;
+import modelo.Ingrediente;
+import modelo.IngredienteModelo;
+import modelo.Plato;
+import modelo.PlatoModelo;
 
 /**
- * Servlet implementation class PanelReservas
+ * Servlet implementation class PanelPlatos
  */
-@WebServlet("/PanelReservas")
-public class PanelReservas extends HttpServlet {
+@WebServlet("/PanelPlatos")
+public class PanelPlato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PanelReservas() {
+    public PanelPlato() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,16 +33,16 @@ public class PanelReservas extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//llama a la base de datos y añade las reservas a la ArrayList
-		ReservaModelo rm = new ReservaModelo();
-		ArrayList<Reserva> reservas = rm.getTodos();
-		
+
+		//llama a la base de datos y añade los ingredientes a la ArrayList
+		PlatoModelo pm = new PlatoModelo();
+		ArrayList<Plato> platos = pm.getTodos();
+								
 		//genera un atributo con la ArrayList para que se pueda usar en la pagina
-		request.setAttribute("reservas", reservas);
-		
+		request.setAttribute("platos", platos);
+								
 		//ejecuta la pagina
-		request.getRequestDispatcher("PanelReservas.jsp").forward(request, response);
+		request.getRequestDispatcher("PanelPlatos.jsp").forward(request, response);
 	}
 
 	/**

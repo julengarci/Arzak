@@ -100,7 +100,32 @@
                                         <td class="acciones"> 
                                             <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
                                             <a href="UpdateCliente?id=${cliente.id}"><i class="fa-solid fa-square-pen"></i></a>
-                                            <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
+                                            
+                                           <!-- Botón que abre el modal -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <i class="fa-solid fa-square-minus"></i>
+                                                </button>
+                                            
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Confirmación de eliminación</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                ¿Estás seguro de que quieres eliminar la reserva?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <!-- Botón para cancelar -->
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                <!-- Botón para confirmar la eliminación -->
+                                                                <a href="DeleteCliente?id=${cliente.id}" class="btn btn-danger">Eliminar cliente</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>    
                                         </td>
                                     </tr>
                                   </c:forEach>
