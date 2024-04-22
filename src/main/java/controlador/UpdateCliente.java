@@ -30,16 +30,7 @@ public class UpdateCliente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ClienteModelo cm = new ClienteModelo();
-		Cliente cliente = new Cliente();
 		
-		int id = Integer.parseInt(request.getParameter("id"));
-		
-		cliente = cm.get(id);
-		
-		request.setAttribute("cliente", cliente);
-		
-		request.getRequestDispatcher("testeoFormularioCliente.jsp").forward(request, response);
 		
 	}
 
@@ -60,7 +51,7 @@ public class UpdateCliente extends HttpServlet {
         cliente.setId(id);
         cliente.setNombre(nombre);
         cliente.setEmail(email);
-        cliente.setTelefono(telefono);        
+        cliente.setTelefono(telefono);
         
         ClienteModelo cm = new ClienteModelo();
         
