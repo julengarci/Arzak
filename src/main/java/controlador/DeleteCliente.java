@@ -1,28 +1,25 @@
 package controlador;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Reserva;
-import modelo.ReservaModelo;
+import modelo.ClienteModelo;
 
 /**
- * Servlet implementation class PanelReservas
+ * Servlet implementation class DeleteCliente
  */
-@WebServlet("/PanelReserva")
-public class PanelReserva extends HttpServlet {
+@WebServlet("/DeleteCliente")
+public class DeleteCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PanelReserva() {
+    public DeleteCliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,15 +29,14 @@ public class PanelReserva extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//llama a la base de datos y añade las reservas a la ArrayList
-		ReservaModelo rm = new ReservaModelo();
-		ArrayList<Reserva> reservas = rm.getTodos();
+		ClienteModelo cm = new ClienteModelo();
 		
-		//genera un atributo con la ArrayList para que se pueda usar en la pagina
-		request.setAttribute("reservas", reservas);
+		int id = Integer.parseInt(request.getParameter("id"));
 		
-		//ejecuta la pagina
-		request.getRequestDispatcher("PanelReservas.jsp").forward(request, response);
+		cm.delete(id);
+		
+		response.sendRedirect("PanelCliente");
+		
 	}
 
 	/**
