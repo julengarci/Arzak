@@ -83,14 +83,14 @@ public class IngredienteModelo extends Conector{
 	 
 	 public int update(Ingrediente ingrediente) {
 	     try {
-	         PreparedStatement pst = this.conexion.prepareStatement("UPDATE INGREDIENTES SET ID_INGREDIENTE = ?, NOMBRE = ? , Alergeno = ?");
+	         PreparedStatement pst = this.conexion.prepareStatement("UPDATE INGREDIENTES SET NOMBRE = ? , ALERGENOS = ? WHERE ID_INGREDIENTE = ?");
 	         
-	         pst.setInt(1, ingrediente.getId());
-	         pst.setString(2, ingrediente.getNombre());
+	         pst.setInt(3, ingrediente.getId());
+	         pst.setString(1, ingrediente.getNombre());
 	         
 	         // Convertir el valor del enum al String correspondiente
 	         String alergenoStr = ingrediente.getAlergeno().toString().toUpperCase();
-	         pst.setString(3, alergenoStr);
+	         pst.setString(2, alergenoStr);
 
 	         return pst.executeUpdate();
 	     } catch (SQLException e) {
@@ -99,13 +99,16 @@ public class IngredienteModelo extends Conector{
 	     }
 	 }
 	 
-//	 public void insert(Reserva reserva) {
-//		 try {
-//		     PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO reserva (id, fecha, hora, numPersonas, alergenos, observaciones) VALUES (?, ?, ?, ?, ?, ?)");
-//		        
-//		     pst.execute();
-//		    } catch (SQLException e) {
-//		        e.printStackTrace();
-//		    }
-//		}
+	 public void insert(Ingrediente ingrediente) {
+		 try {
+		     PreparedStatement pst = this.conexion.prepareStatement("CALL insert_ingrediente(?,?)");
+		        
+		     pst.setString(1, ingrediente.getNombre());
+		     pst.setString(2, ingrediente.getAlergeno().toString().toUpperCase());
+		     
+		     pst.execute();
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		}
 }
