@@ -42,7 +42,7 @@ public class PanelCliente extends HttpServlet {
 		request.setAttribute("clientes", clientes);
 				
 		//ejecuta la pagina
-		request.getRequestDispatcher("testClientes.jsp").forward(request, response);
+		request.getRequestDispatcher("PanelClientes.jsp").forward(request, response);
 	}
 
 	/**
