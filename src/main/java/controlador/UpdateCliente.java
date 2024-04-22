@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Cliente;
+import modelo.ClienteModelo;
+
 /**
  * Servlet implementation class UpdateCliente
  */
@@ -27,6 +30,18 @@ public class UpdateCliente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		ClienteModelo cm = new ClienteModelo();
+		Cliente cliente = new Cliente();
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		cliente = cm.get(id);
+		
+		System.out.println(cliente);
+		
+		request.setAttribute("cliente", cliente);
+		
+		request.getRequestDispatcher("testeoFormularioCliente.jsp").forward(request, response);
 		
 	}
 
@@ -34,8 +49,26 @@ public class UpdateCliente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		Cliente cliente = new Cliente();
+		
+		// Obtener parámetros del formulario y actualizar la base de datos
+		int id = Integer.parseInt(request.getParameter("id"));
+        String nombre = request.getParameter("nombre");
+        String telefono = request.getParameter("telefono");
+        String email = request.getParameter("email");
+        
+        //introducir los datos en el objeto
+        cliente.setId(id);
+        cliente.setNombre(nombre);
+        cliente.setEmail(email);
+        cliente.setTelefono(telefono);        
+        
+        ClienteModelo cm = new ClienteModelo();
+        
+        cm.update(cliente);
+
+        response.sendRedirect("PanelCliente");
 	}
 
 }
