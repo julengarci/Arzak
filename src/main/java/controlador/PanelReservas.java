@@ -40,7 +40,7 @@ public class PanelReservas extends HttpServlet {
 		request.setAttribute("reservas", reservas);
 		
 		//ejecuta la pagina
-		request.getRequestDispatcher("test.jsp").forward(request, response);
+		request.getRequestDispatcher("PanelReservas.jsp").forward(request, response);
 	}
 
 	/**

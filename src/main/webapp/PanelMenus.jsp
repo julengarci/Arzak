@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
@@ -26,23 +27,23 @@
                         Gestion de elementos
                     </li>
                     <li class="sidebar-item">
-                        <a href="PanelMenus.html" class="sidebar-link " 
+                        <a href="PanelMenu" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-utensils"></i>
                             Menu
                         </a>
-                        <a href="PanelReservas.html" class="sidebar-link " 
+                        <a href="PanelReserva" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-book-open"></i>
                             Reservas
                         </a>
-                        <a href="PanelClientes.html" class="sidebar-link " 
+                        <a href="PanelCliente" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-user"></i>
                             Clientes
                         </a>
-                        <a href="PanelPlatos.html" class="sidebar-link " 
+                        <a href="PanelPlato" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-drumstick-bite"></i>
                             Platos
                         </a>
-                        <a href="PanelIngredientes.html" class="sidebar-link "
+                        <a href="PanelIngrediente" class="sidebar-link "
                             aria-expanded="false"><i class="fa-solid fa-seedling"></i>
                             Ingredientes
                         </a>   
@@ -89,40 +90,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach items="${menus}" var="menu" >
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${menu.id}</td>
+                                        <td>${menu.precio}</td>
+                                        <td>${menu.fechaInicio}</td>
+                                        <td>${menu.fechaFin}</td>
                                         <td class="acciones"> 
                                             <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
                                             <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
                                             <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
-                                            <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
-                                            <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
-                                        </td>
-                                    </tr>
-                                    
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>

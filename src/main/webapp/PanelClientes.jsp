@@ -28,23 +28,23 @@
                         Gestion de elementos
                     </li>
                     <li class="sidebar-item">
-                        <a href="PanelMenus.html" class="sidebar-link " 
+                        <a href="PanelMenu" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-utensils"></i>
                             Menu
                         </a>
-                        <a href="PanelReservas.html" class="sidebar-link " 
+                        <a href="PanelReserva" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-book-open"></i>
                             Reservas
                         </a>
-                        <a href="PanelClientes.html" class="sidebar-link " 
+                        <a href="PanelCliente" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-user"></i>
                             Clientes
                         </a>
-                        <a href="PanelPlatos.html" class="sidebar-link " 
+                        <a href="PanelPlato" class="sidebar-link " 
                             aria-expanded="false"><i class="fa-solid fa-drumstick-bite"></i>
                             Platos
                         </a>
-                        <a href="PanelIngredientes.html" class="sidebar-link "
+                        <a href="PanelIngrediente" class="sidebar-link "
                             aria-expanded="false"><i class="fa-solid fa-seedling"></i>
                             Ingredientes
                         </a>   

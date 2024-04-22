@@ -17,7 +17,7 @@ import modelo.IngredienteModelo;
 /**
  * Servlet implementation class PanerIngrediente
  */
-@WebServlet("/PanerIngrediente")
+@WebServlet("/PanelIngrediente")
 public class PanelIngrediente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,7 +42,7 @@ public class PanelIngrediente extends HttpServlet {
 		request.setAttribute("ingredientes", ingredientes);
 						
 		//ejecuta la pagina
-		request.getRequestDispatcher("testIngredientes.jsp").forward(request, response);
+		request.getRequestDispatcher("PanelIngredientes.jsp").forward(request, response);
 	}
 
 	/**
