@@ -102,12 +102,12 @@
                                             <a href="UpdateCliente?id=${cliente.id}"><i class="fa-solid fa-square-pen"></i></a>
                                             
                                            <!-- Botón que abre el modal -->
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal${cliente.id}">
                                                     <i class="fa-solid fa-square-minus"></i>
                                                 </button>
                                             
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="exampleModal${cliente.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
