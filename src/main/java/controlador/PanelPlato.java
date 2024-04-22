@@ -18,13 +18,13 @@ import modelo.PlatoModelo;
  * Servlet implementation class PanelPlatos
  */
 @WebServlet("/PanelPlatos")
-public class PanelPlatos extends HttpServlet {
+public class PanelPlato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PanelPlatos() {
+    public PanelPlato() {
         super();
         // TODO Auto-generated constructor stub
     }
