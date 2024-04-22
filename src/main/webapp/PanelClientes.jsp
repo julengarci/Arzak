@@ -148,22 +148,22 @@
                                                                     <label for="nombreModificar" class="form-label"
                                                                         style="font-size: 14px;">Nombre:</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="nombreModificar" name="nombreModificar"
+                                                                        id="nombre" name="nombre"
                                                                         required value="${cliente.nombre}">
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="telefonoModificar" class="form-label"
                                                                         style="font-size: 14px;">Telefono:</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="emailModificar" name="emailModificar"
-                                                                        required value="${cliente.email}">
+                                                                    <input type="text" class="form-control"
+                                                                        id="telefono" name="telefono"
+                                                                        required value="${cliente.telefono}">
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="emailModificar" class="form-label"
                                                                         style="font-size: 14px;">Email:</label>
                                                                     <input type="email" class="form-control"
-                                                                        id="emailModificar" name="emailModificar"
-                                                                        required value="${cliente.telefono}">
+                                                                        id="email" name="email"
+                                                                        required value="${cliente.email}">
                                                                 </div>
                                                                 <div class="mb-3">
                                                                 	<!-- Boton para cancelar -->
@@ -171,8 +171,7 @@
                                                                 	data-bs-dismiss="modal"
                                                                 	style="font-size: 14px;">Cancelar</button>
                                                             		<!-- Boton para enviar el formulario -->
-                                                                	<a href="UpdateCliente?id=${cliente.id}" class="btn btn-primary"
-                                                                style="font-size: 14px;">Enviar</a>
+                                                                	<button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
                                                                 </div>
                                                             </form>
                                                         </div>
