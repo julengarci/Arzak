@@ -97,13 +97,16 @@
                                         <td>${cliente.nombre}</td>
                                         <td>${cliente.telefono}</td>
                                         <td>${cliente.email}</td>
+
                                         <td class="acciones"> 
-                                            <!-- Botón que abre el modal para visualizar datos -->
+                                            <!-- Boton que abre el modal para visualizar datos -->
 												<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 													data-bs-target="#modalDatos${cliente.id}">
 													<i class="fa-solid fa-eye"></i>
 												</button> <!-- Modal para visualizar datos -->
+
 												<div class="modal fade" id="modalDatos${cliente.id}" tabindex="-1"
+
 													aria-labelledby="modalDatosLabel" aria-hidden="true">
 													<div class="modal-dialog">
 														<div class="modal-content">
@@ -115,6 +118,7 @@
 															</div>
 															<div class="modal-body">
 																<!-- Aquí puedes mostrar los datos -->
+
 																<p style="font-size: 14px;">Nombre: ${cliente.nombre}</p>
 																<p style="font-size: 14px;">Telefono: ${cliente.telefono}</p>
 																<p style="font-size: 14px;">Email: ${cliente.email}</p>
@@ -125,7 +129,8 @@
 															</div>
 														</div>
 													</div>
-												</div> <!-- Botón que abre el modal para modificar -->
+
+												</div> <!-- Boton que abre el modal para modificar -->
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#modalModificar${cliente.id}">
                                                 <i class="fa-solid fa-square-pen"></i>
@@ -143,7 +148,7 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form id="formularioModificar">
+                                                            <form id="formularioModificar" method="post" action="UpdateCliente?id=${cliente.id}">
                                                                 <div class="mb-3">
                                                                     <label for="nombreModificar" class="form-label"
                                                                         style="font-size: 14px;">Nombre:</label>
@@ -168,12 +173,14 @@
                                                             </form>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <!-- Botón para cancelar -->
+
+                                                            <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal"
                                                                 style="font-size: 14px;">Cancelar</button>
-                                                            <!-- Botón para enviar el formulario -->
-                                                            <button type="submit" form="formularioModificar"
+                                                            <!-- Boton para enviar el formulario -->
+                                                            <button type="submit" form="UpdateCliente?id=${cliente.id}"
+
                                                                 class="btn btn-primary"
                                                                 style="font-size: 14px;">Enviar</button>
                                                         </div>
@@ -183,12 +190,12 @@
 
                                             <!-- Boton que abre el modal de eliminacion -->
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#modalEliminar">
+                                                data-bs-target="#modalEliminar${cliente.id}">
                                                 <i class="fa-solid fa-square-minus"></i>
                                             </button>
 
-                                            <!-- Modal de eliminación -->
-                                            <div class="modal fade" id="modalEliminar" tabindex="-1"
+                                            <!-- Modal de eliminaciÃ³n -->
+                                            <div class="modal fade" id="modalEliminar${cliente.id}" tabindex="-1"
                                                 aria-labelledby="modalEliminarLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -207,8 +214,9 @@
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal"
                                                                 style="font-size: 14px;">Cancelar</button>
-                                                            <!-- Botón para confirmar la eliminación -->
-                                                            <a href="Servlet?id=${cliente.id}" class="btn btn-danger"
+
+                                                            <!-- Boton para confirmar la eliminacion -->
+                                                            <a href="DeleteCliente?id=${cliente.id}" class="btn btn-danger"
                                                                 style="font-size: 14px;">Eliminar</a>
                                                         </div>
                                                     </div>
