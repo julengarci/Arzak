@@ -106,36 +106,140 @@
                                         <td>${reserva.cliente}</td>
                                         <td>${reserva.menu}</td>
                                         <td class="acciones"> 
-                                            <a href="ReservaCrear"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar"><i class="fa-solid fa-square-pen"></i></a>
-                                            
-                                                <!-- Botón que abre el modal -->
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="fa-solid fa-square-minus"></i>
-                                                </button>
-                                            
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Confirmación de eliminación</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                ¿Estás seguro de que quieres eliminar la reserva?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <!-- Botón para cancelar -->
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                <!-- Botón para confirmar la eliminación -->
-                                                                <a href="#" class="btn btn-danger">Eliminar reserva</a>
-                                                            </div>
+                                             <!-- Boton que abre el modal para visualizar datos -->
+												<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+													data-bs-target="#modalDatos${cliente.id}">
+													<i class="fa-solid fa-eye"></i>
+												</button> <!-- Modal para visualizar datos -->
+
+												<div class="modal fade" id="modalDatos${cliente.id}" tabindex="-1"
+
+													aria-labelledby="modalDatosLabel" aria-hidden="true">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="modalDatosLabel"
+																	style="font-size: 16px;">Datos</h5>
+																<button type="button" class="btn-close"
+																	data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body">
+																<!-- Aquí puedes mostrar los datos -->
+
+																<p style="font-size: 14px;">Nombre: ${cliente.nombre}</p>
+																<p style="font-size: 14px;">Telefono: ${cliente.telefono}</p>
+																<p style="font-size: 14px;">Email: ${cliente.email}</p>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary"
+																	data-bs-dismiss="modal" style="font-size: 14px;">Cerrar</button>
+															</div>
+														</div>
+													</div>
+
+												</div> <!-- Boton que abre el modal para modificar -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#modalModificar${cliente.id}">
+                                                <i class="fa-solid fa-square-pen"></i>
+                                            </button>
+
+                                            <!-- Modal para modificar -->
+                                            <div class="modal fade" id="modalModificar${cliente.id}" tabindex="-1"
+                                                aria-labelledby="modalModificarLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalModificarLabel"
+                                                                style="font-size: 16px;">Modificar</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form id="formularioModificar" method="post" action="UpdateCliente?id=${cliente.id}">
+                                                                <div class="mb-3">
+                                                                    <label for="nombreModificar" class="form-label"
+                                                                        style="font-size: 14px;">Hora:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="nombre" name="nombre"
+                                                                        required value="${reserva.hora}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="telefonoModificar" class="form-label"
+                                                                        style="font-size: 14px;">Fecha:</label>
+                                                                    <input type="date" class="form-control"
+                                                                        id="telefono" name="telefono"
+                                                                        required value="${reserva.fecha}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="emailModificar" class="form-label"
+                                                                        style="font-size: 14px;">Email:</label>
+                                                                    <input type="email" class="form-control"
+                                                                        id="email" name="email"
+                                                                        required value="${reserva.numPersonas}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                	<!-- Boton para cancelar -->
+                                                            		<button type="button" class="btn btn-secondary"
+                                                                	data-bs-dismiss="modal"
+                                                                	style="font-size: 14px;">Cancelar</button>
+                                                            		<!-- Boton para enviar el formulario -->
+                                                                	<button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+
+                                                            <!-- Boton para cancelar -->
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                style="font-size: 14px;">Cancelar</button>
+                                                            <!-- Boton para enviar el formulario -->
+                                                            <button type="submit" form="UpdateCliente?id=${reserva.id}"
+
+                                                                class="btn btn-primary"
+                                                                style="font-size: 14px;">Enviar</button>
                                                         </div>
                                                     </div>
-                                                </div>    
-                                        </td>
-                                    </tr>
+                                                </div>
+                                            </div>
+
+                                            <!-- Boton que abre el modal de eliminacion -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#modalEliminar${reserva.id}">
+                                                <i class="fa-solid fa-square-minus"></i>
+                                            </button>
+
+                                            <!-- Modal de eliminacion -->
+                                            <div class="modal fade" id="modalEliminar${reserva.id}" tabindex="-1"
+                                                aria-labelledby="modalEliminarLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalEliminarLabel"
+                                                                style="font-size: 16px;">Confirmacion de eliminacion
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body" style="font-size: 14px;">
+                                                            ¿Estas seguro de que quieres eliminar este elemento?
+                                                        </div>
+                                                        <div class="modal-footer">
+
+                                                            <!-- Boton para cancelar -->
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                style="font-size: 14px;">Cancelar</button>
+
+                                                            <!-- Boton para confirmar la eliminacion -->
+                                                            <a href="DeleteCliente?id=${reserva.id}" class="btn btn-danger"
+                                                                style="font-size: 14px;">Eliminar</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+										</td>
+										</tr>
                                    </c:forEach>
                                 </tbody>
                             </table>
