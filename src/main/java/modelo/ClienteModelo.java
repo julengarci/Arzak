@@ -74,12 +74,12 @@ public class ClienteModelo extends Conector{
 	 
 	 public int update(Cliente cliente) {
 	     try {
-	         PreparedStatement pst = this.conexion.prepareStatement("UPDATE CLIENTES SET NOMBRE_CLIENTE = ? , TELEFONO = ?, EMAIL = ? WHERE ID_CLIENTE = ?");
+	         PreparedStatement pst = this.conexion.prepareStatement("CALL update_cliente(?,?,?,?)");
 	         
-	         pst.setInt(4, cliente.getId());
-	         pst.setString(1, cliente.getNombre());
-	         pst.setString(2, cliente.getTelefono());
-	         pst.setString(3, cliente.getEmail());
+	         pst.setInt(1, cliente.getId());
+	         pst.setString(2, cliente.getNombre());
+	         pst.setString(3, cliente.getTelefono());
+	         pst.setString(4, cliente.getEmail());
 
 	         return pst.executeUpdate();
 	     } catch (SQLException e) {

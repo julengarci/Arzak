@@ -77,7 +77,7 @@ public class ReservaModelo extends Conector{
  
  public int update(Reserva reserva) {
      try {
-         PreparedStatement pst = this.conexion.prepareStatement("UPDATE reserva SET id = ?, fecha = ? hora id = ?, numPersonas = ?, alergenos = ?, observaciones = ?");
+         PreparedStatement pst = this.conexion.prepareStatement("CALL update_reserva(?,?,?,?,?,?)");
          
          pst.setInt(1, reserva.getId());
 	     pst.setDate(2, new java.sql.Date(reserva.getFecha().getTime()));
@@ -95,7 +95,7 @@ public class ReservaModelo extends Conector{
  
  public void insert(Reserva reserva) {
 	    try {
-	        PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO reserva (id, fecha, hora, numPersonas, alergenos, observaciones) VALUES (?, ?, ?, ?, ?, ?)");
+	        PreparedStatement pst = this.conexion.prepareStatement("CALL insert_reserva(?, ?, ?, ?, ?, ?)");
 	        
 	        pst.setInt(1, reserva.getId());
 	        pst.setDate(2, new java.sql.Date(reserva.getFecha().getTime()));

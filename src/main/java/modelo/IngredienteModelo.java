@@ -83,14 +83,14 @@ public class IngredienteModelo extends Conector{
 	 
 	 public int update(Ingrediente ingrediente) {
 	     try {
-	         PreparedStatement pst = this.conexion.prepareStatement("UPDATE INGREDIENTES SET NOMBRE = ? , ALERGENOS = ? WHERE ID_INGREDIENTE = ?");
+	         PreparedStatement pst = this.conexion.prepareStatement("CALL update_ingrediente(?,?,?);");
 	         
-	         pst.setInt(3, ingrediente.getId());
-	         pst.setString(1, ingrediente.getNombre());
+	         pst.setInt(1, ingrediente.getId());
+	         pst.setString(2, ingrediente.getNombre());
 	         
 	         // Convertir el valor del enum al String correspondiente
 	         String alergenoStr = ingrediente.getAlergeno().toString().toUpperCase();
-	         pst.setString(2, alergenoStr);
+	         pst.setString(3, alergenoStr);
 
 	         return pst.executeUpdate();
 	     } catch (SQLException e) {
