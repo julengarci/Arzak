@@ -153,22 +153,30 @@
                                                                     <label for="nombreModificar" class="form-label"
                                                                         style="font-size: 14px;">Nombre:</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="nombreModificar" name="nombreModificar"
+                                                                        id="nombre" name="nombre"
                                                                         required value="${cliente.nombre}">
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="telefonoModificar" class="form-label"
                                                                         style="font-size: 14px;">Telefono:</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="emailModificar" name="emailModificar"
-                                                                        required value="${cliente.email}">
+                                                                    <input type="text" class="form-control"
+                                                                        id="telefono" name="telefono"
+                                                                        required value="${cliente.telefono}">
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="emailModificar" class="form-label"
                                                                         style="font-size: 14px;">Email:</label>
                                                                     <input type="email" class="form-control"
-                                                                        id="emailModificar" name="emailModificar"
-                                                                        required value="${cliente.telefono}">
+                                                                        id="email" name="email"
+                                                                        required value="${cliente.email}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                	<!-- Boton para cancelar -->
+                                                            		<button type="button" class="btn btn-secondary"
+                                                                	data-bs-dismiss="modal"
+                                                                	style="font-size: 14px;">Cancelar</button>
+                                                            		<!-- Boton para enviar el formulario -->
+                                                                	<button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -194,23 +202,24 @@
                                                 <i class="fa-solid fa-square-minus"></i>
                                             </button>
 
-                                            <!-- Modal de eliminaciÃ³n -->
+                                            <!-- Modal de eliminacion -->
                                             <div class="modal fade" id="modalEliminar${cliente.id}" tabindex="-1"
                                                 aria-labelledby="modalEliminarLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="modalEliminarLabel"
-                                                                style="font-size: 16px;">Confirmación de eliminación
+                                                                style="font-size: 16px;">Confirmacion de eliminacion
                                                             </h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body" style="font-size: 14px;">
-                                                            ¿Estás seguro de que quieres eliminar este elemento?
+                                                            ¿Estas seguro de que quieres eliminar este elemento?
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <!-- Botón para cancelar -->
+
+                                                            <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal"
                                                                 style="font-size: 14px;">Cancelar</button>
