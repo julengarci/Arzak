@@ -116,11 +116,27 @@
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="alergenoModificar" class="form-label"
-                                                                        style="font-size: 14px;">Alergeno:</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="alergeno" name="alergeno"
-                                                                        required>
-                                                                </div>
+                                                                        style="font-size: 14px;">Alergeno:</label> <select class="form-select" id="alergeno"
+																name="alergeno" required>
+																<option value="" selected disabled>Alergeno</option>
+																<option value="1">Ninguno</option>
+																<option value="2">Gluten</option>
+																<option value="3">Crustaceos</option>
+																<option value="4">Moluscos</option>
+																<option value="5">Pescado</option>																
+																<option value="6">Huevos</option>
+																<option value="7">Altramuces</option>
+																<option value="8">Mostaza</option>
+																<option value="9">Cacahuetes</option>
+																<option value="10">Frutos secos</option>
+																<option value="11">Soja</option>
+																<option value="12">Sesamo</option>
+																<option value="13">Apio</option>
+																<option value="14">Leche</option>
+																<option value="15">Anhidro sulfuroso</option>
+															</select>
+														</div>
+																
                                                                 <div class="mb-3">
                                                                 	<!-- Boton para cancelar -->
                                                             		<button type="button" class="btn btn-secondary"
