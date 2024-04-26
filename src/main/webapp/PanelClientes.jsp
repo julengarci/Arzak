@@ -91,6 +91,60 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                
+                                <!-- Boton de agregar cliente -->
+									<button type="button" class="btn btn-primary mb-3"
+										data-bs-toggle="modal"
+										data-bs-target="#modalAgregarCliente">Agregar
+										Cliente</button>
+                                            <!-- Modal para modificar -->
+                                            <div class="modal fade" id="modalAgregarCliente${cliente.id}" tabindex="-1"
+                                                aria-labelledby="modalAgregarClienteLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalAgregarClienteLabel"
+                                                                style="font-size: 16px;">Agregar</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form id="formularioAgregar" method="post" action="CreateCliente">
+                                                                <div class="mb-3">
+                                                                    <label for="nombreAgregar" class="form-label"
+                                                                        style="font-size: 14px;">Nombre:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="nombre" name="nombre"
+                                                                        required >
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="telefonoAgregar" class="form-label"
+                                                                        style="font-size: 14px;">Telefono:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="telefono" name="telefono"
+                                                                        required>
+                                                                </div>
+                                                                 <div class="mb-3">
+                                                                    <label for="emailAgregar" class="form-label"
+                                                                        style="font-size: 14px;">Email:</label>
+                                                                    <input type="email" class="form-control"
+                                                                        id="email" name="email"
+                                                                        required>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                	<!-- Boton para cancelar -->
+                                                            		<button type="button" class="btn btn-secondary"
+                                                                	data-bs-dismiss="modal"
+                                                                	style="font-size: 14px;">Cancelar</button>
+                                                            		<!-- Boton para enviar el formulario -->
+                                                                	<button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                
                                  <c:forEach items="${clientes}" var="cliente" >
                                     <tr>
                                         <td>${cliente.id}</td>
@@ -180,18 +234,7 @@
                                                                 </div>
                                                             </form>
                                                         </div>
-                                                        <div class="modal-footer">
-
-                                                            <!-- Boton para cancelar -->
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal"
-                                                                style="font-size: 14px;">Cancelar</button>
-                                                            <!-- Boton para enviar el formulario -->
-                                                            <button type="submit" form="UpdateCliente?id=${cliente.id}"
-
-                                                                class="btn btn-primary"
-                                                                style="font-size: 14px;">Enviar</button>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
