@@ -55,7 +55,7 @@ public class IngredienteModelo extends Conector{
 	             String alergenoStr = rs.getString("ALERGENOS");
 	                
 	             // Convertir el String a un valor del enum Alergeno
-	             Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase());
+	             Alergeno alergeno = Alergeno.valueOf(alergenoStr.toUpperCase());
 	                
 	             // Asignar el alergeno al ingrediente
 	             ingrediente.setAlergeno(alergeno);
@@ -104,7 +104,7 @@ public class IngredienteModelo extends Conector{
 		     PreparedStatement pst = this.conexion.prepareStatement("CALL insert_ingrediente(?,?)");
 		        
 		     pst.setString(1, ingrediente.getNombre());
-		     pst.setString(2, ingrediente.getAlergeno().toString().toUpperCase());
+		     pst.setString(2, ingrediente.getAlergeno().getNombre().toString().toUpperCase());
 		     
 		     pst.execute();
 		    } catch (SQLException e) {
