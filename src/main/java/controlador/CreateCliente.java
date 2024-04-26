@@ -7,21 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Alergeno;
-import modelo.Ingrediente;
-import modelo.IngredienteModelo;
+import modelo.Cliente;
+import modelo.ClienteModelo;
 
 /**
- * Servlet implementation class CreateIngrediente
+ * Servlet implementation class CreateCliente
  */
-@WebServlet("/CreateIngrediente")
-public class CreateIngrediente extends HttpServlet {
+@WebServlet("/CreateCliente")
+public class CreateCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateIngrediente() {
+    public CreateCliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,24 +38,24 @@ public class CreateIngrediente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//recoger los datos del formulario
+		//Recoger los datos del formulario
 		String nombre = request.getParameter("nombre");
-		String alergenoString = request.getParameter("alergeno");
+		String telefono = request.getParameter("telefono");
+		String email = request.getParameter("email");
 		
-		Alergeno alergeno = Alergeno.valueOf(alergenoString);
+		//insertar los valores en el objeto cliente
+		Cliente cliente = new Cliente();
 		
-		//insertar los valores en el objeto ingrediente
-		Ingrediente ingrediente = new Ingrediente();
+		cliente.setNombre(nombre);
+		cliente.setEmail(email);
+		cliente.setTelefono(telefono);
 		
-		ingrediente.setNombre(nombre);
-		ingrediente.setAlergeno(alergeno);
-		
-		//insertar en bbdd
-		IngredienteModelo im = new IngredienteModelo();
-		im.insert(ingrediente);
+		//insertar en BBDD
+		ClienteModelo cm = new ClienteModelo();
+		cm.insert(cliente);
 		
 		//redirigir al panel
-		response.sendRedirect("PanelIngrediente");
+		response.sendRedirect("PanelCliente");
 	}
 
 }
