@@ -9,15 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Alergeno;
 import modelo.Ingrediente;
 import modelo.IngredienteModelo;
 import modelo.Plato;
 import modelo.PlatoModelo;
+import modelo.Tipo;
 
 /**
  * Servlet implementation class PanelPlatos
  */
-@WebServlet("/PanelPlatos")
+@WebServlet("/PanelPlato")
 public class PanelPlato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,9 +39,13 @@ public class PanelPlato extends HttpServlet {
 		//llama a la base de datos y añade los ingredientes a la ArrayList
 		PlatoModelo pm = new PlatoModelo();
 		ArrayList<Plato> platos = pm.getTodos();
-								
+		
+		//creamos una lista de Alergeno (usando el enum)
+		Tipo[] tipos = Tipo.values();		
+		
 		//genera un atributo con la ArrayList para que se pueda usar en la pagina
 		request.setAttribute("platos", platos);
+		request.setAttribute("tipos", tipos);
 								
 		//ejecuta la pagina
 		request.getRequestDispatcher("PanelPlatos.jsp").forward(request, response);
