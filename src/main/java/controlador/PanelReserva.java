@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Alergeno;
 import modelo.Reserva;
 import modelo.ReservaModelo;
 
@@ -36,8 +37,14 @@ public class PanelReserva extends HttpServlet {
 		ReservaModelo rm = new ReservaModelo();
 		ArrayList<Reserva> reservas = rm.getTodos();
 		
+		//creamos una lista de Alergeno (usando el enum)
+		Alergeno[] alergenos = Alergeno.values();
+		
 		//genera un atributo con la ArrayList para que se pueda usar en la pagina
 		request.setAttribute("reservas", reservas);
+		request.setAttribute("alergenos", alergenos);
+		
+		//Inicializar el String de numPersonas a int 
 		
 		//ejecuta la pagina
 		request.getRequestDispatcher("PanelReservas.jsp").forward(request, response);

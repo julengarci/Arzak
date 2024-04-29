@@ -47,7 +47,7 @@
                             aria-expanded="false"><i class="fa-solid fa-seedling"></i>
                             Ingredientes
                         </a>   
-                        </ul>
+                    </li>
                 </ul>
             </div>
         </aside>
@@ -89,88 +89,90 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-									<!-- Boton de agregar ingrediente -->
-									<button type="button" class="btn btn-primary mb-3"
-										data-bs-toggle="modal"
-										data-bs-target="#modalAgregarIngrediente">Agregar
-										Ingrediente</button>
-                                            <!-- Modal para modificar -->
-                                            <div class="modal fade" id="modalAgregarIngrediente${ingrediente.id}" tabindex="-1"
-                                                aria-labelledby="modalAgregarIngredienteLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="modalAgregarIngredienteLabel"
-                                                                style="font-size: 16px;">Agregar</h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <!-- Boton de agregar ingrediente -->
+                                    <button type="button" class="btn btn-primary mb-3"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalAgregarIngrediente">Agregar
+                                        Ingrediente</button>
+                                    <!-- Modal para modificar -->
+                                    <div class="modal fade" id="modalAgregarIngrediente${ingrediente.id}" tabindex="-1"
+                                        aria-labelledby="modalAgregarIngredienteLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalAgregarIngredienteLabel"
+                                                        style="font-size: 16px;">Agregar</h5>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="formularioAgregar" method="post" action="CreateIngrediente">
+                                                        <div class="mb-3">
+                                                            <label for="nombreAgregar" class="form-label"
+                                                                style="font-size: 14px;">Nombre:</label>
+                                                            <input type="text" class="form-control"
+                                                                id="nombre" name="nombre"
+                                                                required >
                                                         </div>
-                                                        <div class="modal-body">
-                                                            <form id="formularioAgregar" method="post" action="CreateIngrediente">
-                                                                <div class="mb-3">
-                                                                    <label for="nombreAgregar" class="form-label"
-                                                                        style="font-size: 14px;">Nombre:</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="nombre" name="nombre"
-                                                                        required >
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="alergenoModificar" class="form-label"
-                                                                        style="font-size: 14px;">Alergeno:</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="alergeno" name="alergeno"
-                                                                        required>
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                	<!-- Boton para cancelar -->
-                                                            		<button type="button" class="btn btn-secondary"
-                                                                	data-bs-dismiss="modal"
-                                                                	style="font-size: 14px;">Cancelar</button>
-                                                            		<!-- Boton para enviar el formulario -->
-                                                                	<button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
-                                                                </div>
-                                                            </form>
+                                                        <div class="mb-3">
+                                                            <label for="alergenoModificar" class="form-label"
+                                                                style="font-size: 14px;">Alergeno:</label> 
+                                                            <select class="form-select" id="alergeno"
+                                                                name="alergeno" required>
+                                                                <option value="" selected disabled>Alergeno</option>
+                                                                <c:forEach items="${alergenos}" var="alergeno">
+                                                                    <option value="${alergeno}"> ${alergeno.nombre}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </div>														
+                                                        <div class="mb-3">
+                                                            <!-- Boton para cancelar -->
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                style="font-size: 14px;">Cancelar</button>
+                                                            <!-- Boton para enviar el formulario -->
+                                                            <button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
                                                         </div>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
 
-
-
-								<c:forEach items="${ingredientes}" var="ingrediente" >
+                                    <c:forEach items="${ingredientes}" var="ingrediente" >
                                     <tr>
                                         <td>${ingrediente.id}</td>
                                         <td>${ingrediente.nombre}</td>
                                         <td>${ingrediente.alergeno}</td> 
                                         <td class="acciones"> 
-                                             <!-- Boton que abre el modal para visualizar datos -->
-												<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-													data-bs-target="#modalDatos${ingrediente.id}">
-													<i class="fa-solid fa-eye"></i>
-												</button> <!-- Modal para visualizar datos -->
-												<div class="modal fade" id="modalDatos${ingrediente.id}" tabindex="-1"
-													aria-labelledby="modalDatosLabel" aria-hidden="true">
-													<div class="modal-dialog">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title" id="modalDatosLabel"
-																	style="font-size: 16px;">Datos</h5>
-																<button type="button" class="btn-close"
-																	data-bs-dismiss="modal" aria-label="Close"></button>
-															</div>
-															<div class="modal-body">
-																<!-- Aqui puedes mostrar los datos -->
-																<p style="font-size: 14px;">Nombre: ${ingrediente.nombre}</p>
-																<p style="font-size: 14px;">Alergeno: ${ingrediente.alergeno}</p>	
-															</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-secondary"
-																	data-bs-dismiss="modal" style="font-size: 14px;">Cerrar</button>
-															</div>
-														</div>
-													</div>
-												</div> 
-												<!-- Boton que abre el modal para modificar -->
+                                            <!-- Boton que abre el modal para visualizar datos -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#modalDatos${ingrediente.id}">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button> <!-- Modal para visualizar datos -->
+                                            <div class="modal fade" id="modalDatos${ingrediente.id}" tabindex="-1"
+                                                aria-labelledby="modalDatosLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalDatosLabel"
+                                                                style="font-size: 16px;">Datos</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Aqui puedes mostrar los datos -->
+                                                            <p style="font-size: 14px;">Nombre: ${ingrediente.nombre}</p>
+                                                            <p style="font-size: 14px;">Alergeno: ${ingrediente.alergeno}</p>	
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal" style="font-size: 14px;">Cerrar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <!-- Boton que abre el modal para modificar -->
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#modalModificar${ingrediente.id}">
                                                 <i class="fa-solid fa-square-pen"></i>
@@ -204,12 +206,12 @@
                                                                         required value="${ingrediente.alergeno}">
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                	<!-- Boton para cancelar -->
-                                                            		<button type="button" class="btn btn-secondary"
-                                                                	data-bs-dismiss="modal"
-                                                                	style="font-size: 14px;">Cancelar</button>
-                                                            		<!-- Boton para enviar el formulario -->
-                                                                	<button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
+                                                                    <!-- Boton para cancelar -->
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal"
+                                                                        style="font-size: 14px;">Cancelar</button>
+                                                                    <!-- Boton para enviar el formulario -->
+                                                                    <button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -218,7 +220,6 @@
                                             </div>
 
                                             <!-- Boton que abre el modal de eliminacion -->
-                                          
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#modalEliminar${ingrediente.id}">
                                                 <i class="fa-solid fa-square-minus"></i>
@@ -253,7 +254,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                </c:forEach>
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>
