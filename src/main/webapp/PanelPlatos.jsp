@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
@@ -47,7 +47,7 @@
                             aria-expanded="false"><i class="fa-solid fa-seedling"></i>
                             Ingredientes
                         </a>   
-                        </ul>
+                    </li>
                 </ul>
             </div>
         </aside>
@@ -75,7 +75,7 @@
                     <div class="card border-0">
                         <div class="card-header">
                             <h5 class="card-title">
-                                Gestion de platos
+                                Gestion de Platos
                             </h5>
                         </div>
                         <div class="card-body">
@@ -85,45 +85,181 @@
                                         <th scope="col">Id</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Tipo</th>
-                                        <th scope="col">Id ingredientes</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- Boton de agregar platos -->
+                                    <button type="button" class="btn btn-primary mb-3"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalAgregarIngrediente">Agregar
+                                        Platos</button>
+                                    <!-- Modal para modificar -->
+                                    <div class="modal fade" id="modalAgregarIngrediente${plato.id}" tabindex="-1"
+                                        aria-labelledby="modalAgregarIngredienteLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalAgregarIngredienteLabel"
+                                                        style="font-size: 16px;">Agregar</h5>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="formularioAgregar" method="post" action="CreatePlato">
+                                                        <div class="mb-3">
+                                                            <label for="nombreAgregar" class="form-label"
+                                                                style="font-size: 14px;">Nombre:</label>
+                                                            <input type="text" class="form-control"
+                                                                id="nombre" name="nombre"
+                                                                required >
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="alergenoModificar" class="form-label"
+                                                                style="font-size: 14px;">Tipo:</label> 
+                                                            <select class="form-select" id="tipo"
+                                                                name="tipo" required>
+                                                                <option value="" selected disabled>Tipo</option>
+                                                                <c:forEach items="${tipos}" var="tipo">
+                                                                    <option value="${tipo}"> ${tipo.nombre}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </div>														
+                                                        <div class="mb-3">
+                                                            <!-- Boton para cancelar -->
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                style="font-size: 14px;">Cancelar</button>
+                                                            <!-- Boton para enviar el formulario -->
+                                                            <button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <c:forEach items="${platos}" var="plato" >
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${plato.id}</td>
+                                        <td>${plato.nombre}</td>
+                                        <td>${plato.tipo}</td> 
                                         <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
-                                            <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
+                                            <!-- Boton que abre el modal para visualizar datos -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#modalDatos${plato.id}">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button> <!-- Modal para visualizar datos -->
+                                            <div class="modal fade" id="modalDatos${plato.id}" tabindex="-1"
+                                                aria-labelledby="modalDatosLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalDatosLabel"
+                                                                style="font-size: 16px;">Datos</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Aqui puedes mostrar los datos -->
+                                                            <p style="font-size: 14px;">Nombre: ${plato.nombre}</p>
+                                                            <p style="font-size: 14px;">Tipo: ${plato.tipo}</p>	
+                                                            <p style="font-size: 14px;">ingredientes: ${plato.ingredientes}</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal" style="font-size: 14px;">Cerrar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <!-- Boton que abre el modal para modificar -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#modalModificar${plato.id}">
+                                                <i class="fa-solid fa-square-pen"></i>
+                                            </button>
+
+                                            <!-- Modal para modificar -->
+                                            <div class="modal fade" id="modalModificar${plato.id}" tabindex="-1"
+                                                aria-labelledby="modalModificarLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalModificarLabel"
+                                                                style="font-size: 16px;">Modificar</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form id="formularioModificar" method="post" action="UpdatePlato?id=${plato.id}">
+                                                                <div class="mb-3">
+                                                                    <label for="nombreModificar" class="form-label"
+                                                                        style="font-size: 14px;">Nombre:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="nombre" name="nombre"
+                                                                        required value="${plato.nombre}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                            		<label for="alergenoModificar" class="form-label"
+                                                                style="font-size: 14px;">Tipo:</label> 
+                                                            		<select class="form-select" id="tipo"
+                                                                name="tipo" required>
+                                                                <option value="" selected disabled>Tipo</option>
+                                                                <c:forEach items="${tipos}" var="tipo">
+                                                                    <option value="${tipo}"> ${tipo.nombre}</option>
+                                                                </c:forEach>
+                                                            		</select>
+                                                        		</div>	
+                                                                <div class="mb-3">
+                                                                    <!-- Boton para cancelar -->
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal"
+                                                                        style="font-size: 14px;">Cancelar</button>
+                                                                    <!-- Boton para enviar el formulario -->
+                                                                    <button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Boton que abre el modal de eliminacion -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#modalEliminar${plato.id}">
+                                                <i class="fa-solid fa-square-minus"></i>
+                                            </button>
+
+                                            <!-- Modal de eliminacion -->
+                                            <div class="modal fade" id="modalEliminar${plato.id}" tabindex="-1"
+                                                aria-labelledby="modalEliminarLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalEliminarLabel"
+                                                                style="font-size: 16px;">Confirmacion de eliminacion
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body" style="font-size: 14px;">
+                                                            ¿Estas seguro de que quieres eliminar este elemento?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <!-- Boton para cancelar -->
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                style="font-size: 14px;">Cancelar</button>
+                                                            <!-- Boton para confirmar la eliminacion -->
+                                                            <a href="DeletePlato?id=${plato.id}" class="btn btn-danger"
+                                                                style="font-size: 14px;">Eliminar</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
-                                            <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
-                                            <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
-                                        </td>
-                                    </tr>
-                                    
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -155,5 +291,4 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

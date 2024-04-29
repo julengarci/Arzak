@@ -27,6 +27,12 @@ public class PlatoModelo extends Conector{
                 // Convertir el String a un valor del enum Tipo
                 Tipo tipo = Tipo.valueOf(tipoStr.toLowerCase());
                 
+                //conseguir array de ingredientes
+                ArrayList<Ingrediente> ingredientes = getIngredientesplato(plato.getId());
+                
+                //asignar el array
+                plato.setIngredientes(ingredientes);
+                
                 // Asignar el tipo al plato
                 plato.setTipo(tipo);
                 
@@ -68,6 +74,35 @@ public class PlatoModelo extends Conector{
 	     }
 	     return null;
 	 }
+	
+	public ArrayList<Ingrediente> getIngredientesplato(int id){
+		try {
+	         PreparedStatement pst = this.conexion.prepareStatement("SELECT * FROM INGREDIENTES WHERE ID_PLATO=?");
+	         pst.setInt(1, id);
+	         ResultSet rs = pst.executeQuery();
+	         ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+	         while (rs.next()) {
+	        	 Ingrediente ingrediente = new Ingrediente();
+	                
+	             ingrediente.setId(rs.getInt("ID_INGREDIENTE"));
+	             ingrediente.setNombre(rs.getString("NOMBRE"));
+	             // Obtener el valor del alérgeno como un String desde la base de datos
+	             String alergenoStr = rs.getString("ALERGENOS");
+	                
+	             // Convertir el String a un valor del enum Alergeno
+	             Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase());
+	                
+	             // Asignar el alergeno al ingrediente
+	             ingrediente.setAlergeno(alergeno);
+	             
+	             ingredientes.add(ingrediente);
+	         }
+	         return ingredientes;
+		} catch (SQLException e) {
+	         e.printStackTrace();
+	         return null;
+	     }
+	 }
 	 
 	 public boolean delete(int id) {
 	     try {
@@ -99,13 +134,13 @@ public class PlatoModelo extends Conector{
 	     }
 	 }
 	 
-//	 public void insert(Reserva reserva) {
-//		 try {
-//		     PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO reserva (id, fecha, hora, numPersonas, alergenos, observaciones) VALUES (?, ?, ?, ?, ?, ?)");
-//		        
-//		     pst.execute();
-//		    } catch (SQLException e) {
-//		        e.printStackTrace();
-//		    }
-//		}
+	 public void insert(Plato plato) {
+		 try {
+		     PreparedStatement pst = this.conexion.prepareStatement("CALL insert_plato");
+		        
+		     pst.execute();
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		}
 }
