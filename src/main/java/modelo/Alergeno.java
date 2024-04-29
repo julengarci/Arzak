@@ -2,19 +2,30 @@ package modelo;
 
 public enum Alergeno {
 
-	 ninguno,
-	 gluten,
-	 crustaceos,
-	 moluscos,
-	 pescado,
-	 huevos,
-	 altramuces,
-	 mostaza,
-	 cacahuetes,
-	 frutos_secos,
-	 soja,
-	 sesamo,
-	 apio,
-	 leche,
-	 anhidridoSulfuroso;
+	 ninguno("NINGUNO"),
+	 gluten("GLUTEN"),
+	 crustaceos("CRUSTACEOS"),
+	 moluscos("MOLUSCOS"),
+	 pescado("PESCADO"),
+	 huevos("HUEVOS"),
+	 altramuces("ALTRAMUCES"),
+	 mostaza("MOSTAZA"),
+	 cacahuetes("CACAHUETES"),
+	 frutossecos("FRUTOS SECOS"),
+	 soja("SOJA"),
+	 sesamo("SESAMO"),
+	 apio("APIO"),
+	 leche("LECHE"),
+	 anhidridosulfuroso("ANHIDRIDO SULFUROSO");
+	
+	 private String nombre;
+
+	    Alergeno(String nombre) {
+	        this.nombre = nombre;
+	    }
+
+	    public String getNombre() {
+	        return this.nombre;
+	    }    
 }
+
