@@ -11,12 +11,12 @@ public enum Alergeno {
 	 altramuces("ALTRAMUCES"),
 	 mostaza("MOSTAZA"),
 	 cacahuetes("CACAHUETES"),
-	 frutossecos("FRUTOS SECOS"),
+	 frutos_secos("FRUTOS SECOS"),
 	 soja("SOJA"),
 	 sesamo("SESAMO"),
 	 apio("APIO"),
 	 leche("LECHE"),
-	 anhidridosulfuroso("ANHIDRIDO SULFUROSO");
+	 anhidrido_sulfuroso("ANHIDRIDO SULFUROSO");
 	
 	 private String nombre;
 
