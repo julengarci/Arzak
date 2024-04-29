@@ -94,13 +94,102 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                 <!-- Boton de agregar ingrediente -->
+                                    <button type="button" class="btn btn-primary mb-3"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalAgregarReserva">Agregar Reserva</button>
+                                    <!-- Modal para modificar -->
+                                    <div class="modal fade" id="modalAgregarReserva${reserva.id}" tabindex="-1"
+                                        aria-labelledby="modalAgregarReservaLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalAgregarReservaLabel"
+                                                        style="font-size: 16px;">Agregar Reserva</h5>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="formularioAgregar" method="post" action="CreateReserva">
+                                                        <div class="mb-3">
+                                                                        <label for="emailModificar" class="form-label"
+                                                                            style="font-size: 14px;">Hora:</label>
+                                                                        <select class="form-select" id="hora"
+                                                                            name="hora" required>
+                                                                            <option value="" selected disabled>Selecciona la hora</option>
+                                                                            <option value="1">13:00</option>
+                                                                            <option value="2">13:30</option>
+                                                                            <option value="3">14:00</option>
+                                                                            <option value="4">14:30</option>
+                                                                            <option value="5">15:00</option>
+                                                                            <option value="6">20:00</option>
+                                                                            <option value="7">20:30</option>
+                                                                            <option value="8">21:00</option>
+                                                                            <option value="9">21:30</option>
+                                                                            <option value="10">22:00</option>
+                                                                        </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                                        <label for="fechaAgregar" class="form-label"
+                                                                            style="font-size: 14px;">Fecha:</label>
+                                                                        <input type="date" class="form-control"
+                                                                            id="fecha" name="fecha"
+                                                                            required value="${reserva.fecha}">
+														</div>
+														<div class="mb-3">
+                                                                        <label for="personasModificar" class="form-label"
+                                                                            style="font-size: 14px;">Numero de personas:</label>
+                                                                        <select class="form-select" id="numPersonas"
+                                                                            name="numPersonas" required>
+                                                                            <option value="" selected disabled>Selecciona
+                                                                                el número de personas</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                        </select>
+														</div>
+                                                        <div class="mb-3">
+                                                            <label for="alergenoAgregar" class="form-label"
+                                                                style="font-size: 14px;">Alergeno:</label> 
+                                                            <select class="form-select" id="alergeno"
+                                                                name="alergeno" required>
+                                                                <option value="" selected disabled>Alergeno</option>
+                                                                <c:forEach items="${alergenos}" var="alergeno">
+                                                                    <option value="${alergeno}"> ${alergeno.nombre}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+														    <label for="observacionesAgregar" class="form-label">Observaciones</label>
+														    <input type="textfield" class="form-control" id="observacionesAgregar">
+														</div>														
+                                                        <div class="mb-3">
+                                                            <!-- Boton para cancelar -->
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                style="font-size: 14px;">Cancelar</button>
+                                                            <!-- Boton para enviar el formulario -->
+                                                            <button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <c:forEach items="${reservas}" var="reserva">
                                         <tr>
                                             <td>${reserva.id}</td>
                                             <td>${reserva.hora}</td>
                                             <td>${reserva.fecha}</td>
                                             <td>${reserva.numPersonas}</td>
-                                            <td>${reserva.alergenos}</td>
+                                            <td>${reserva.alergeno}</td>
                                             <td>${reserva.observaciones}</td>
                                             <td>${reserva.cliente}</td>
                                             <td>${reserva.menu}</td>
@@ -127,6 +216,7 @@
                                                                 <p style="font-size: 14px;">Fecha: ${reserva.fecha}</p>
                                                                 <p style="font-size: 14px;">Numero de personas: ${reserva.numPersonas}</p>
                                                                 <p style="font-size: 14px;">Alergenos: ${reserva.alergeno}</p>
+                                                                <p style="font-size: 14px;">Observaciones: ${reserva.observaciones}</p>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
@@ -134,13 +224,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> <!-- Boton que abre el modal para modificar -->
+                                                </div> 
+                                                <!-- Boton que abre el modal para modificar -->
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#modalModificar${cliente.id}">
+                                                    data-bs-target="#modalModificar${reserva.id}">
                                                     <i class="fa-solid fa-square-pen"></i>
                                                 </button>
                                                 <!-- Modal para modificar -->
-                                                <div class="modal fade" id="modalModificar${cliente.id}" tabindex="-1"
+                                                <div class="modal fade" id="modalModificar${reserva.id}" tabindex="-1"
                                                     aria-labelledby="modalModificarLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -151,28 +242,39 @@
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form id="formularioModificar" method="post" action="UpdateCliente?id=${cliente.id}">
+                                                                <form id="formularioModificar" method="post" action="UpdateReserva?id=${reserva.id}">
                                                                     <div class="mb-3">
-                                                                        <label for="nombreModificar" class="form-label"
+                                                                        <label for="horaModificar" class="form-label"
                                                                             style="font-size: 14px;">Hora:</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="nombre" name="nombre"
-                                                                            required value="${reserva.hora}">
-                                                                    </div>
+                                                                        <select class="form-select" id="hora"
+                                                                            name="hora" required value="${reserva.hora}">
+                                                                            <option value="" selected disabled>Selecciona la hora</option>
+                                                                            <option value="1">13:00</option>
+                                                                            <option value="2">13:30</option>
+                                                                            <option value="3">14:00</option>
+                                                                            <option value="4">14:30</option>
+                                                                            <option value="5">15:00</option>
+                                                                            <option value="6">20:00</option>
+                                                                            <option value="7">20:30</option>
+                                                                            <option value="8">21:00</option>
+                                                                            <option value="9">21:30</option>
+                                                                            <option value="10">22:00</option>
+                                                                        </select>
+                                                       	 			</div>
                                                                     <div class="mb-3">
-                                                                        <label for="telefonoModificar" class="form-label"
+                                                                        <label for="fechaModificar" class="form-label"
                                                                             style="font-size: 14px;">Fecha:</label>
                                                                         <input type="date" class="form-control"
-                                                                            id="telefono" name="telefono"
+                                                                            id="fecha" name="fecha"
                                                                             required value="${reserva.fecha}">
                                                                     </div>
                                                                     <div class="mb-3">
-                                                                        <label for="emailModificar" class="form-label"
+                                                                        <label for="personasModificar" class="form-label"
                                                                             style="font-size: 14px;">Numero de personas:</label>
                                                                         <select class="form-select" id="numPersonas"
-                                                                            name="numPersonas" required>
-                                                                            <option value="" selected disabled>Selecciona
-                                                                                el número de personas</option>
+                                                                            name="numPersonas" required value="${reserva.numPersonas}">
+                                                                            <option value="${reserva.numPersonas}" selected disabled>Selecciona
+                                                                                el numero de personas</option>
                                                                             <option value="1">1</option>
                                                                             <option value="2">2</option>
                                                                             <option value="3">3</option>
@@ -189,13 +291,17 @@
                                                                         <label for="alergenoModificar" class="form-label"
                                                                             style="font-size: 14px;">Alergeno:</label>
                                                                         <select class="form-select" id="alergeno"
-                                                                            name="alergeno" required>
+                                                                            name="alergeno" required value="${reserva.alergeno}">
                                                                             <option value="" selected disabled>Alergeno</option>
                                                                             <c:forEach items="${alergenos}" var="alergeno">
-                                                                                <option value="${alergeno}"> ${alergeno}</option>
+                                                                                <option value="${alergeno}"> ${alergeno.nombre}</option>
                                                                             </c:forEach>
                                                                         </select>
                                                                     </div>
+                                                                    <div class="mb-3">
+														    			<label for="observacionesModficar" class="form-label" style="font-size: 14px;">Observaciones</label>
+														    			<input type="textfield" class="form-control" id="observacionesModificar" value="${reserva.observaciones}">
+																	</div>		
                                                                     <div class="mb-3">
                                                                         <!-- Boton para cancelar -->
                                                                         <button type="button" class="btn btn-secondary"
