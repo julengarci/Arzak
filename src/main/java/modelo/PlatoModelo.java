@@ -136,8 +136,9 @@ public class PlatoModelo extends Conector{
 	 
 	 public void insert(Plato plato) {
 		 try {
-		     PreparedStatement pst = this.conexion.prepareStatement("CALL insert_plato");
-		        
+		     PreparedStatement pst = this.conexion.prepareStatement("CALL insert_plato(?,?)");
+		     pst.setString(1, plato.getNombre());
+		     pst.setString(2, plato.getTipo().toString().toUpperCase());
 		     pst.execute();
 		    } catch (SQLException e) {
 		        e.printStackTrace();
