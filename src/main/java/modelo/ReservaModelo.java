@@ -28,7 +28,7 @@ public class ReservaModelo extends Conector{
                 String alergenoStr = rs.getString("ALERGENOS");
                 
                 // Convertir el String a un valor del enum Alergeno
-                Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase());
+                Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase().replace(" ", "_"));
                 
                 reserva.setObservaciones(rs.getString("OBSERVACIONES"));
                 
@@ -120,7 +120,7 @@ public class ReservaModelo extends Conector{
 	        pst.setDate(2, new java.sql.Date(reserva.getFecha().getTime()));
 	        pst.setString(3, reserva.getHora());
 	        pst.setInt(4, reserva.getNumPersonas());
-		    pst.setString(6, reserva.getAlergeno().getNombre().toString().toUpperCase());
+		    pst.setString(6, reserva.getAlergeno().getNombre().toString().toUpperCase().replace("_", " "));
 	        pst.setString(6, reserva.getObservaciones());
 	        
 	        pst.execute();

@@ -212,9 +212,24 @@
                                                                 <div class="mb-3">
                                                                     <label for="alergenoModificar" class="form-label"
                                                                         style="font-size: 14px;">Alergeno:</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="alergeno" name="alergeno"
-                                                                        required value="${ingrediente.alergeno}">
+                                                                    <select class="form-select" id="alergeno"
+                                                                        name="alergeno" required value="${ingrediente.alergeno}">
+                                                                        <option value="" selected disabled>Alergeno</option>
+                                                                        <c:forEach items="${alergenos}" var="alergeno">
+                                                                            <option value="${alergeno}"> ${alergeno.nombre}</option>
+                                                                        </c:forEach>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="platoAgregar" class="form-label"
+                                                                        style="font-size: 14px;">Plato:</label> 
+                                                                    <select class="form-select" id="platos"
+                                                                        name="platos">
+                                                                        <option value="" selected disabled>Plato</option>
+                                                                        <c:forEach items="${platos}" var="plato">
+                                                                            <option value="${plato}"> ${plato.nombre}</option>
+                                                                        </c:forEach>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <!-- Boton para cancelar -->
