@@ -48,6 +48,7 @@ public class PanelIngrediente extends HttpServlet {
 		// genera un atributo con la ArrayList para que se pueda usar en la pagina
 		request.setAttribute("ingredientes", ingredientes);
 		request.setAttribute("alergenos", alergenos);
+		
 		// ejecuta la pagina
 		request.getRequestDispatcher("PanelIngredientes.jsp").forward(request, response);
 	}

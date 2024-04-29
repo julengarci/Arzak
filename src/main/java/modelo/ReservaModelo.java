@@ -88,39 +88,45 @@ public class ReservaModelo extends Conector{
          return false;
      }
  }
+
  
-// public int update(Reserva reserva) {
-//     try {
-//         PreparedStatement pst = this.conexion.prepareStatement("UPDATE RESERVAS SET ID_RESERVA = ?, FECHA_RESERVA = ? ,HORA_RESERVA = ?, numPersonas = ?, alergenos = ?, observaciones = ?");
-//         
-//         pst.setInt(1, reserva.getId());
-//	     pst.setDate(2, new java.sql.Date(reserva.getFecha().getTime()));
-//         pst.setString(3, reserva.getHora());
-//         pst.setInt(4, reserva.getNumPersonas());
-//         pst.setString(5, reserva.getAlergeno());
-//         pst.setString(6, reserva.getObservaciones());
-//
-//         return pst.executeUpdate();
-//     } catch (SQLException e) {
-//         e.printStackTrace();
-//         return 0;
-//     }
-// }
-// 
-// public void insert(Reserva reserva) {
-//	    try {
-//	        PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO reserva (id, fecha, hora, numPersonas, alergenos, observaciones) VALUES (?, ?, ?, ?, ?, ?)");
-//	        
-//	        pst.setInt(1, reserva.getId());
-//	        pst.setDate(2, new java.sql.Date(reserva.getFecha().getTime()));
-//	        pst.setString(3, reserva.getHora());
-//	        pst.setInt(4, reserva.getNumPersonas());
-//	        pst.setString(5, reserva.getAlergenos());
-//	        pst.setString(6, reserva.getObservaciones());
-//	        
-//	        pst.execute();
-//	    } catch (SQLException e) {
-//	        e.printStackTrace();
-//	    }
-//	}
+ public int update(Reserva reserva) {
+     try {
+         PreparedStatement pst = this.conexion.prepareStatement("UPDATE RESERVAS SET ID_RESERVA = ?, HORA_RESERVA = ?, FECHA_RESERVA = ? , NUM_PERSONAS = ?, ALERGENOS = ?, OBSERVACIONES = ?");
+         
+         pst.setInt(1, reserva.getId());
+         pst.setString(2, reserva.getHora());
+	     pst.setDate(3, new java.sql.Date(reserva.getFecha().getTime()));
+         pst.setInt(4, reserva.getNumPersonas());
+      
+         // Convertir el valor del enum al String correspondiente
+         String alergenoStr = reserva.getAlergeno().toString().toUpperCase();
+         pst.setString(5, alergenoStr);
+
+         pst.setString(6, reserva.getObservaciones());
+
+         return pst.executeUpdate();
+     } catch (SQLException e) {
+         e.printStackTrace();
+         return 0;
+     }
+ }
+ 
+ public void insert(Reserva reserva) {
+	    try {
+	        PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO reserva (ID_RESERVA, HORA_RESERVA, FECHA_RESERVA, NUM_PERSONAS, ALERGENOS, OBSERVACIONES) VALUES (?, ?, ?, ?, ?, ?)");
+	        
+	        pst.setInt(1, reserva.getId());
+	        pst.setDate(2, new java.sql.Date(reserva.getFecha().getTime()));
+	        pst.setString(3, reserva.getHora());
+	        pst.setInt(4, reserva.getNumPersonas());
+		    pst.setString(6, reserva.getAlergeno().getNombre().toString().toUpperCase());
+	        pst.setString(6, reserva.getObservaciones());
+	        
+	        pst.execute();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+
 }

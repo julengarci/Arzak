@@ -24,10 +24,10 @@ public class PlatoModelo extends Conector{
             	// Obtener el valor del alérgeno como un String desde la base de datos
                 String tipoStr = rs.getString("TIPO");
                 
-                // Convertir el String a un valor del enum Alergeno
+                // Convertir el String a un valor del enum Tipo
                 Tipo tipo = Tipo.valueOf(tipoStr.toLowerCase());
                 
-                // Asignar el alergeno al ingrediente
+                // Asignar el tipo al plato
                 plato.setTipo(tipo);
                 
             	platos.add(plato);
@@ -83,7 +83,7 @@ public class PlatoModelo extends Conector{
 	 
 	 public int update(Plato plato) {
 	     try {
-	         PreparedStatement pst = this.conexion.prepareStatement("UPDATE PLATOS SET ID_PLATO = ?, NOMBRE = ? , TIPO = ?");
+	         PreparedStatement pst = this.conexion.prepareStatement("CALL update_plato(?,?,?)");
 	         
 	         pst.setInt(1, plato.getId());
 	         pst.setString(2, plato.getNombre());
