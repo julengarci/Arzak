@@ -15,7 +15,7 @@ public class IngredienteModelo extends Conector{
         
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM INGREDIENTES");
+            ResultSet rs = st.executeQuery("SELECT DISTINCT * FROM INGREDIENTES");
             while (rs.next()) {
             	Ingrediente ingrediente = new Ingrediente();
                 

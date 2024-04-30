@@ -42,13 +42,15 @@ public class CreateReserva extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		//recoger los datos del formulario
 		String hora = request.getParameter("hora");
 		
 		String fechaString = request.getParameter("fecha");
+		
 		Date fecha = null;
-		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+		
 		try {
 		    fecha = formatoFecha.parse(fechaString);
 		} catch (ParseException e) {

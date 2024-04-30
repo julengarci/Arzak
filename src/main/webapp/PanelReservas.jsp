@@ -94,7 +94,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                 <!-- Boton de agregar ingrediente -->
+                                 <!-- Boton de agregar reserva -->
                                     <button type="button" class="btn btn-primary mb-3"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalAgregarReserva">Agregar Reserva</button>
@@ -117,23 +117,23 @@
                                                                         <select class="form-select" id="hora"
                                                                             name="hora" required>
                                                                             <option value="" selected disabled>Selecciona la hora</option>
-                                                                            <option value="1">13:00</option>
-                                                                            <option value="2">13:30</option>
-                                                                            <option value="3">14:00</option>
-                                                                            <option value="4">14:30</option>
-                                                                            <option value="5">15:00</option>
-                                                                            <option value="6">20:00</option>
-                                                                            <option value="7">20:30</option>
-                                                                            <option value="8">21:00</option>
-                                                                            <option value="9">21:30</option>
-                                                                            <option value="10">22:00</option>
+                                                                            <option value="13:00">13:00</option>
+                                                                            <option value="13:30">13:30</option>
+                                                                            <option value="14:00">14:00</option>
+                                                                            <option value="14:30">14:30</option>
+                                                                            <option value="15:00">15:00</option>
+                                                                            <option value="20:00">20:00</option>
+                                                                            <option value="20:30">20:30</option>
+                                                                            <option value="21:00">21:00</option>
+                                                                            <option value="21:30">21:30</option>
+                                                                            <option value="22:00">22:00</option>
                                                                         </select>
                                                         </div>
                                                         <div class="mb-3">
                                                                         <label for="fechaAgregar" class="form-label"
                                                                             style="font-size: 14px;">Fecha:</label>
                                                                         <input type="date" class="form-control"
-                                                                            id="fecha" name="fecha"
+                                                                            id="fecha" name="fecha" pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/YYYY"
                                                                             required value="${reserva.fecha}">
 														</div>
 														<div class="mb-3">
@@ -167,9 +167,12 @@
                                                             </select>
                                                         </div>
                                                         <div class="mb-3">
-														    <label for="observacionesAgregar" class="form-label">Observaciones</label>
-														    <input type="textfield" class="form-control" id="observacionesAgregar">
-														</div>														
+                                                            <label for="observacionesAgregar" class="form-label"
+                                                                style="font-size: 14px;">Observaciones:</label>
+                                                            <input type="text" class="form-control"
+                                                                id="observaciones" name="observaciones"
+>
+                                                        </div>														
                                                         <div class="mb-3">
                                                             <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
@@ -341,7 +344,7 @@
                                                                     data-bs-dismiss="modal"
                                                                     style="font-size: 14px;">Cancelar</button>
                                                                 <!-- Boton para confirmar la eliminacion -->
-                                                                <a href="DeleteCliente?id=${reserva.id}" class="btn btn-danger"
+                                                                <a href="DeleteReserva?id=${reserva.id}" class="btn btn-danger"
                                                                     style="font-size: 14px;">Eliminar</a>
                                                             </div>
                                                         </div>
