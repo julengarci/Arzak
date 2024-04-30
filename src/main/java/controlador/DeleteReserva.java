@@ -1,29 +1,26 @@
 package controlador;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Alergeno;
-import modelo.Reserva;
+import modelo.IngredienteModelo;
 import modelo.ReservaModelo;
 
 /**
- * Servlet implementation class PanelReservas
+ * Servlet implementation class DeleteReserva
  */
-@WebServlet("/PanelReserva")
-public class PanelReserva extends HttpServlet {
+@WebServlet("/DeleteReserva")
+public class DeleteReserva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PanelReserva() {
+    public DeleteReserva() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,27 +30,20 @@ public class PanelReserva extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//llama a la base de datos y añade las reservas a la ArrayList
 		ReservaModelo rm = new ReservaModelo();
-		ArrayList<Reserva> reservas = rm.getTodos();
 		
-		//creamos una lista de Alergeno (usando el enum)
-		Alergeno[] alergenos = Alergeno.values();
+		int id = Integer.parseInt(request.getParameter("id"));
 		
-		//genera un atributo con la ArrayList para que se pueda usar en la pagina
-		request.setAttribute("reservas", reservas);
-		request.setAttribute("alergenos", alergenos);
+		rm.delete(id);
 		
-		//ejecuta la pagina
-		request.getRequestDispatcher("PanelReservas.jsp").forward(request, response);
+		response.sendRedirect("PanelReserva");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

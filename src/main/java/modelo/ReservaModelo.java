@@ -114,14 +114,13 @@ public class ReservaModelo extends Conector{
  
  public void insert(Reserva reserva) {
 	    try {
-	        PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO reserva (ID_RESERVA, HORA_RESERVA, FECHA_RESERVA, NUM_PERSONAS, ALERGENOS, OBSERVACIONES) VALUES (?, ?, ?, ?, ?, ?)");
+	        PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO RESERVAS (HORA_RESERVA, FECHA_RESERVA, NUM_PERSONAS, ALERGENOS, OBSERVACIONES) VALUES (?, ?, ?, ?, ?)");
 	        
-	        pst.setInt(1, reserva.getId());
+	        pst.setString(1, reserva.getHora());
 	        pst.setDate(2, new java.sql.Date(reserva.getFecha().getTime()));
-	        pst.setString(3, reserva.getHora());
-	        pst.setInt(4, reserva.getNumPersonas());
-		    pst.setString(6, reserva.getAlergeno().getNombre().toString().toUpperCase().replace("_", " "));
-	        pst.setString(6, reserva.getObservaciones());
+	        pst.setInt(3, reserva.getNumPersonas());
+		    pst.setString(4, reserva.getAlergeno().getNombre().toString().toUpperCase().replace("_", " "));
+	        pst.setString(5, reserva.getObservaciones());
 	        
 	        pst.execute();
 	    } catch (SQLException e) {
