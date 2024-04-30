@@ -119,7 +119,7 @@
                                                             <label for="TelefonoAgregar" class="form-label"
                                                                 style="font-size: 14px;">Telefono:</label>
                                                             <input type="text" class="form-control"
-                                                                id="telefono" name="telefono"
+                                                                id="telefono" name="telefono" maxlength="9"
                                                                 required >
                                                         </div>
                                                         <div class="mb-3">
