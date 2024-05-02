@@ -94,7 +94,7 @@
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalAgregarIngrediente">Agregar
                                         Ingrediente</button>
-                                    <!-- Modal para modificar -->
+                                    <!-- Modal para agregarr -->
                                     <div class="modal fade" id="modalAgregarIngrediente${ingrediente.id}" tabindex="-1"
                                         aria-labelledby="modalAgregarIngredienteLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -196,16 +196,16 @@
                                                                         style="font-size: 14px;">Nombre:</label>
                                                                     <input type="text" class="form-control"
                                                                         id="nombre" name="nombre"
-                                                                        required value="${ingrediente.nombre}">
+                                                                         value="${ingrediente.nombre}">
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="alergenoModificar" class="form-label"
                                                                         style="font-size: 14px;">Alergeno:</label>
                                                                     <select class="form-select" id="alergeno"
-                                                                        name="alergeno" required value="${ingrediente.alergeno}">
-                                                                        <option value="" selected disabled>Alergeno</option>
+                                                                        name="alergeno"  value="${ingrediente.alergeno}">
+                                                                        <option value="" selected disabled>${ingrediente.alergeno.nombre}</option>
                                                                         <c:forEach items="${alergenos}" var="alergeno">
-                                                                            <option value="${alergeno}"> ${alergeno.nombre}</option>
+                                                                            <option value="${alergeno}" ${alergeno.nombre.equals(ingrediente.alergeno.nombre) ? 'selected' : ''}> ${alergeno.nombre}</option>
                                                                         </c:forEach>
                                                                     </select>
                                                                 </div>

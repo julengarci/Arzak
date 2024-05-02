@@ -50,6 +50,7 @@ public class UpdateIngrediente extends HttpServlet {
 		//introducir los datos en el objeto
 		ingrediente.setId(id);
 		ingrediente.setNombre(nombre);
+		
 		Alergeno alergeno = Alergeno.valueOf(alergenoString);
 		ingrediente.setAlergeno(alergeno);
 		

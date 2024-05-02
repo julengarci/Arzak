@@ -49,7 +49,7 @@ public class CreateReserva extends HttpServlet {
 		String fechaString = request.getParameter("fecha");
 		
 		Date fecha = null;
-		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
 		
 		try {
 		    fecha = formatoFecha.parse(fechaString);
