@@ -55,7 +55,7 @@ public class IngredienteModelo extends Conector{
 	             String alergenoStr = rs.getString("ALERGENOS");
 	                
 	             // Convertir el String a un valor del enum Alergeno
-	             Alergeno alergeno = Alergeno.valueOf(alergenoStr.toUpperCase());
+	             Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase());
 	                
 	             // Asignar el alergeno al ingrediente
 	             ingrediente.setAlergeno(alergeno);

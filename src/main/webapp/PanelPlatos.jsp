@@ -124,7 +124,13 @@
                                                                     <option value="${tipo}"> ${tipo.nombre}</option>
                                                                 </c:forEach>
                                                             </select>
-                                                        </div>														
+                                                        </div>
+                                                        <c:forEach var="ingrediente" items="${ingredientes}">
+													        <div class="form-check">
+													            <input class="form-check-input" type="checkbox" value="${ingrediente.id}" id="flexCheckDefault" name="ingredientes[]">
+													            <label class="form-check-label" for="flexCheckDefault">${ingrediente.nombre}</label>
+													        </div>
+													    </c:forEach>										
                                                         <div class="mb-3">
                                                             <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
