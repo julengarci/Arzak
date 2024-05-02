@@ -124,18 +124,7 @@
                                                                     <option value="${alergeno}"> ${alergeno.nombre}</option>
                                                                 </c:forEach>
                                                             </select>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="platoAgregar" class="form-label"
-                                                                style="font-size: 14px;">Plato:</label> 
-                                                            <select class="form-select" id="platos"
-                                                                name="platos">
-                                                                <option value="" selected disabled>Plato</option>
-                                                                <c:forEach items="${platos}" var="plato">
-                                                                    <option value="${plato}"> ${plato.nombre}</option>
-                                                                </c:forEach>
-                                                            </select>
-                                                        </div>															
+                                                        </div>														
                                                         <div class="mb-3">
                                                             <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
@@ -217,17 +206,6 @@
                                                                         <option value="" selected disabled>Alergeno</option>
                                                                         <c:forEach items="${alergenos}" var="alergeno">
                                                                             <option value="${alergeno}"> ${alergeno.nombre}</option>
-                                                                        </c:forEach>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="platoAgregar" class="form-label"
-                                                                        style="font-size: 14px;">Plato:</label> 
-                                                                    <select class="form-select" id="platos"
-                                                                        name="platos">
-                                                                        <option value="" selected disabled>Plato</option>
-                                                                        <c:forEach items="${platos}" var="plato">
-                                                                            <option value="${plato}"> ${plato.nombre}</option>
                                                                         </c:forEach>
                                                                     </select>
                                                                 </div>

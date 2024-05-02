@@ -84,7 +84,7 @@ public class PlatoModelo extends Conector{
 	         while (rs.next()) {
 	        	 Ingrediente ingrediente = new Ingrediente();
 	                
-	             ingrediente.setId(rs.getInt("ID_INGREDIENTE"));
+	             ingrediente.setId(rs.getInt("ID_INGREDIENTES"));
 	             ingrediente.setNombre(rs.getString("NOMBRE"));
 	             // Obtener el valor del alérgeno como un String desde la base de datos
 	             String alergenoStr = rs.getString("ALERGENOS");
