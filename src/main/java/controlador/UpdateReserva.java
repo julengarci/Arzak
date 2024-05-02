@@ -50,33 +50,35 @@ public class UpdateReserva extends HttpServlet {
 		//Obtener parametros del formulario y actualizar la base de datos
 		int id = Integer.parseInt(request.getParameter("id"));
 		String hora = request.getParameter("hora");
-		Date fecha = null;
+		Date fecha;
 		try {
 			fecha = fechaFormat.parse(request.getParameter("fecha"));
+			int numPersonas = Integer.parseInt(request.getParameter("numPersonas"));
+			String alergenoString = request.getParameter("alergeno");
+			String observaciones = request.getParameter("observaciones");
+			
+			//Menu menu = request.getParameter
+			
+			
+			//introducir los datos en el objeto
+			reserva.setId(id);
+			reserva.setFecha(fecha);
+			reserva.setHora(hora);
+			reserva.setNumPersonas(numPersonas);
+			Alergeno alergeno = Alergeno.valueOf(alergenoString);
+			reserva.setObservaciones(observaciones);
+			
+			ReservaModelo rm = new ReservaModelo();
+			
+			rm.update(reserva);
+			
+			response.sendRedirect("PanelIngrediente");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		int numPersonas = Integer.parseInt(request.getParameter("numPersonas"));
-		String alergenoString = request.getParameter("alergeno");
-		String observaciones = request.getParameter("observaciones");
+			
 		
-		//Menu menu = request.getParameter
-		
-		
-		//introducir los datos en el objeto
-		reserva.setId(id);
-		reserva.setFecha(fecha);
-		reserva.setHora(hora);
-		reserva.setNumPersonas(numPersonas);
-		Alergeno alergeno = Alergeno.valueOf(alergenoString);
-		reserva.setObservaciones(observaciones);
-		
-		ReservaModelo rm = new ReservaModelo();
-		
-		rm.update(reserva);
-		
-		response.sendRedirect("PanelIngrediente");
 	}
 
 }

@@ -19,7 +19,7 @@ public class IngredienteModelo extends Conector{
             while (rs.next()) {
             	Ingrediente ingrediente = new Ingrediente();
                 
-            	ingrediente.setId(rs.getInt("ID_INGREDIENTE"));
+            	ingrediente.setId(rs.getInt("ID_INGREDIENTES"));
             	ingrediente.setNombre(rs.getString("NOMBRE"));
             	// Obtener el valor del alérgeno como un String desde la base de datos
                 String alergenoStr = rs.getString("ALERGENOS");
@@ -42,14 +42,14 @@ public class IngredienteModelo extends Conector{
 	
 	public Ingrediente get(int id) {
 	     try {
-	         PreparedStatement pst = this.conexion.prepareStatement("SELECT * FROM INGREDIENTES WHERE ID_INGREDIENTE=?");
+	         PreparedStatement pst = this.conexion.prepareStatement("SELECT * FROM INGREDIENTES WHERE ID_INGREDIENTES=?");
 	         pst.setInt(1, id);
 	         ResultSet rs = pst.executeQuery();
 
 	         if (rs.next()) {
 	        	 Ingrediente ingrediente = new Ingrediente();
 	                
-	             ingrediente.setId(rs.getInt("ID_INGREDIENTE"));
+	             ingrediente.setId(rs.getInt("ID_INGREDIENTES"));
 	             ingrediente.setNombre(rs.getString("NOMBRE"));
 	             // Obtener el valor del alérgeno como un String desde la base de datos
 	             String alergenoStr = rs.getString("ALERGENOS");
@@ -71,7 +71,7 @@ public class IngredienteModelo extends Conector{
 	 
 	 public boolean delete(int id) {
 	     try {
-	         PreparedStatement pst = this.conexion.prepareStatement("DELETE FROM INGREDIENTES WHERE ID_INGREDIENTE=?");
+	         PreparedStatement pst = this.conexion.prepareStatement("DELETE FROM INGREDIENTES WHERE ID_INGREDIENTES=?");
 	         pst.setInt(1, id);
 	         pst.execute();
 	         return true;
