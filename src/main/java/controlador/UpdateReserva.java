@@ -53,9 +53,10 @@ public class UpdateReserva extends HttpServlet {
 		
 		Date fecha = null;
 		SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-		
+	
 		try {
 		    fecha = formatoFecha.parse(fechaString);
+		    
 		} catch (ParseException e) {
 		    e.printStackTrace();
 		}
@@ -65,7 +66,7 @@ public class UpdateReserva extends HttpServlet {
 		
 		String alergenoString = request.getParameter("alergeno");		
 		String observaciones = request.getParameter("observaciones");
-		
+
 		//Menu menu = request.getParameter
 		
 		

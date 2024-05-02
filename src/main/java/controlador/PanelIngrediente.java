@@ -47,14 +47,9 @@ public class PanelIngrediente extends HttpServlet {
 		//creamos una lista de Alergeno (usando el enum)
 		Alergeno[] alergenos = Alergeno.values();
 		
-		//conseguir todos los platos de la BBDD para añadir ingredientes
-		PlatoModelo pm = new PlatoModelo();
-		ArrayList<Plato> platos = pm.getTodos();
-
 		// genera un atributo con la ArrayList para que se pueda usar en la pagina
 		request.setAttribute("ingredientes", ingredientes);
 		request.setAttribute("alergenos", alergenos);
-		request.setAttribute("platos", platos);
 		
 		// ejecuta la pagina
 		request.getRequestDispatcher("PanelIngredientes.jsp").forward(request, response);

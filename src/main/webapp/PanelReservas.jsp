@@ -274,8 +274,8 @@
                                                                         <label for="personasModificar" class="form-label"
                                                                             style="font-size: 14px;">Numero de personas:</label>
                                                                         <select class="form-select" id="numPersonas"
-                                                                            name="numPersonas" value="${reserva.numPersonas}">
-                                                                            <option value="${reserva.numPersonas}" selected disabled>${reserva.numPersonas}</option>
+                                                                            name="numPersonas" value="${reserva.numPersonas}" >
+                                                                            <option value="${reserva.numPersonas}" selected >${reserva.numPersonas}</option>
                                                                             <option value="1">1</option>
                                                                             <option value="2">2</option>
                                                                             <option value="3">3</option>
@@ -295,7 +295,7 @@
                                                                             name="alergeno" value="${reserva.alergeno}">
                                                                             <option value="" selected disabled>${reserva.alergeno.nombre}</option>
                                                                             <c:forEach items="${alergenos}" var="alergeno">
-                                                                                <option value="${alergeno}"> ${alergeno.nombre}</option>
+                                                                                <option value="${alergeno}" ${alergeno.nombre.equals(reserva.alergeno.nombre) ? 'selected' : ''}> ${alergeno.nombre}</option>
                                                                             </c:forEach>
                                                                         </select>
                                                                     </div>
