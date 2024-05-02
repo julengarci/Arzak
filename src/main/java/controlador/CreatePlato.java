@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.IngredientesPlatosModelo;
 import modelo.Plato;
 import modelo.PlatoModelo;
 import modelo.Tipo;
@@ -45,6 +46,9 @@ public class CreatePlato extends HttpServlet {
 		//transformar string en tipo
 		Tipo tipo = Tipo.valueOf(tipoStr);
 		
+		//conseguir los valores del checkbox
+		String[] ingredientes = request.getParameterValues("ingredientes[]");
+		
 		//añadir los valores al ojeto plato
 		Plato plato = new Plato();
 		
@@ -55,6 +59,12 @@ public class CreatePlato extends HttpServlet {
 		PlatoModelo pm = new PlatoModelo();
 		
 		pm.insert(plato);
+		
+		//insertar los datos a la tabla intermedia
+		IngredientesPlatosModelo ipm = new IngredientesPlatosModelo();
+		for (String string : ingredientes) {
+			ipm.insertIngredientesPlatos(Integer.parseInt(string), pm.getUltimoPlato());
+		}
 		
 		//redirigir al panel
 		response.sendRedirect("PanelPlato");

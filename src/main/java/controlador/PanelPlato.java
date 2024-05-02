@@ -41,12 +41,17 @@ public class PanelPlato extends HttpServlet {
 		ArrayList<Plato> platos = pm.getTodos();
 		
 		//creamos una lista de Alergeno (usando el enum)
-		Tipo[] tipos = Tipo.values();		
+		Tipo[] tipos = Tipo.values();	
+		
+		//creamos una lista de Ingedientes para poder escoger
+		IngredienteModelo im = new IngredienteModelo();
+		ArrayList<Ingrediente> ingredientes = im.getTodos();
 		
 		//genera un atributo con la ArrayList para que se pueda usar en la pagina
 		request.setAttribute("platos", platos);
 		request.setAttribute("tipos", tipos);
-								
+		request.setAttribute("ingredientes", ingredientes);
+				
 		//ejecuta la pagina
 		request.getRequestDispatcher("PanelPlatos.jsp").forward(request, response);
 	}

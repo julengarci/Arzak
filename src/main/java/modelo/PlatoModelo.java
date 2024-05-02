@@ -77,23 +77,18 @@ public class PlatoModelo extends Conector{
 	
 	public ArrayList<Ingrediente> getIngredientesplato(int id){
 		try {
-	         PreparedStatement pst = this.conexion.prepareStatement("SELECT * FROM INGREDIENTES WHERE ID_PLATO=?");
+	         PreparedStatement pst = this.conexion.prepareStatement("SELECT * FROM PLATOS_INGREDIENTES WHERE ID_PLATOS=?");
 	         pst.setInt(1, id);
 	         ResultSet rs = pst.executeQuery();
 	         ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
 	         while (rs.next()) {
-	        	 Ingrediente ingrediente = new Ingrediente();
-	                
-	             ingrediente.setId(rs.getInt("ID_INGREDIENTES"));
-	             ingrediente.setNombre(rs.getString("NOMBRE"));
-	             // Obtener el valor del alérgeno como un String desde la base de datos
-	             String alergenoStr = rs.getString("ALERGENOS");
-	                
-	             // Convertir el String a un valor del enum Alergeno
-	             Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase());
-	                
-	             // Asignar el alergeno al ingrediente
-	             ingrediente.setAlergeno(alergeno);
+	        	 IngredienteModelo im = new IngredienteModelo();
+	             
+	        	 int idIngrediente = rs.getInt("ID_INGREDIENTES");
+	             
+	        	 Ingrediente ingrediente = im.get(idIngrediente);
+	        	 
+	        	 ingrediente.setId(idIngrediente);
 	             
 	             ingredientes.add(ingrediente);
 	         }
@@ -103,6 +98,30 @@ public class PlatoModelo extends Conector{
 	         return null;
 	     }
 	 }
+	
+	public int getUltimoPlato() {
+	    try {
+	        // Crear la consulta SQL para obtener el último plato
+	        String sql = "SELECT ID_PLATOS FROM PLATOS ORDER BY ID_PLATOS DESC LIMIT 1";
+	        
+	        // Preparar la consulta SQL
+	        PreparedStatement pst = this.conexion.prepareStatement(sql);
+
+	        // Ejecutar la consulta
+	        ResultSet rs = pst.executeQuery();
+
+	        // Verificar si se encontraron resultados
+	        if (rs.next()) {
+	            // Obtener el ID del último plato
+	            int id = rs.getInt("ID_PLATOS");
+	            return id;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    // En caso de error o si no se encuentra ningún plato, retornar -1 o algún valor indicativo de error
+	    return -1;
+	}
 	 
 	 public boolean delete(int id) {
 	     try {
