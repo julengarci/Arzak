@@ -94,7 +94,7 @@
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalAgregarIngrediente">Agregar
                                         Platos</button>
-                                    <!-- Modal para modificar -->
+                                    <!-- Modal para agregar -->
                                     <div class="modal fade" id="modalAgregarIngrediente${plato.id}" tabindex="-1"
                                         aria-labelledby="modalAgregarIngredienteLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -125,12 +125,14 @@
                                                                 </c:forEach>
                                                             </select>
                                                         </div>
-                                                        <c:forEach var="ingrediente" items="${ingredientes}">
-													        <div class="form-check">
-													            <input class="form-check-input" type="checkbox" value="${ingrediente.id}" id="flexCheckDefault" name="ingredientes[]">
-													            <label class="form-check-label" for="flexCheckDefault">${ingrediente.nombre}</label>
-													        </div>
-													    </c:forEach>										
+                                                        <div class="mb-3">
+                                                        	<c:forEach var="ingrediente" items="${ingredientes}">
+																<div class="form-check">
+																	<input class="form-check-input" type="checkbox" value="${ingrediente.id}" id="flexCheckDefault" name="ingredientes[]">
+																	<label class="form-check-label" for="flexCheckDefault">${ingrediente.nombre}</label>
+																</div>
+															</c:forEach>
+                                                        </div>								
                                                         <div class="mb-3">
                                                             <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
@@ -208,14 +210,21 @@
                                                                 <div class="mb-3">
                                                             		<label for="alergenoModificar" class="form-label"
                                                                 style="font-size: 14px;">Tipo:</label> 
-                                                            		<select class="form-select" id="tipo"
-                                                                name="tipo" required>
-                                                                <option value="" selected disabled>Tipo</option>
-                                                                <c:forEach items="${tipos}" var="tipo">
-                                                                    <option value="${tipo}"> ${tipo.nombre}</option>
-                                                                </c:forEach>
+                                                            		<select class="form-select" id="tipo" name="tipo" required>
+                                                                		<option value="" selected disabled>Tipo</option>
+                                                                		<c:forEach items="${tipos}" var="tipo">
+                                                                    		<option value="${tipo}"  ${tipo.nombre.equals(plato.tipo.nombre) ? 'selected' : ''}> ${tipo.nombre}</option>
+                                                                		</c:forEach>
                                                             		</select>
-                                                        		</div>	
+                                                        		</div>
+                                                        		<div class="mb-3">
+                                                        			<c:forEach var="ingrediente" items="${ingredientes}">
+																        <div class="form-check">
+																            <input class="form-check-input" type="checkbox" value="${ingrediente.id}" id="flexCheckDefault" name="ingredientes[]">
+																            <label class="form-check-label" for="flexCheckDefault">${ingrediente.nombre}</label>
+																        </div>
+																    </c:forEach>
+                                                        		</div>
                                                                 <div class="mb-3">
                                                                     <!-- Boton para cancelar -->
                                                                     <button type="button" class="btn btn-secondary"
