@@ -45,20 +45,25 @@ public class UpdateReserva extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Reserva reserva = new Reserva();
-		SimpleDateFormat fechaFormat = new SimpleDateFormat("dd/MM/yyyy"); 
 		
 		//Obtener parametros del formulario y actualizar la base de datos
 		int id = Integer.parseInt(request.getParameter("id"));
 		String hora = request.getParameter("hora");
+		String fechaString = request.getParameter("fecha");
+		
 		Date fecha = null;
+		SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+		
 		try {
-			fecha = fechaFormat.parse(request.getParameter("fecha"));
+		    fecha = formatoFecha.parse(fechaString);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		    e.printStackTrace();
 		}
+		
 		int numPersonas = Integer.parseInt(request.getParameter("numPersonas"));
-		String alergenoString = request.getParameter("alergeno");
+		System.out.println(numPersonas);
+		
+		String alergenoString = request.getParameter("alergeno");		
 		String observaciones = request.getParameter("observaciones");
 		
 		//Menu menu = request.getParameter
@@ -66,17 +71,20 @@ public class UpdateReserva extends HttpServlet {
 		
 		//introducir los datos en el objeto
 		reserva.setId(id);
-		reserva.setFecha(fecha);
 		reserva.setHora(hora);
+		reserva.setFecha(fecha);
 		reserva.setNumPersonas(numPersonas);
+		
 		Alergeno alergeno = Alergeno.valueOf(alergenoString);
+		reserva.setAlergeno(alergeno);
+		
 		reserva.setObservaciones(observaciones);
 		
 		ReservaModelo rm = new ReservaModelo();
 		
 		rm.update(reserva);
 		
-		response.sendRedirect("PanelIngrediente");
+		response.sendRedirect("PanelReserva");
 	}
 
 }
