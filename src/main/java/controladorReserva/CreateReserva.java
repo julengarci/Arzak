@@ -1,6 +1,10 @@
-package controlador;
+package controladorReserva;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,20 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.Alergeno;
-import modelo.Ingrediente;
-import modelo.IngredienteModelo;
+import modelo.Reserva;
+import modelo.ReservaModelo;
 
 /**
- * Servlet implementation class CreateIngrediente
+ * Servlet implementation class CreateReserva
  */
-@WebServlet("/CreateIngrediente")
-public class CreateIngrediente extends HttpServlet {
+@WebServlet("/CreateReserva")
+public class CreateReserva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateIngrediente() {
+    public CreateReserva() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,23 +44,40 @@ public class CreateIngrediente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//recoger los datos del formulario
-		String nombre = request.getParameter("nombre");
-		String alergenoString = request.getParameter("alergeno");
+		String hora = request.getParameter("hora");
 		
+		String fechaString = request.getParameter("fecha");
+		
+		Date fecha = null;
+		SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+		
+		try {
+		    fecha = formatoFecha.parse(fechaString);
+		} catch (ParseException e) {
+		    e.printStackTrace();
+		}
+		int numPersonas = Integer.parseInt(request.getParameter("numPersonas"));
+		
+		String alergenoString = request.getParameter("alergeno");
 		Alergeno alergeno = Alergeno.valueOf(alergenoString);
 		
-		//insertar los valores en el objeto ingrediente
-		Ingrediente ingrediente = new Ingrediente();
+		String observaciones = request.getParameter("observaciones");
 		
-		ingrediente.setNombre(nombre);
-		ingrediente.setAlergeno(alergeno);
+		//insertar los valores en el objeto ingrediente
+		Reserva reserva = new Reserva();
+		
+		reserva.setHora(hora);
+		reserva.setFecha(fecha);
+		reserva.setNumPersonas(numPersonas);
+		reserva.setAlergeno(alergeno);
+		reserva.setObservaciones(observaciones);
 		
 		//insertar en bbdd
-		IngredienteModelo im = new IngredienteModelo();
-		im.insert(ingrediente);
+		ReservaModelo rm = new ReservaModelo();
+		rm.insert(reserva);
 		
 		//redirigir al panel
-		response.sendRedirect("PanelIngrediente");
+		response.sendRedirect("PanelReserva");
 	}
 
 }

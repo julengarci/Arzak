@@ -1,4 +1,4 @@
-package controlador;
+package controladorCliente;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,16 +11,16 @@ import modelo.Cliente;
 import modelo.ClienteModelo;
 
 /**
- * Servlet implementation class UpdateCliente
+ * Servlet implementation class CreateCliente
  */
-@WebServlet("/UpdateCliente")
-public class UpdateCliente extends HttpServlet {
+@WebServlet("/CreateCliente")
+public class CreateCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateCliente() {
+    public CreateCliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,34 +29,33 @@ public class UpdateCliente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		//Recoger los datos del formulario
+		String nombre = request.getParameter("nombre");
+		String telefono = request.getParameter("telefono");
+		String email = request.getParameter("email");
+		
+		//insertar los valores en el objeto cliente
 		Cliente cliente = new Cliente();
 		
-		// Obtener parámetros del formulario y actualizar la base de datos
-		int id = Integer.parseInt(request.getParameter("id"));
-        String nombre = request.getParameter("nombre");
-        String telefono = request.getParameter("telefono");
-        String email = request.getParameter("email");
-        
-        //introducir los datos en el objeto
-        cliente.setId(id);
-        cliente.setNombre(nombre);
-        cliente.setEmail(email);
-        cliente.setTelefono(telefono);
-        
-        ClienteModelo cm = new ClienteModelo();
-        
-        cm.update(cliente);
-
-        response.sendRedirect("PanelCliente");
+		cliente.setNombre(nombre);
+		cliente.setEmail(email);
+		cliente.setTelefono(telefono);
+		
+		//insertar en BBDD
+		ClienteModelo cm = new ClienteModelo();
+		cm.insert(cliente);
+		
+		//redirigir al panel
+		response.sendRedirect("PanelCliente");
 	}
 
 }

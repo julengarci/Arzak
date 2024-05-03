@@ -1,4 +1,4 @@
-package controlador;
+package controladorIngrediente;
 
 import java.io.IOException;
 

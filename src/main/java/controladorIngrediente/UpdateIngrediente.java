@@ -1,4 +1,4 @@
-package controlador;
+package controladorIngrediente;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Cliente;
-import modelo.ClienteModelo;
+import modelo.Alergeno;
+import modelo.Ingrediente;
+import modelo.IngredienteModelo;
 
 /**
- * Servlet implementation class CreateCliente
+ * Servlet implementation class UpdateIngrediente
  */
-@WebServlet("/CreateCliente")
-public class CreateCliente extends HttpServlet {
+@WebServlet("/UpdateIngrediente")
+public class UpdateIngrediente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateCliente() {
+    public UpdateIngrediente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,33 +30,36 @@ public class CreateCliente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		Ingrediente ingrediente = new Ingrediente();
 		
-		//Recoger los datos del formulario
+		//Obtener parametros del formulario y actualizar la base de datos
+		int id = Integer.parseInt(request.getParameter("id"));
 		String nombre = request.getParameter("nombre");
-		String telefono = request.getParameter("telefono");
-		String email = request.getParameter("email");
+		String alergenoString = request.getParameter("alergeno");
+		String observaciones = request.getParameter("observaciones");
 		
-		//insertar los valores en el objeto cliente
-		Cliente cliente = new Cliente();
+		//introducir los datos en el objeto
+		ingrediente.setId(id);
+		ingrediente.setNombre(nombre);
 		
-		cliente.setNombre(nombre);
-		cliente.setEmail(email);
-		cliente.setTelefono(telefono);
+		Alergeno alergeno = Alergeno.valueOf(alergenoString);
+		ingrediente.setAlergeno(alergeno);
 		
-		//insertar en BBDD
-		ClienteModelo cm = new ClienteModelo();
-		cm.insert(cliente);
+		IngredienteModelo im = new IngredienteModelo();
 		
-		//redirigir al panel
-		response.sendRedirect("PanelCliente");
+		im.update(ingrediente);
+		
+		response.sendRedirect("PanelIngrediente");
+		
 	}
 
 }

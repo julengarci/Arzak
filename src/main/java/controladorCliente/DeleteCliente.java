@@ -1,4 +1,4 @@
-package controlador;
+package controladorCliente;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.IngredienteModelo;
+import modelo.ClienteModelo;
 
 /**
- * Servlet implementation class DeleteIngrediente
+ * Servlet implementation class DeleteCliente
  */
-@WebServlet("/DeleteIngrediente")
-public class DeleteIngrediente extends HttpServlet {
+@WebServlet("/DeleteCliente")
+public class DeleteCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteIngrediente() {
+    public DeleteCliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,14 +28,15 @@ public class DeleteIngrediente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		IngredienteModelo im = new IngredienteModelo();
+		
+		ClienteModelo cm = new ClienteModelo();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		im.delete(id);
+		cm.delete(id);
 		
-		response.sendRedirect("PanelIngrediente");
+		response.sendRedirect("PanelCliente");
+		
 	}
 
 	/**

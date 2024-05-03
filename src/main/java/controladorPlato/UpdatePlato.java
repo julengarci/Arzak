@@ -1,4 +1,4 @@
-package controlador;
+package controladorPlato;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,22 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Cliente;
+import modelo.ClienteModelo;
 import modelo.IngredientesPlatosModelo;
 import modelo.Plato;
 import modelo.PlatoModelo;
 import modelo.Tipo;
 
 /**
- * Servlet implementation class CreatePlato
+ * Servlet implementation class UpdatePlato
  */
-@WebServlet("/CreatePlato")
-public class CreatePlato extends HttpServlet {
+@WebServlet("/UpdatePlato")
+public class UpdatePlato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreatePlato() {
+    public UpdatePlato() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,32 +42,37 @@ public class CreatePlato extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//guardar los valores del formulario
+		int id = Integer.parseInt(request.getParameter("id"));
 		String nombre = request.getParameter("nombre");
 		String tipoStr = request.getParameter("tipo");
 		
 		//transformar string en tipo
 		Tipo tipo = Tipo.valueOf(tipoStr);
-		
+				
 		//conseguir los valores del checkbox
 		String[] ingredientes = request.getParameterValues("ingredientes[]");
-		
+				
 		//añadir los valores al ojeto plato
 		Plato plato = new Plato();
 		
+		plato.setId(id);
 		plato.setNombre(nombre);
 		plato.setTipo(tipo);
 		
 		//insertar en BBDD
 		PlatoModelo pm = new PlatoModelo();
+				
+		pm.update(plato);
 		
-		pm.insert(plato);
+		//eliminar todas las lineas de codigo que hay en la tabla intermedia
+		IngredientesPlatosModelo ipm = new IngredientesPlatosModelo();
+		ipm.deletePlatosIngredientes(Integer.parseInt(request.getParameter("id")));
 		
 		//insertar los datos a la tabla intermedia
-		IngredientesPlatosModelo ipm = new IngredientesPlatosModelo();
 		for (String string : ingredientes) {
-			ipm.insertIngredientesPlatos(Integer.parseInt(string), pm.getUltimoPlato());
+			ipm.insertIngredientesPlatos(Integer.parseInt(string), Integer.parseInt(request.getParameter("id")));
 		}
-		
+				
 		//redirigir al panel
 		response.sendRedirect("PanelPlato");
 	}

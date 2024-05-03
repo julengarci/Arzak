@@ -1,4 +1,4 @@
-package controlador;
+package controladorCliente;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Cliente;
 import modelo.ClienteModelo;
 
 /**
- * Servlet implementation class DeleteCliente
+ * Servlet implementation class UpdateCliente
  */
-@WebServlet("/DeleteCliente")
-public class DeleteCliente extends HttpServlet {
+@WebServlet("/UpdateCliente")
+public class UpdateCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteCliente() {
+    public UpdateCliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,22 +29,34 @@ public class DeleteCliente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ClienteModelo cm = new ClienteModelo();
-		
-		int id = Integer.parseInt(request.getParameter("id"));
-		
-		cm.delete(id);
-		
-		response.sendRedirect("PanelCliente");
-		
+
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		Cliente cliente = new Cliente();
 		
+		// Obtener parámetros del formulario y actualizar la base de datos
+		int id = Integer.parseInt(request.getParameter("id"));
+        String nombre = request.getParameter("nombre");
+        String telefono = request.getParameter("telefono");
+        String email = request.getParameter("email");
+        
+        //introducir los datos en el objeto
+        cliente.setId(id);
+        cliente.setNombre(nombre);
+        cliente.setEmail(email);
+        cliente.setTelefono(telefono);
+        
+        ClienteModelo cm = new ClienteModelo();
+        
+        cm.update(cliente);
+
+        response.sendRedirect("PanelCliente");
 	}
 
 }
