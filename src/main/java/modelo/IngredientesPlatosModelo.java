@@ -16,4 +16,14 @@ public class IngredientesPlatosModelo extends Conector{
 		        e.printStackTrace();
 		    }
 	}
+	
+	public void deletePlatosIngredientes(int idPlato) {
+		try {
+	         PreparedStatement pst = this.conexion.prepareStatement("CALL delete_platos_ingredientes(?)");
+	         pst.setInt(1, idPlato);
+	         pst.execute();
+	     } catch (SQLException e) {
+	         e.printStackTrace();
+	     }
+	}
 }
