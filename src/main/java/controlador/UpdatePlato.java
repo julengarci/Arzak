@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import modelo.Cliente;
 import modelo.ClienteModelo;
+import modelo.IngredientesPlatosModelo;
 import modelo.Plato;
 import modelo.PlatoModelo;
 import modelo.Tipo;
@@ -40,25 +41,38 @@ public class UpdatePlato extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//guardar los valores del formulario
+		String nombre = request.getParameter("nombre");
+		String tipoStr = request.getParameter("tipo");
+				
+		//transformar string en tipo
+		Tipo tipo = Tipo.valueOf(tipoStr);
+				
+		//conseguir los valores del checkbox
+		String[] ingredientes = request.getParameterValues("ingredientes[]");
+				
+		//añadir los valores al ojeto plato
 		Plato plato = new Plato();
+				
+		plato.setNombre(nombre);
+		plato.setTipo(tipo);
+				
+		//insertar en BBDD
+		PlatoModelo pm = new PlatoModelo();
+				
+		pm.update(plato);
 		
-		// Obtener parámetros del formulario y actualizar la base de datos
-		int id = Integer.parseInt(request.getParameter("id"));
-        String nombre = request.getParameter("nombre");
-        String tipoStr = request.getParameter("tipo");
-        
-        Tipo tipo = Tipo.valueOf(tipoStr);
-        
-        //introducir los datos en el objeto
-        plato.setId(id);
-        plato.setNombre(nombre);
-        plato.setTipo(tipo);
-        
-        PlatoModelo pm = new PlatoModelo();
-        
-        pm.update(plato);
-
-        response.sendRedirect("PanelPlato");
+		//eliminar todas las lineas de codigo que hay en la tabla intermedia
+		IngredientesPlatosModelo ipm = new IngredientesPlatosModelo();
+		ipm.deletePlatosIngredientes(Integer.parseInt(request.getParameter("id")));
+		
+		//insertar los datos a la tabla intermedia
+		for (String string : ingredientes) {
+			ipm.insertIngredientesPlatos(Integer.parseInt(string), Integer.parseInt(request.getParameter("id")));
+		}
+				
+		//redirigir al panel
+		response.sendRedirect("PanelPlato");
 	}
 
 }
