@@ -1,11 +1,6 @@
-package controlador;
+package controladorReserva;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -14,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Alergeno;
 import modelo.Reserva;
 import modelo.ReservaModelo;
 
-
 /**
- * Servlet implementation class Prueba
+ * Servlet implementation class PanelReservas
  */
-@WebServlet("/Prueba")
-public class Prueba extends HttpServlet {
+@WebServlet("/PanelReserva")
+public class PanelReserva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Prueba() {
+    public PanelReserva() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,15 +32,20 @@ public class Prueba extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//llama a la base de datos y añade las reservas a la ArrayList
 		ReservaModelo rm = new ReservaModelo();
 		ArrayList<Reserva> reservas = rm.getTodos();
 		
+		//creamos una lista de Alergeno (usando el enum)
+		Alergeno[] alergenos = Alergeno.values();
 		
+		//genera un atributo con la ArrayList para que se pueda usar en la pagina
 		request.setAttribute("reservas", reservas);
+		request.setAttribute("alergenos", alergenos);
 		
-		
-		System.out.println(reservas);
-		request.getRequestDispatcher("test.jsp").forward(request, response);				
+		//ejecuta la pagina
+		request.getRequestDispatcher("PanelReservas.jsp").forward(request, response);
 	}
 
 	/**

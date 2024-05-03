@@ -1,4 +1,4 @@
-package controlador;
+package controladorReserva;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -12,20 +12,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.Alergeno;
+import modelo.Ingrediente;
+import modelo.IngredienteModelo;
 import modelo.Reserva;
 import modelo.ReservaModelo;
 
 /**
- * Servlet implementation class CreateReserva
+ * Servlet implementation class UpdateReserva
  */
-@WebServlet("/CreateReserva")
-public class CreateReserva extends HttpServlet {
+@WebServlet("/UpdateReserva")
+public class UpdateReserva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateReserva() {
+    public UpdateReserva() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,8 +36,7 @@ public class CreateReserva extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
@@ -43,40 +44,47 @@ public class CreateReserva extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//recoger los datos del formulario
-		String hora = request.getParameter("hora");
+		Reserva reserva = new Reserva();
 		
+		//Obtener parametros del formulario y actualizar la base de datos
+		int id = Integer.parseInt(request.getParameter("id"));
+		String hora = request.getParameter("hora");
 		String fechaString = request.getParameter("fecha");
 		
 		Date fecha = null;
 		SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-		
+	
 		try {
 		    fecha = formatoFecha.parse(fechaString);
+		    
 		} catch (ParseException e) {
 		    e.printStackTrace();
 		}
+		
 		int numPersonas = Integer.parseInt(request.getParameter("numPersonas"));
+		System.out.println(numPersonas);
 		
-		String alergenoString = request.getParameter("alergeno");
-		Alergeno alergeno = Alergeno.valueOf(alergenoString);
-		
+		String alergenoString = request.getParameter("alergeno");		
 		String observaciones = request.getParameter("observaciones");
+
+		//Menu menu = request.getParameter
 		
-		//insertar los valores en el objeto ingrediente
-		Reserva reserva = new Reserva();
 		
+		//introducir los datos en el objeto
+		reserva.setId(id);
 		reserva.setHora(hora);
 		reserva.setFecha(fecha);
 		reserva.setNumPersonas(numPersonas);
+		
+		Alergeno alergeno = Alergeno.valueOf(alergenoString);
 		reserva.setAlergeno(alergeno);
+		
 		reserva.setObservaciones(observaciones);
 		
-		//insertar en bbdd
 		ReservaModelo rm = new ReservaModelo();
-		rm.insert(reserva);
 		
-		//redirigir al panel
+		rm.update(reserva);
+		
 		response.sendRedirect("PanelReserva");
 	}
 
