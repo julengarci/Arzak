@@ -42,9 +42,10 @@ public class UpdatePlato extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//guardar los valores del formulario
+		int id = Integer.parseInt(request.getParameter("id"));
 		String nombre = request.getParameter("nombre");
 		String tipoStr = request.getParameter("tipo");
-				
+		
 		//transformar string en tipo
 		Tipo tipo = Tipo.valueOf(tipoStr);
 				
@@ -53,10 +54,11 @@ public class UpdatePlato extends HttpServlet {
 				
 		//añadir los valores al ojeto plato
 		Plato plato = new Plato();
-				
+		
+		plato.setId(id);
 		plato.setNombre(nombre);
 		plato.setTipo(tipo);
-				
+		
 		//insertar en BBDD
 		PlatoModelo pm = new PlatoModelo();
 				
