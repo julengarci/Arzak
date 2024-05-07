@@ -9,7 +9,6 @@ public class Reserva {
 	private Date fecha;
 	private String hora;
 	private int numPersonas;
-	private Alergeno alergeno;
 	private String observaciones;
 	private Cliente cliente;
 	private Menu menu;
@@ -20,13 +19,12 @@ public class Reserva {
 	}
 	
 	
-	public Reserva(int id, Date fecha, String hora, int numPersonas, Alergeno alergeno, String observaciones,
+	public Reserva(int id, Date fecha, String hora, int numPersonas, String observaciones,
 			Cliente cliente, Menu menu) {
 		this.id = id;
 		this.fecha = fecha;
 		this.hora = hora;
 		this.numPersonas = numPersonas;
-		this.alergeno = alergeno;
 		this.observaciones = observaciones;
 		this.cliente = cliente;
 		this.menu = menu;
@@ -75,16 +73,6 @@ public class Reserva {
 	}
 
 
-	public Alergeno getAlergeno() {
-		return alergeno;
-	}
-
-
-	public void setAlergeno(Alergeno alergeno) {
-		this.alergeno = alergeno;
-	}
-
-
 	public String getObservaciones() {
 		return observaciones;
 	}
@@ -118,7 +106,7 @@ public class Reserva {
 	@Override
 	public String toString() {
 		return "Reserva [id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", numPersonas=" + numPersonas
-				+ ", alergeno=" + alergeno + ", observaciones=" + observaciones + ", cliente=" + cliente + ", menu="
+				+", observaciones=" + observaciones + ", cliente=" + cliente + ", menu="
 				+ menu + "]";
 	}
 

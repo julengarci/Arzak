@@ -118,21 +118,13 @@
                                                         <option value="10">10</option>
                                                     </select>
                                                     </div>
-                                                </div>
-                                                 <!-- Contenedor Observaciones -->
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label class="control-label" for="alergeno">Alergenos</label>
-                                                        <input id="alegerno" name="alergeno" type="text" placeholder=""
-                                                            class="form-control input-md">
-                                                    </div>
                                                 </div>   
                                                 <!-- Contenedor Observaciones -->
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label class="control-label" for="observaciones">Observaciones</label>
-                                                        <input id="observaciones" name="observaciones" type="text" placeholder=""
-                                                            class="form-control input-md">
+                                                        <textarea id="observaciones" name="observaciones" type="text" placeholder=""
+                                                            class="form-control input-md" rows="3"></textarea>
                                                     </div>
                                                 </div>
                                                 <!-- Button -->
