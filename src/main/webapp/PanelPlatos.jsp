@@ -181,6 +181,12 @@
                                                                             </div>
                                                                         </c:forEach>
                                                                     </div>
+                                                                    <div class="mb-3">
+			                                                            <!-- Boton para cancelar -->
+			                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 14px;">Cancelar</button>
+			                                                            <!-- Boton para enviar el formulario -->
+			                                                            <button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
+			                                                        </div>
                                                                 </form>
                                                             </div>
                                                         </div>
