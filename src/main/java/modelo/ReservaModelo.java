@@ -25,17 +25,17 @@ public class ReservaModelo extends Conector{
                 reserva.setHora(rs.getString("HORA_RESERVA"));
                 reserva.setNumPersonas(rs.getInt("NUM_PERSONAS"));
                 // Obtener el valor del alérgeno como un String desde la base de datos
-                String alergenoStr = rs.getString("ALERGENOS");
+//                String alergenoStr = rs.getString("ALERGENOS");
                 
                 // Convertir el String a un valor del enum Alergeno
-                Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase().replace(" ", "_"));
+//                Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase().replace(" ", "_"));
                 
                 reserva.setObservaciones(rs.getString("OBSERVACIONES"));
                 
                 //reserva.setAlergeno( Alergeno.valueOf(rs.getString("ALERGENOS")));
                 
                 //Asignar el alergeno al ingrediente
-                reserva.setAlergeno(alergeno);
+//                reserva.setAlergeno(alergeno);
                 reservas.add(reserva);
             }
 
@@ -61,12 +61,12 @@ public class ReservaModelo extends Conector{
              reserva.setNumPersonas(rs.getInt("NUM_PERSONAS"));
              reserva.setObservaciones(rs.getString("OBSERVACIONES"));
              // Obtener el valor del alérgeno como un String desde la base de datos
-             String alergenoStr = rs.getString("ALERGENOS");
+//             String alergenoStr = rs.getString("ALERGENOS");
              // Convertir el String a un valor del enum Alergeno
-             Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase());
+             //Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase());
                 
              // Asignar el alergeno al ingrediente
-             reserva.setAlergeno(alergeno);
+             //reserva.setAlergeno(alergeno);
         
              return reserva;
          }
@@ -92,18 +92,19 @@ public class ReservaModelo extends Conector{
  
  public int update(Reserva reserva) {
      try {
-         PreparedStatement pst = this.conexion.prepareStatement("UPDATE RESERVAS SET ID_RESERVA = ?, HORA_RESERVA = ?, FECHA_RESERVA = ? , NUM_PERSONAS = ?, ALERGENOS = ?, OBSERVACIONES = ?");
+         PreparedStatement pst = this.conexion.prepareStatement("CALL update_reserva(?,?,?,?,?)");
          
          pst.setInt(1, reserva.getId());
          pst.setString(2, reserva.getHora());
 	     pst.setDate(3, new java.sql.Date(reserva.getFecha().getTime()));
          pst.setInt(4, reserva.getNumPersonas());
+
       
          // Convertir el valor del enum al String correspondiente
-         String alergenoStr = reserva.getAlergeno().toString().toUpperCase();
-         pst.setString(5, alergenoStr);
+         //String alergenoStr = reserva.getAlergeno().toString().toUpperCase();
+         //pst.setString(5, alergenoStr);
 
-         pst.setString(6, reserva.getObservaciones());
+         pst.setString(5, reserva.getObservaciones());
 
          return pst.executeUpdate();
      } catch (SQLException e) {
@@ -114,13 +115,13 @@ public class ReservaModelo extends Conector{
  
  public void insert(Reserva reserva) {
 	    try {
-	        PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO RESERVAS (HORA_RESERVA, FECHA_RESERVA, NUM_PERSONAS, ALERGENOS, OBSERVACIONES) VALUES (?, ?, ?, ?, ?)");
+	        PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO RESERVAS (HORA_RESERVA, FECHA_RESERVA, NUM_PERSONAS, OBSERVACIONES) VALUES (?, ?, ?, ?)");
 	        
 	        pst.setString(1, reserva.getHora());
 	        pst.setDate(2, new java.sql.Date(reserva.getFecha().getTime()));
 	        pst.setInt(3, reserva.getNumPersonas());
-		    pst.setString(4, reserva.getAlergeno().getNombre().toString().toUpperCase().replace("_", " "));
-	        pst.setString(5, reserva.getObservaciones());
+		    //pst.setString(4, reserva.getAlergeno().getNombre().toString().toUpperCase().replace("_", " "));
+	        pst.setString(4, reserva.getObservaciones());
 	        
 	        pst.execute();
 	    } catch (SQLException e) {

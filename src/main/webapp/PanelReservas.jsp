@@ -86,7 +86,6 @@
                                         <th scope="col">Hora</th>
                                         <th scope="col">Fecha</th>
                                         <th scope="col">Numero de personas</th>
-                                        <th scope="col">Alergenos</th>
                                         <th scope="col">Observaciones</th>
                                         <th scope="col">Id Cliente</th>
                                         <th scope="col">Id Menu</th>
@@ -156,23 +155,10 @@
                                                                         </select>
 														</div>
                                                         <div class="mb-3">
-                                                            <label for="alergenoAgregar" class="form-label"
-                                                                style="font-size: 14px;">Alergeno:</label> 
-                                                            <select class="form-select" id="alergeno"
-                                                                name="alergeno" required>
-                                                                <option value="" selected disabled>Alergeno</option>
-                                                                <c:forEach items="${alergenos}" var="alergeno">
-                                                                    <option value="${alergeno}"> ${alergeno.nombre}</option>
-                                                                </c:forEach>
-                                                            </select>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="observacionesAgregar" class="form-label"
-                                                                style="font-size: 14px;">Observaciones:</label>
-                                                            <input type="text" class="form-control"
-                                                                id="observaciones" name="observaciones"
->
-                                                        </div>														
+														    <label for="observacionesAgregar" class="form-label" style="font-size: 14px;">Observaciones:</label>
+														    <textarea type="text" class="form-control"  rows="4" id="observacionesModificar" selected name="observaciones"><c:out value="${reserva.observaciones}"/> </textarea> 
+
+														</div>														
                                                         <div class="mb-3">
                                                             <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
@@ -192,7 +178,6 @@
                                             <td>${reserva.hora}</td>
                                             <td>${reserva.fecha}</td>
                                             <td>${reserva.numPersonas}</td>
-                                            <td>${reserva.alergeno.nombre}</td>
                                             <td>${reserva.observaciones}</td>
                                             <td>${reserva.cliente}</td>
                                             <td>${reserva.menu}</td>
@@ -218,7 +203,6 @@
                                                                 <p style="font-size: 14px;">Hora: ${reserva.hora}</p>
                                                                 <p style="font-size: 14px;">Fecha: ${reserva.fecha}</p>
                                                                 <p style="font-size: 14px;">Numero de personas: ${reserva.numPersonas}</p>
-                                                                <p style="font-size: 14px;">Alergenos: ${reserva.alergeno.nombre}</p>
                                                                 <p style="font-size: 14px;">Observaciones: ${reserva.observaciones}</p>
                                                             </div>
                                                             <div class="modal-footer">
@@ -245,23 +229,23 @@
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form id="formularioModificar" method="post" action="UpdateReserva?id=${reserva.id}">
+                                                                <form id="formularioModificar" method="post" action="UpdateReserva?id=${reserva.id}" data-bs-target="${reserva.id}">
                                                                     <div class="mb-3">
-                                                                        <label for="horaModificar" class="form-label"
+                                                                        <label for="horaModificar${reserva.id}" class="form-label"
                                                                             style="font-size: 14px;">Hora:</label>
-                                                                        <select class="form-select" id="hora"
-                                                                            name="hora" value="${reserva.hora}">
-                                                                            <option value="" selected disabled>${reserva.hora}</option>
-                                                                            <option value="13:00">13:00</option>
-                                                                            <option value="13:30">13:30</option>
-                                                                            <option value="14:00">14:00</option>
-                                                                            <option value="14:30">14:30</option>
-                                                                            <option value="15:00">15:00</option>
-                                                                            <option value="20:00">20:00</option>
-                                                                            <option value="20:30">20:30</option>
-                                                                            <option value="21:00">21:00</option>
-                                                                            <option value="21:30">21:30</option>
-                                                                            <option value="22:00">22:00</option>
+                                                                        <select class="form-select" id="hora${reserva.id}"
+                                                                            name="hora"}">
+																			<option value="${hora}" disabled>${reserva.hora}</option>
+                                                                            <option value="13:00" ${reserva.hora.equals('13:00') ? 'selected' : ''}>13:00</option>
+                                                                            <option value="13:30" ${reserva.hora.equals('13:30') ? 'selected' : ''}>13:30</option>
+                                                                            <option value="14:00" ${reserva.hora.equals('14:00') ? 'selected' : ''}>14:00</option>
+                                                                            <option value="14:30" ${reserva.hora.equals('14:30') ? 'selected' : ''}>14:30</option>
+                                                                            <option value="15:00" ${reserva.hora.equals('15:00') ? 'selected' : ''}>15:00</option>
+                                                                            <option value="20:00" ${reserva.hora.equals('20:00') ? 'selected' : ''}>20:00</option>
+                                                                            <option value="20:30" ${reserva.hora.equals('20:30') ? 'selected' : ''}>20:30</option>
+                                                                            <option value="21:00" ${reserva.hora.equals('21:00') ? 'selected' : ''}>21:00</option>
+                                                                            <option value="21:30" ${reserva.hora.equals('21:30') ? 'selected' : ''}>21:30</option>
+                                                                            <option value="22:00"${reserva.hora.equals('22:00') ? 'selected' : ''}>22:00</option>
                                                                         </select>
                                                        	 			</div>
                                                                     <div class="mb-3">
@@ -275,33 +259,22 @@
                                                                             style="font-size: 14px;">Numero de personas:</label>
                                                                         <select class="form-select" id="numPersonas"
                                                                             name="numPersonas" value="${reserva.numPersonas}" >
-                                                                            <option value="${reserva.numPersonas}" selected >${reserva.numPersonas}</option>
-                                                                            <option value="1">1</option>
-                                                                            <option value="2">2</option>
-                                                                            <option value="3">3</option>
-                                                                            <option value="4">4</option>
-                                                                            <option value="5">5</option>
-                                                                            <option value="6">6</option>
-                                                                            <option value="7">7</option>
-                                                                            <option value="8">8</option>
-                                                                            <option value="9">9</option>
-                                                                            <option value="10">10</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="alergenoModificar" class="form-label"
-                                                                            style="font-size: 14px;">Alergeno:</label>
-                                                                        <select class="form-select" id="alergeno"
-                                                                            name="alergeno" value="${reserva.alergeno}">
-                                                                            <option value="" selected disabled>${reserva.alergeno.nombre}</option>
-                                                                            <c:forEach items="${alergenos}" var="alergeno">
-                                                                                <option value="${alergeno}" ${alergeno.nombre.equals(reserva.alergeno.nombre) ? 'selected' : ''}> ${alergeno.nombre}</option>
-                                                                            </c:forEach>
+                                                                            <option value="${numPersonas}" disabled >${reserva.numPersonas}</option>
+                                                                            <option value="1" ${reserva.numPersonas.equals('1') ? 'selected' : ''}>1</option>
+                                                                            <option value="2" ${reserva.numPersonas.equals('2') ? 'selected' : ''}>2</option>
+                                                                            <option value="3" ${reserva.numPersonas.equals('3') ? 'selected' : ''}>3</option>
+                                                                            <option value="4" ${reserva.numPersonas.equals('4') ? 'selected' : ''}>4</option>
+                                                                            <option value="5" ${reserva.numPersonas.equals('5') ? 'selected' : ''}>5</option>
+                                                                            <option value="6" ${reserva.numPersonas.equals('6') ? 'selected' : ''}>6</option>
+                                                                            <option value="7" ${reserva.numPersonas.equals('7') ? 'selected' : ''}>7</option>
+                                                                            <option value="8" ${reserva.numPersonas.equals('8') ? 'selected' : ''}>8</option>
+                                                                            <option value="9" ${reserva.numPersonas.equals('9') ? 'selected' : ''}>9</option>
+                                                                            <option value="10" ${reserva.numPersonas.equals('10') ? 'selected' : ''}>10</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="mb-3">
 														    			<label for="observacionesModficar" class="form-label" style="font-size: 14px;">Observaciones</label>
-														    			<input type="textfield" class="form-control" id="observacionesModificar" value="${reserva.observaciones}">
+														    			<textarea type="text" class="form-control"  rows="4" id="observacionesModificar" selected name="observaciones"><c:out value="${reserva.observaciones}"/> </textarea> 
 																	</div>		
                                                                     <div class="mb-3">
                                                                         <!-- Boton para cancelar -->

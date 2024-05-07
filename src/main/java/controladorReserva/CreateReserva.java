@@ -58,8 +58,8 @@ public class CreateReserva extends HttpServlet {
 		}
 		int numPersonas = Integer.parseInt(request.getParameter("numPersonas"));
 		
-		String alergenoString = request.getParameter("alergeno");
-		Alergeno alergeno = Alergeno.valueOf(alergenoString);
+//		String alergenoString = request.getParameter("alergeno");
+//		Alergeno alergeno = Alergeno.valueOf(alergenoString);
 		
 		String observaciones = request.getParameter("observaciones");
 		
@@ -69,7 +69,7 @@ public class CreateReserva extends HttpServlet {
 		reserva.setHora(hora);
 		reserva.setFecha(fecha);
 		reserva.setNumPersonas(numPersonas);
-		reserva.setAlergeno(alergeno);
+//		reserva.setAlergeno(alergeno);
 		reserva.setObservaciones(observaciones);
 		
 		
