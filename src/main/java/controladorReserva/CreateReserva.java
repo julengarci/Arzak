@@ -43,7 +43,7 @@ public class CreateReserva extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//recoger los datos del formulario
+		//Recoger los datos del formulario
 		String hora = request.getParameter("hora");
 		
 		String fechaString = request.getParameter("fecha");
@@ -71,6 +71,7 @@ public class CreateReserva extends HttpServlet {
 		reserva.setNumPersonas(numPersonas);
 		reserva.setAlergeno(alergeno);
 		reserva.setObservaciones(observaciones);
+		
 		
 		//insertar en bbdd
 		ReservaModelo rm = new ReservaModelo();

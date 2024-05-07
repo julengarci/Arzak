@@ -184,17 +184,7 @@ a.sidebar-link {
     background-color: var(--bs-body-color);
 }
 
-html[data-bs-theme="light"] .theme-toggle .fa-moon {
-    cursor: pointer;
-    padding: 10px;
-    display: block;
-    font-size: 1.25rem;
-    color: #FFF;
-}
 
-html[data-bs-theme="light"] .theme-toggle .fa-sun {
-    display: none;
-}
 
 .acciones{
     font-size: 220%;
