@@ -83,7 +83,6 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Telefono</th>
                                         <th scope="col">Email</th>
@@ -96,7 +95,7 @@
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalAgregarCliente">Agregar Cliente</button>
                                     <!-- Modal para agregar cliente -->
-                                    <div class="modal fade" id="modalAgregarCliente${cliente.id}" tabindex="-1"
+                                    <div class="modal fade" id="modalAgregarCliente${cliente.telefono}" tabindex="-1"
                                         aria-labelledby="modalAgregarClienteLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -144,7 +143,6 @@
                                     </div>
                                  <c:forEach items="${clientes}" var="cliente" >
                                     <tr>
-                                        <td>${cliente.id}</td>
                                         <td>${cliente.nombre}</td>
                                         <td>${cliente.telefono}</td>
                                         <td>${cliente.email}</td>
@@ -152,11 +150,11 @@
                                         <td class="acciones"> 
                                             <!-- Boton que abre el modal para visualizar datos -->
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#modalDatos${cliente.id}">
+                                                    data-bs-target="#modalDatos${cliente.telefono}">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </button> <!-- Modal para visualizar datos -->
 
-                                                <div class="modal fade" id="modalDatos${cliente.id}" tabindex="-1"
+                                                <div class="modal fade" id="modalDatos${cliente.telefono}" tabindex="-1"
 
                                                     aria-labelledby="modalDatosLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
@@ -183,12 +181,12 @@
 
                                                 </div> <!-- Boton que abre el modal para modificar -->
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#modalModificar${cliente.id}">
+                                                data-bs-target="#modalModificar${cliente.telefono}">
                                                 <i class="fa-solid fa-square-pen"></i>
                                             </button>
 
                                             <!-- Modal para modificar -->
-                                            <div class="modal fade" id="modalModificar${cliente.id}" tabindex="-1"
+                                            <div class="modal fade" id="modalModificar${cliente.telefono}" tabindex="-1"
                                                 aria-labelledby="modalModificarLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -199,7 +197,7 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form id="formularioModificar" method="post" action="UpdateCliente?id=${cliente.id}">
+                                                            <form id="formularioModificar" method="post" action="UpdateCliente?telefono=${cliente.telefono}">
                                                                 <div class="mb-3">
                                                                     <label for="nombreModificar" class="form-label"
                                                                         style="font-size: 14px;">Nombre:</label>
@@ -237,12 +235,12 @@
 
                                             <!-- Boton que abre el modal de eliminacion -->
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#modalEliminar${cliente.id}">
+                                                data-bs-target="#modalEliminar${cliente.telefono}">
                                                 <i class="fa-solid fa-square-minus"></i>
                                             </button>
 
                                             <!-- Modal de eliminacion -->
-                                            <div class="modal fade" id="modalEliminar${cliente.id}" tabindex="-1"
+                                            <div class="modal fade" id="modalEliminar${cliente.telefono}" tabindex="-1"
                                                 aria-labelledby="modalEliminarLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -264,7 +262,7 @@
                                                                 style="font-size: 14px;">Cancelar</button>
 
                                                             <!-- Boton para confirmar la eliminacion -->
-                                                            <a href="DeleteCliente?id=${cliente.id}" class="btn btn-danger"
+                                                            <a href="DeleteCliente?telefono=${cliente.telefono}" class="btn btn-danger"
                                                                 style="font-size: 14px;">Eliminar</a>
                                                         </div>
                                                     </div>

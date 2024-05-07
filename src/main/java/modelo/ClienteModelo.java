@@ -19,7 +19,6 @@ public class ClienteModelo extends Conector{
             while (rs.next()) {
             	Cliente cliente = new Cliente();
                 
-            	cliente.setId(rs.getInt("ID_CLIENTE"));
             	cliente.setNombre(rs.getString("NOMBRE_CLIENTE"));
             	cliente.setTelefono(rs.getString("TELEFONO"));
             	cliente.setEmail(rs.getString("EMAIL"));
@@ -34,19 +33,18 @@ public class ClienteModelo extends Conector{
         return clientes;
     }
 	
-	public Cliente get(int id) {
+	public Cliente get(String telefono) {
 		
 		Conector conector = new Conector();
 		
 	     try {
-	         PreparedStatement pst = this.conexion.prepareStatement("SELECT * FROM CLIENTES WHERE ID_CLIENTE=?");
-	         pst.setInt(1, id);
+	         PreparedStatement pst = this.conexion.prepareStatement("SELECT * FROM CLIENTES WHERE TELEFONO=?");
+	         pst.setString(1, telefono);
 	         ResultSet rs = pst.executeQuery();
 
 	         if (rs.next()) {
 	             Cliente cliente = new Cliente();
 
-	             cliente.setId(rs.getInt("ID_CLIENTE"));
 	             cliente.setNombre(rs.getString("NOMBRE_CLIENTE"));
 	             cliente.setTelefono(rs.getString("TELEFONO"));
 	             cliente.setEmail(rs.getString("EMAIL"));
@@ -60,10 +58,10 @@ public class ClienteModelo extends Conector{
 	     return null;
 	 }
 	 
-	 public boolean delete(int id) {
+	 public boolean delete(String telefono) {
 	     try {
-	         PreparedStatement pst = this.conexion.prepareStatement("DELETE FROM CLIENTES WHERE ID_CLIENTE=?");
-	         pst.setInt(1, id);
+	         PreparedStatement pst = this.conexion.prepareStatement("DELETE FROM CLIENTES WHERE TELEFONO=?");
+	         pst.setString(1, telefono);
 	         pst.execute();
 	         return true;
 	     } catch (SQLException e) {
@@ -74,12 +72,11 @@ public class ClienteModelo extends Conector{
 	 
 	 public int update(Cliente cliente) {
 	     try {
-	         PreparedStatement pst = this.conexion.prepareStatement("CALL update_cliente(?,?,?,?)");
+	         PreparedStatement pst = this.conexion.prepareStatement("CALL update_cliente(?,?,?)");
 	         
-	         pst.setInt(1, cliente.getId());
-	         pst.setString(2, cliente.getNombre());
-	         pst.setString(3, cliente.getTelefono());
-	         pst.setString(4, cliente.getEmail());
+	         pst.setString(1, cliente.getNombre());
+	         pst.setString(2, cliente.getTelefono());
+	         pst.setString(3, cliente.getEmail());
 
 	         return pst.executeUpdate();
 	     } catch (SQLException e) {

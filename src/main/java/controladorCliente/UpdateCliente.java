@@ -41,13 +41,11 @@ public class UpdateCliente extends HttpServlet {
 		Cliente cliente = new Cliente();
 		
 		// Obtener parámetros del formulario y actualizar la base de datos
-		int id = Integer.parseInt(request.getParameter("id"));
         String nombre = request.getParameter("nombre");
         String telefono = request.getParameter("telefono");
         String email = request.getParameter("email");
         
         //introducir los datos en el objeto
-        cliente.setId(id);
         cliente.setNombre(nombre);
         cliente.setEmail(email);
         cliente.setTelefono(telefono);

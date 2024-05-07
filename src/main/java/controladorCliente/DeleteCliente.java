@@ -31,9 +31,9 @@ public class DeleteCliente extends HttpServlet {
 		
 		ClienteModelo cm = new ClienteModelo();
 		
-		int id = Integer.parseInt(request.getParameter("id"));
+		String telefono = request.getParameter("telefono");
 		
-		cm.delete(id);
+		cm.delete(telefono);
 		
 		response.sendRedirect("PanelCliente");
 		

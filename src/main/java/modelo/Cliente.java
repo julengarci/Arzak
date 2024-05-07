@@ -2,18 +2,11 @@ package modelo;
 
 public class Cliente {
 	
-	private int id;
 	private String nombre;
 	private String telefono;
 	private String email;
 	
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -35,7 +28,7 @@ public class Cliente {
 	
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", nombre=" + nombre + ", telefono=" + telefono + ", email=" + email
+		return "Cliente [nombre=" + nombre + ", telefono=" + telefono + ", email=" + email
 				+ "]";
 	}
 }
