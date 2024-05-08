@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.Alergeno;
+import modelo.Cliente;
 import modelo.Reserva;
 import modelo.ReservaModelo;
 
@@ -57,11 +58,9 @@ public class CreateReserva extends HttpServlet {
 		    e.printStackTrace();
 		}
 		int numPersonas = Integer.parseInt(request.getParameter("numPersonas"));
-		
-//		String alergenoString = request.getParameter("alergeno");
-//		Alergeno alergeno = Alergeno.valueOf(alergenoString);
-		
+
 		String observaciones = request.getParameter("observaciones");
+		String telefono = request.getParameter("telefono");
 		
 		//insertar los valores en el objeto ingrediente
 		Reserva reserva = new Reserva();
@@ -69,9 +68,12 @@ public class CreateReserva extends HttpServlet {
 		reserva.setHora(hora);
 		reserva.setFecha(fecha);
 		reserva.setNumPersonas(numPersonas);
-//		reserva.setAlergeno(alergeno);
 		reserva.setObservaciones(observaciones);
 		
+		Cliente cliente = new Cliente();
+		cliente.setTelefono(telefono);
+		
+		reserva.setCliente(cliente);
 		
 		//insertar en bbdd
 		ReservaModelo rm = new ReservaModelo();

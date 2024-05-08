@@ -37,12 +37,10 @@ public class PanelReserva extends HttpServlet {
 		ReservaModelo rm = new ReservaModelo();
 		ArrayList<Reserva> reservas = rm.getTodos();
 		
-		//creamos una lista de Alergeno (usando el enum)
-		//Alergeno[] alergenos = Alergeno.values();
+		System.out.println(reservas);
 		
 		//genera un atributo con la ArrayList para que se pueda usar en la pagina
 		request.setAttribute("reservas", reservas);
-		//request.setAttribute("alergenos", alergenos);
 		
 		//ejecuta la pagina
 		request.getRequestDispatcher("PanelReservas.jsp").forward(request, response);

@@ -24,18 +24,12 @@ public class ReservaModelo extends Conector{
                 reserva.setFecha(rs.getDate("FECHA_RESERVA"));
                 reserva.setHora(rs.getString("HORA_RESERVA"));
                 reserva.setNumPersonas(rs.getInt("NUM_PERSONAS"));
-                // Obtener el valor del alérgeno como un String desde la base de datos
-//                String alergenoStr = rs.getString("ALERGENOS");
-                
-                // Convertir el String a un valor del enum Alergeno
-//                Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase().replace(" ", "_"));
-                
                 reserva.setObservaciones(rs.getString("OBSERVACIONES"));
                 
-                //reserva.setAlergeno( Alergeno.valueOf(rs.getString("ALERGENOS")));
+                Cliente cliente = new Cliente();
+                cliente.setTelefono(rs.getString("TELEFONO_CLIENTE"));
+                reserva.setCliente(cliente);
                 
-                //Asignar el alergeno al ingrediente
-//                reserva.setAlergeno(alergeno);
                 reservas.add(reserva);
             }
 
@@ -60,13 +54,9 @@ public class ReservaModelo extends Conector{
              reserva.setFecha(rs.getDate("FECHA_RESERVA"));
              reserva.setNumPersonas(rs.getInt("NUM_PERSONAS"));
              reserva.setObservaciones(rs.getString("OBSERVACIONES"));
-             // Obtener el valor del alérgeno como un String desde la base de datos
-//             String alergenoStr = rs.getString("ALERGENOS");
-             // Convertir el String a un valor del enum Alergeno
-             //Alergeno alergeno = Alergeno.valueOf(alergenoStr.toLowerCase());
-                
-             // Asignar el alergeno al ingrediente
-             //reserva.setAlergeno(alergeno);
+             Cliente cliente = new Cliente();
+             cliente.setTelefono(rs.getString("TELEFONO_CLIENTE"));
+             reserva.setCliente(cliente);
         
              return reserva;
          }
@@ -99,11 +89,6 @@ public class ReservaModelo extends Conector{
 	     pst.setDate(3, new java.sql.Date(reserva.getFecha().getTime()));
          pst.setInt(4, reserva.getNumPersonas());
 
-      
-         // Convertir el valor del enum al String correspondiente
-         //String alergenoStr = reserva.getAlergeno().toString().toUpperCase();
-         //pst.setString(5, alergenoStr);
-
          pst.setString(5, reserva.getObservaciones());
 
          return pst.executeUpdate();
@@ -115,13 +100,13 @@ public class ReservaModelo extends Conector{
  
  public void insert(Reserva reserva) {
 	    try {
-	        PreparedStatement pst = this.conexion.prepareStatement("INSERT INTO RESERVAS (HORA_RESERVA, FECHA_RESERVA, NUM_PERSONAS, OBSERVACIONES) VALUES (?, ?, ?, ?)");
+	        PreparedStatement pst = this.conexion.prepareStatement("CALL insert_reserva(?, ?, ?, ?, ?);");
 	        
 	        pst.setString(1, reserva.getHora());
 	        pst.setDate(2, new java.sql.Date(reserva.getFecha().getTime()));
 	        pst.setInt(3, reserva.getNumPersonas());
-		    //pst.setString(4, reserva.getAlergeno().getNombre().toString().toUpperCase().replace("_", " "));
 	        pst.setString(4, reserva.getObservaciones());
+	        pst.setString(5, reserva.getCliente().getTelefono());
 	        
 	        pst.execute();
 	    } catch (SQLException e) {
