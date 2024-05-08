@@ -158,7 +158,11 @@
 														    <label for="observacionesAgregar" class="form-label" style="font-size: 14px;">Observaciones:</label>
 														    <textarea type="text" class="form-control"  rows="4" id="observacionesModificar" selected name="observaciones"><c:out value="${reserva.observaciones}"/> </textarea> 
 
-														</div>														
+														</div>
+														<div class="mb-3">
+                                                            <label for="telefonoAgregar" class="form-label" style="font-size: 14px;">Telefono:</label>
+                                                            <input type="text" class="form-control" id="telefono" name="telefono" required >
+                                                        </div>														
                                                         <div class="mb-3">
                                                             <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary"
@@ -179,7 +183,7 @@
                                             <td>${reserva.fecha}</td>
                                             <td>${reserva.numPersonas}</td>
                                             <td>${reserva.observaciones}</td>
-                                            <td>${reserva.cliente}</td>
+                                            <td>${reserva.cliente.telefono}</td>
                                             <td>${reserva.menu}</td>
                                             <td class="acciones"> 
                                                 <!-- Boton que abre el modal para visualizar datos -->
@@ -204,6 +208,7 @@
                                                                 <p style="font-size: 14px;">Fecha: ${reserva.fecha}</p>
                                                                 <p style="font-size: 14px;">Numero de personas: ${reserva.numPersonas}</p>
                                                                 <p style="font-size: 14px;">Observaciones: ${reserva.observaciones}</p>
+                                                                <p style="font-size: 14px;">Telefono: ${reserva.cliente.telefono}</p>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
@@ -275,7 +280,11 @@
                                                                     <div class="mb-3">
 														    			<label for="observacionesModficar" class="form-label" style="font-size: 14px;">Observaciones</label>
 														    			<textarea type="text" class="form-control"  rows="4" id="observacionesModificar" selected name="observaciones"><c:out value="${reserva.observaciones}"/> </textarea> 
-																	</div>		
+																	</div>
+																	<div class="mb-3">
+                                                                        <label for="nombreModificar${reserva.cliente.telefono}" class="form-label" style="font-size: 14px;">Nombre:</label>
+                                                                        <input type="text" class="form-control" id="nombreModificar${reserva.cliente.telefono}" name="nombre" required value="${reserva.cliente.telefono}">
+                                                                    </div>		
                                                                     <div class="mb-3">
                                                                         <!-- Boton para cancelar -->
                                                                         <button type="button" class="btn btn-secondary"
