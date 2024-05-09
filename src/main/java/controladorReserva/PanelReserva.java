@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Alergeno;
 import modeloReserva.Reserva;
 import modeloReserva.ReservaModelo;
+import modelo.Cliente;
+import modelo.ClienteModelo;
+import modelo.Reserva;
+import modelo.ReservaModelo;
 
 /**
  * Servlet implementation class PanelReservas
@@ -33,12 +37,16 @@ public class PanelReserva extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//llama a la base de datos y añade las reservas a la ArrayList
+		//llama a la base de datos y aÃ±ade las reservas a la ArrayList
 		ReservaModelo rm = new ReservaModelo();
-		ArrayList<Reserva> reservas = rm.getTodos();
+		ClienteModelo cm = new ClienteModelo();
 		
+		ArrayList<Reserva> reservas = rm.getTodos();
+		ArrayList<Cliente> clientes = cm.getTodos();
+	
 		//genera un atributo con la ArrayList para que se pueda usar en la pagina
 		request.setAttribute("reservas", reservas);
+		request.setAttribute("clientes", clientes);
 		
 		//ejecuta la pagina
 		request.getRequestDispatcher("PanelReservas.jsp").forward(request, response);

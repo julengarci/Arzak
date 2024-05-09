@@ -91,7 +91,7 @@
                                         <th scope="col">Fecha</th>
                                         <th scope="col">Numero de personas</th>
                                         <th scope="col">Observaciones</th>
-                                        <th scope="col">Id Cliente</th>
+                                        <th scope="col">Telefono</th>
                                         <th scope="col">Id Menu</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
@@ -164,8 +164,13 @@
 
 														</div>
 														<div class="mb-3">
-                                                            <label for="telefonoAgregar" class="form-label" style="font-size: 14px;">Telefono:</label>
-                                                            <input type="text" class="form-control" id="telefono" name="telefono" required >
+                                                            <label for="telefonoAgregar" class="form-label" style="font-size: 14px;">Telefono:</label>                                                            <select class="form-select" id="telefono"
+                                                                name="telefono" required>
+                                                                <option value="" selected disabled>Telefono</option>
+                                                                <c:forEach items="${clientes}" var="cliente">
+                                                                    <option value="${cliente.telefono}"> ${cliente.telefono}</option>
+                                                                </c:forEach>
+                                                            </select>
                                                         </div>														
                                                         <div class="mb-3">
                                                             <!-- Boton para cancelar -->
@@ -286,9 +291,14 @@
 														    			<textarea type="text" class="form-control"  rows="4" id="observacionesModificar" selected name="observaciones"><c:out value="${reserva.observaciones}"/> </textarea> 
 																	</div>
 																	<div class="mb-3">
-                                                                        <label for="nombreModificar${reserva.cliente.telefono}" class="form-label" style="font-size: 14px;">Nombre:</label>
-                                                                        <input type="text" class="form-control" id="nombreModificar${reserva.cliente.telefono}" name="nombre" required value="${reserva.cliente.telefono}">
-                                                                    </div>		
+			                                                            <label for="telefonoAgregar" class="form-label" style="font-size: 14px;">Telefono:</label>                                                            <select class="form-select" id="telefono"
+			                                                                name="telefono" required>
+			                                                                <option value="" selected disabled>Telefono</option>
+			                                                                <c:forEach items="${clientes}" var="cliente">
+			                                                                    <option value="${cliente.telefono}"> ${cliente.telefono}</option>
+			                                                                </c:forEach>
+			                                                            </select>
+			                                                        </div>		
                                                                     <div class="mb-3">
                                                                         <!-- Boton para cancelar -->
                                                                         <button type="button" class="btn btn-secondary"
