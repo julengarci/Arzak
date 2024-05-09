@@ -48,9 +48,9 @@
                             Ingredientes
                         </a>   
                         <a href="PanelHistorico" class="sidebar-link "
-                            aria-expanded="false"><i class="fa-solid fa-seedling"></i>
+                            aria-expanded="false"><i class="fa-solid fa-clock-rotate-left"></i>
                             Historico
-                        </a> 
+                        </a>  
                     </li>
                 </ul>
             </div>
