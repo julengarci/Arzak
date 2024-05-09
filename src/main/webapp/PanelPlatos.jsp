@@ -175,10 +175,15 @@
                                                                     <div class="mb-3">
                                                                         <label for="ingredientes${plato.id}" class="form-label" style="font-size: 14px;">Ingredientes:</label>
                                                                         <c:forEach var="ingrediente" items="${ingredientes}">
-                                                                            <div class="form-check">
-                                                                                <input class="form-check-input" type="checkbox" style="font-size: 14px;" value="${ingrediente.id}" id="ingrediente${plato.id}_${ingrediente.id}" name="ingredientes[]">
-                                                                                <label class="form-check-label mb-1" style="font-size: 14px;" for="ingrediente${plato.id}_${ingrediente.id}" style="font-size: 14px;">${ingrediente.nombre}</label>
-                                                                            </div>
+                                                                        
+                                                                        	<input type="checkbox" value="${ingrediente.id}" name="ingredientes[]"
+                                                                        	<c:forEach items="${plato.ingredientes}" var="ingredientePlato">
+                                                                        		<c:if test="${ingrediente.id == ingredientePlato.id}">
+                                                                        			checked
+                                                                        		</c:if>
+                                                                        	</c:forEach> 
+                                                                        	/> ${ingrediente.nombre}
+                                                                        	
                                                                         </c:forEach>
                                                                     </div>
                                                                     <div class="mb-3">

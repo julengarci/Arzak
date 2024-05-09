@@ -24,6 +24,8 @@ public class MenuModelo extends Conector {
             	menu.setFechaInicio(rs.getDate("FECHA_INICIO"));
             	menu.setFechaFin(rs.getDate("FECHA_FIN"));
                 
+            	//introducir los platos
+            	
                 menus.add(menu);
             }
 

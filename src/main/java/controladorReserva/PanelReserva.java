@@ -37,8 +37,6 @@ public class PanelReserva extends HttpServlet {
 		ReservaModelo rm = new ReservaModelo();
 		ArrayList<Reserva> reservas = rm.getTodos();
 		
-		System.out.println(reservas);
-		
 		//genera un atributo con la ArrayList para que se pueda usar en la pagina
 		request.setAttribute("reservas", reservas);
 		
