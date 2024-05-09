@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.Alergeno;
+import modelo.Cliente;
+import modelo.ClienteModelo;
 import modelo.Reserva;
 import modelo.ReservaModelo;
 
@@ -35,12 +37,15 @@ public class PanelReserva extends HttpServlet {
 		
 		//llama a la base de datos y añade las reservas a la ArrayList
 		ReservaModelo rm = new ReservaModelo();
-		ArrayList<Reserva> reservas = rm.getTodos();
+		ClienteModelo cm = new ClienteModelo();
 		
-		System.out.println(reservas);
+		ArrayList<Reserva> reservas = rm.getTodos();
+		ArrayList<Cliente> clientes = cm.getTodos();
+		
 		
 		//genera un atributo con la ArrayList para que se pueda usar en la pagina
 		request.setAttribute("reservas", reservas);
+		request.setAttribute("clientes", clientes);
 		
 		//ejecuta la pagina
 		request.getRequestDispatcher("PanelReservas.jsp").forward(request, response);
