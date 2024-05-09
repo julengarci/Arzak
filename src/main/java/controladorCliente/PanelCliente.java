@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Cliente;
-import modelo.ClienteModelo;
-import modelo.Reserva;
-import modelo.ReservaModelo;
+import modeloCliente.Cliente;
+import modeloCliente.ClienteModelo;
+import modeloReserva.Reserva;
+import modeloReserva.ReservaModelo;
 
 /**
  * Servlet implementation class PanelCliente

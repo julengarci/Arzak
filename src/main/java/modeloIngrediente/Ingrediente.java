@@ -1,4 +1,6 @@
-package modelo;
+package modeloIngrediente;
+
+import modelo.Alergeno;
 
 public class Ingrediente {
 

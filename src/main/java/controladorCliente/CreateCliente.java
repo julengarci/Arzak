@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Cliente;
-import modelo.ClienteModelo;
+import modeloCliente.Cliente;
+import modeloCliente.ClienteModelo;
 
 /**
  * Servlet implementation class CreateCliente

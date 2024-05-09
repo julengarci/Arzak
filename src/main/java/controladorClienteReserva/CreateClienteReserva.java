@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import controladorCliente.CreateCliente;
 import controladorReserva.CreateReserva;
 import modelo.Alergeno;
-import modelo.Cliente;
-import modelo.ClienteModelo;
-import modelo.Reserva;
-import modelo.ReservaModelo;
+import modeloCliente.Cliente;
+import modeloCliente.ClienteModelo;
+import modeloReserva.Reserva;
+import modeloReserva.ReservaModelo;
 
 /**
  * Servlet implementation class CreateClienteReserva

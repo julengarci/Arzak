@@ -1,9 +1,11 @@
-package modelo;
+package modeloMenu;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import modelo.Conector;
 
 
 public class MenuModelo extends Conector {
@@ -24,6 +26,8 @@ public class MenuModelo extends Conector {
             	menu.setFechaInicio(rs.getDate("FECHA_INICIO"));
             	menu.setFechaFin(rs.getDate("FECHA_FIN"));
                 
+            	//introducir los platos
+            	
                 menus.add(menu);
             }
 

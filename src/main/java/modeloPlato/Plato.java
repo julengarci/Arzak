@@ -1,6 +1,9 @@
-package modelo;
+package modeloPlato;
 
 import java.util.ArrayList;
+
+import modelo.Tipo;
+import modeloIngrediente.Ingrediente;
 
 public class Plato {
 	

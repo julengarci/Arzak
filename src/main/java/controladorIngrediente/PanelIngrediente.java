@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.Alergeno;
-import modelo.Cliente;
-import modelo.ClienteModelo;
-import modelo.Ingrediente;
-import modelo.IngredienteModelo;
-import modelo.Plato;
-import modelo.PlatoModelo;
+import modeloCliente.Cliente;
+import modeloCliente.ClienteModelo;
+import modeloIngrediente.Ingrediente;
+import modeloIngrediente.IngredienteModelo;
+import modeloPlato.Plato;
+import modeloPlato.PlatoModelo;
 
 /**
  * Servlet implementation class PanerIngrediente
