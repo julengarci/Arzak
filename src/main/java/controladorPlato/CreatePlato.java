@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.IngredientesPlatosModelo;
-import modelo.Plato;
-import modelo.PlatoModelo;
 import modelo.Tipo;
+import modeloPlato.Plato;
+import modeloPlato.PlatoModelo;
 
 /**
  * Servlet implementation class CreatePlato

@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.IngredientesPlatosModelo;
-import modelo.Menu;
-import modelo.MenuModelo;
-import modelo.Plato;
-import modelo.PlatoModelo;
 import modelo.Tipo;
+import modeloMenu.Menu;
+import modeloMenu.MenuModelo;
+import modeloPlato.Plato;
+import modeloPlato.PlatoModelo;
 
 /**
  * Servlet implementation class CreateMenu

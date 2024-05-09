@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.IngredienteModelo;
-import modelo.ReservaModelo;
+import modeloIngrediente.IngredienteModelo;
+import modeloReserva.ReservaModelo;
 
 /**
  * Servlet implementation class DeleteReserva

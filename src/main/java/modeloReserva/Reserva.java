@@ -1,7 +1,10 @@
-package modelo;
+package modeloReserva;
 
 import java.sql.Time;
 import java.util.Date;
+
+import modeloCliente.Cliente;
+import modeloMenu.Menu;
 
 public class Reserva {
 	

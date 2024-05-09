@@ -1,9 +1,11 @@
-package modelo;
+package modeloMenu;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import modelo.Conector;
 
 
 public class MenuModelo extends Conector {

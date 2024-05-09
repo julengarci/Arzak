@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
@@ -46,11 +47,11 @@
                         <a href="PanelIngrediente" class="sidebar-link "
                             aria-expanded="false"><i class="fa-solid fa-seedling"></i>
                             Ingredientes
-                        </a>  
+                        </a>   
                         <a href="PanelHistorico" class="sidebar-link "
                             aria-expanded="false"><i class="fa-solid fa-seedling"></i>
                             Historico
-                        </a>  
+                        </a> 
                         </ul>
                 </ul>
             </div>
@@ -79,34 +80,30 @@
                     <div class="card border-0">
                         <div class="card-header">
                             <h5 class="card-title">
-                                Gestion de Menus
+                                Gestion de Clientes
                             </h5>
                         </div>
                         <div class="card-body">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Precio</th>
-                                        <th scope="col">Fecha inicio</th>
-                                        <th scope="col">Fecha fin</th>
-                                        <th scope="col">Acciones</th>
+                                        <th scope="col">Mes</th>
+                                        <th scope="col">Año</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Telefono</th>
+                                        <th scope="col">Veces</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${menus}" var="menu" >
+                                 <c:forEach items="${historicos}" var="historico" >
                                     <tr>
-                                        <td>${menu.id}</td>
-                                        <td>${menu.precio}</td>
-                                        <td>${menu.fechaInicio}</td>
-                                        <td>${menu.fechaFin}</td>
-                                        <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
-                                            <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
-                                        </td>
+                                        <td>${historico.mes}</td>
+                                        <td>${historico.año}</td>
+                                        <td>${historico.nombre}</td>
+                                        <td>${historico.telefono}</td>
+                                        <td>${historico.veces}</td>
                                     </tr>
-                                </c:forEach>
+                                  </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -138,5 +135,4 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

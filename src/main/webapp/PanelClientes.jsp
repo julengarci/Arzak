@@ -48,6 +48,10 @@
                             aria-expanded="false"><i class="fa-solid fa-seedling"></i>
                             Ingredientes
                         </a>   
+                        <a href="PanelHistorico" class="sidebar-link "
+                            aria-expanded="false"><i class="fa-solid fa-seedling"></i>
+                            Historico
+                        </a> 
                         </ul>
                 </ul>
             </div>

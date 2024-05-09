@@ -28,7 +28,8 @@
                         <a href="PanelReserva" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-book-open"></i> Reservas</a>
                         <a href="PanelCliente" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-user"></i> Clientes</a>
                         <a href="PanelPlato" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-drumstick-bite"></i> Platos</a>
-                        <a href="PanelIngrediente" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-seedling"></i> Ingredientes</a>   
+                        <a href="PanelIngrediente" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-seedling"></i> Ingredientes</a>
+                        <a href="PanelHistorico" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-seedling"></i> Historico</a>    
                     </li>
                 </ul>
             </div>

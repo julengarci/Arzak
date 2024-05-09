@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.IngredienteModelo;
-import modelo.PlatoModelo;
+import modeloIngrediente.IngredienteModelo;
+import modeloPlato.PlatoModelo;
 
 /**
  * Servlet implementation class DeletePlato

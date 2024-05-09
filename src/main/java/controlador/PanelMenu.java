@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Cliente;
-import modelo.ClienteModelo;
-import modelo.Menu;
-import modelo.MenuModelo;
+import modeloCliente.Cliente;
+import modeloCliente.ClienteModelo;
+import modeloMenu.Menu;
+import modeloMenu.MenuModelo;
 
 /**
  * Servlet implementation class PanelMenu
