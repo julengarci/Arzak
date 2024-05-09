@@ -82,15 +82,14 @@ public class ReservaModelo extends Conector{
  
  public int update(Reserva reserva) {
      try {
-         PreparedStatement pst = this.conexion.prepareStatement("CALL update_reserva(?,?,?,?,?)");
-         
+         PreparedStatement pst = this.conexion.prepareStatement("CALL update_reserva(?,?,?,?,?,?)");
          pst.setInt(1, reserva.getId());
          pst.setString(2, reserva.getHora());
 	     pst.setDate(3, new java.sql.Date(reserva.getFecha().getTime()));
          pst.setInt(4, reserva.getNumPersonas());
 
          pst.setString(5, reserva.getObservaciones());
-
+         pst.setString(6, reserva.getCliente().getTelefono());
          return pst.executeUpdate();
      } catch (SQLException e) {
          e.printStackTrace();
