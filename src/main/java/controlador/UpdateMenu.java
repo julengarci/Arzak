@@ -1,4 +1,4 @@
-package controladorCliente;
+package controlador;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modeloCliente.ClienteModelo;
-
 /**
- * Servlet implementation class DeleteCliente
+ * Servlet implementation class UpdateMenu
  */
-@WebServlet("/DeleteCliente")
-public class DeleteCliente extends HttpServlet {
+@WebServlet("/UpdateMenu")
+public class UpdateMenu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteCliente() {
+    public UpdateMenu() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,22 +26,16 @@ public class DeleteCliente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ClienteModelo cm = new ClienteModelo();
-		
-		String telefono = request.getParameter("telefono");
-		
-		cm.delete(telefono);
-		
-		response.sendRedirect("PanelCliente");
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

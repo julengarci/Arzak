@@ -24,11 +24,30 @@
                         Gestion de elementos
                     </li>
                     <li class="sidebar-item">
-                        <a href="PanelMenu" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-utensils"></i> Menu</a>
-                        <a href="PanelReserva" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-book-open"></i> Reservas</a>
-                        <a href="PanelCliente" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-user"></i> Clientes</a>
-                        <a href="PanelPlato" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-drumstick-bite"></i> Platos</a>
-                        <a href="PanelIngrediente" class="sidebar-link " aria-expanded="false"><i class="fa-solid fa-seedling"></i> Ingredientes</a>   
+                        <a href="PanelMenu" class="sidebar-link " 
+                            aria-expanded="false"><i class="fa-solid fa-utensils"></i>
+                            Menu
+                        </a>
+                        <a href="PanelReserva" class="sidebar-link " 
+                            aria-expanded="false"><i class="fa-solid fa-book-open"></i>
+                            Reservas
+                        </a>
+                        <a href="PanelCliente" class="sidebar-link " 
+                            aria-expanded="false"><i class="fa-solid fa-user"></i>
+                            Clientes
+                        </a>
+                        <a href="PanelPlato" class="sidebar-link " 
+                            aria-expanded="false"><i class="fa-solid fa-drumstick-bite"></i>
+                            Platos
+                        </a>
+                        <a href="PanelIngrediente" class="sidebar-link "
+                            aria-expanded="false"><i class="fa-solid fa-seedling"></i>
+                            Ingredientes
+                        </a>   
+                        <a href="PanelHistorico" class="sidebar-link "
+                            aria-expanded="false"><i class="fa-solid fa-clock-rotate-left"></i>
+                            Historico
+                        </a>   
                     </li>
                 </ul>
             </div>
@@ -175,10 +194,15 @@
                                                                     <div class="mb-3">
                                                                         <label for="ingredientes${plato.id}" class="form-label" style="font-size: 14px;">Ingredientes:</label>
                                                                         <c:forEach var="ingrediente" items="${ingredientes}">
-                                                                            <div class="form-check">
-                                                                                <input class="form-check-input" type="checkbox" style="font-size: 14px;" value="${ingrediente.id}" id="ingrediente${plato.id}_${ingrediente.id}" name="ingredientes[]">
-                                                                                <label class="form-check-label mb-1" style="font-size: 14px;" for="ingrediente${plato.id}_${ingrediente.id}" style="font-size: 14px;">${ingrediente.nombre}</label>
-                                                                            </div>
+                                                                        
+                                                                        	<input type="checkbox" value="${ingrediente.id}" name="ingredientes[]"
+                                                                        	<c:forEach items="${plato.ingredientes}" var="ingredientePlato">
+                                                                        		<c:if test="${ingrediente.id == ingredientePlato.id}">
+                                                                        			checked
+                                                                        		</c:if>
+                                                                        	</c:forEach> 
+                                                                        	/> ${ingrediente.nombre}
+                                                                        	
                                                                         </c:forEach>
                                                                     </div>
                                                                     <div class="mb-3">

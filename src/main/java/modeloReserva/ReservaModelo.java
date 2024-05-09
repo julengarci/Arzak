@@ -1,4 +1,4 @@
-package modelo;
+package modeloReserva;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,8 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.*;
-import modeloCliente.*;
-import modeloReserva.Reserva;
+import modeloCliente.Cliente;
 
 public class ReservaModelo extends Conector{
 
@@ -85,6 +84,7 @@ public class ReservaModelo extends Conector{
  public int update(Reserva reserva) {
      try {
          PreparedStatement pst = this.conexion.prepareStatement("CALL update_reserva(?,?,?,?,?,?)");
+         
          pst.setInt(1, reserva.getId());
          pst.setString(2, reserva.getHora());
 	     pst.setDate(3, new java.sql.Date(reserva.getFecha().getTime()));
@@ -92,6 +92,7 @@ public class ReservaModelo extends Conector{
 
          pst.setString(5, reserva.getObservaciones());
          pst.setString(6, reserva.getCliente().getTelefono());
+
          return pst.executeUpdate();
      } catch (SQLException e) {
          e.printStackTrace();

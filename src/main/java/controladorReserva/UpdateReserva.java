@@ -12,11 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.Alergeno;
-import modelo.Cliente;
-import modelo.Ingrediente;
-import modelo.IngredienteModelo;
-import modelo.Reserva;
-import modelo.ReservaModelo;
+import modeloCliente.Cliente;
+import modeloIngrediente.Ingrediente;
+import modeloIngrediente.IngredienteModelo;
+import modeloReserva.Reserva;
+import modeloReserva.ReservaModelo;
+
 
 /**
  * Servlet implementation class UpdateReserva

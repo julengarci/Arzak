@@ -1,10 +1,12 @@
-package modelo;
+package modeloCliente;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import modelo.Conector;
 
 public class ClienteModelo extends Conector{
 	

@@ -1,7 +1,9 @@
-package modelo;
+package modeloMenu;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import modeloPlato.Plato;
 
 public class Menu {
 

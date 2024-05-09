@@ -1,10 +1,15 @@
-package modelo;
+package modeloPlato;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import modelo.Conector;
+import modelo.Tipo;
+import modeloIngrediente.Ingrediente;
+import modeloIngrediente.IngredienteModelo;
 
 public class PlatoModelo extends Conector{
 

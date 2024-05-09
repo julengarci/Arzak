@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.Alergeno;
-import modelo.Ingrediente;
-import modelo.IngredienteModelo;
+import modeloIngrediente.Ingrediente;
+import modeloIngrediente.IngredienteModelo;
 
 /**
  * Servlet implementation class UpdateIngrediente
