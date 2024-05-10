@@ -77,7 +77,7 @@ public class CreateReserva extends HttpServlet {
 		
 		//insertar en bbdd
 		ReservaModelo rm = new ReservaModelo();
-		rm.insert(reserva);
+		rm.insert(reserva, telefono);
 		
 		//redirigir al panel
 		response.sendRedirect("PanelReserva");

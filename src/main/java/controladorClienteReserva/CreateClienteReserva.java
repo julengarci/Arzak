@@ -91,7 +91,7 @@ public class CreateClienteReserva extends HttpServlet {
 				
 				//insertar en bbdd
 				ReservaModelo rm = new ReservaModelo();
-				rm.insert(reserva);
+				rm.insert(reserva,cliente.getTelefono());
 		
 		//redirigir al panel
 		response.sendRedirect("PanelClienteReserva");

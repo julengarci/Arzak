@@ -100,7 +100,7 @@ public class ReservaModelo extends Conector{
      }
  }
  
- public void insert(Reserva reserva) {
+ public void insert(Reserva reserva, String telefono) {
 	    try {
 	        PreparedStatement pst = this.conexion.prepareStatement("CALL insert_reserva(?, ?, ?, ?, ?);");
 	        
@@ -108,7 +108,7 @@ public class ReservaModelo extends Conector{
 	        pst.setDate(2, new java.sql.Date(reserva.getFecha().getTime()));
 	        pst.setInt(3, reserva.getNumPersonas());
 	        pst.setString(4, reserva.getObservaciones());
-	        pst.setString(5, reserva.getCliente().getTelefono());
+	        pst.setString(5, telefono);
 	        
 	        pst.execute();
 	    } catch (SQLException e) {
