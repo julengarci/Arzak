@@ -10,12 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.Alergeno;
+import modeloCliente.Cliente;
+import modeloCliente.ClienteModelo;
 import modeloReserva.Reserva;
 import modeloReserva.ReservaModelo;
-import modelo.Cliente;
-import modelo.ClienteModelo;
-import modelo.Reserva;
-import modelo.ReservaModelo;
+
 
 /**
  * Servlet implementation class PanelReservas

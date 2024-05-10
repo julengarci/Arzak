@@ -291,11 +291,11 @@
 														    			<textarea type="text" class="form-control"  rows="4" id="observacionesModificar" selected name="observaciones"><c:out value="${reserva.observaciones}"/> </textarea> 
 																	</div>
 																	<div class="mb-3">
-			                                                            <label for="telefonoAgregar" class="form-label" style="font-size: 14px;">Telefono:</label>                                                            <select class="form-select" id="telefono"
-			                                                                name="telefono" required>
+			                                                            <label for="telefonoAgregar" class="form-label" style="font-size: 14px;">Telefono:</label>
+			                                                            <select class="form-select" id="telefono" name="telefono" required>
 			                                                                <option value="" selected disabled>Telefono</option>
 			                                                                <c:forEach items="${clientes}" var="cliente">
-			                                                                    <option value="${cliente.telefono}"> ${cliente.telefono}</option>
+			                                                                    <option value="${cliente.telefono}" ${cliente.telefono.equals(reserva.cliente.telefono) ? 'selected' : ''}>${cliente.telefono}</option>
 			                                                                </c:forEach>
 			                                                            </select>
 			                                                        </div>		
