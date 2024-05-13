@@ -58,8 +58,13 @@ public class UpdateIngrediente extends HttpServlet {
 		
 		im.update(ingrediente);
 		
-		response.sendRedirect("PanelIngrediente");
+		//booleano para mostrar mensaje de validacion
+		boolean alertaUpdate = true;
 		
+		request.setAttribute("alertaUpdate", alertaUpdate);
+
+		//redirigir al panel
+		request.getRequestDispatcher("PanelIngrediente").forward(request, response);
 	}
 
 }
