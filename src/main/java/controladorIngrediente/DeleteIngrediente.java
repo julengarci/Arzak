@@ -35,7 +35,13 @@ public class DeleteIngrediente extends HttpServlet {
 		
 		im.delete(id);
 		
-		response.sendRedirect("PanelIngrediente");
+		//booleano para visualizar mensajes de validacion
+		boolean alertaDelete = true;
+		
+		request.setAttribute("alertaDelete", alertaDelete);
+
+		//redirigir al panel
+		request.getRequestDispatcher("PanelIngrediente").forward(request, response);
 	}
 
 	/**

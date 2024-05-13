@@ -29,8 +29,7 @@ public class UpdateCliente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+		
 	}
 
 	/**
@@ -44,7 +43,8 @@ public class UpdateCliente extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String telefono = request.getParameter("telefono");
         String email = request.getParameter("email");
-        
+        String telefonoNuevo = request.getParameter("telefonoNuevo");
+
         //introducir los datos en el objeto
         cliente.setNombre(nombre);
         cliente.setEmail(email);
@@ -52,9 +52,19 @@ public class UpdateCliente extends HttpServlet {
         
         ClienteModelo cm = new ClienteModelo();
         
-        cm.update(cliente);
-
-        response.sendRedirect("PanelCliente");
+        boolean warningUpdate;
+        if (cliente.getTelefono().equals(telefonoNuevo)) {
+        	cm.update(cliente);
+        	warningUpdate = true;
+		}
+        else {
+			warningUpdate = false;
+		}
+        
+        request.setAttribute("warningUpdate", warningUpdate);
+        
+  		//redirigir al panel
+  		request.getRequestDispatcher("PanelCliente").forward(request, response);
 	}
 
 }

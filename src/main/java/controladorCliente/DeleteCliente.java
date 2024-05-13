@@ -35,7 +35,12 @@ public class DeleteCliente extends HttpServlet {
 		
 		cm.delete(telefono);
 		
-		response.sendRedirect("PanelCliente");
+		boolean alertDelete = true;
+		
+		request.setAttribute("alertDelete", alertDelete);
+        
+  		//redirigir al panel
+  		request.getRequestDispatcher("PanelCliente").forward(request, response);
 		
 	}
 

@@ -70,6 +70,50 @@
                     </ul>
                 </div>
             </nav>
+            
+            <c:if test="${numeroDisponible == true}">
+            	<div class="alert alert-success alert-dismissable" role="alert">
+					El cliente fue introducido con exito
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${numeroDisponible == false}">
+            	<div class="alert alert-danger alert-dismissable" role="alert">
+					El numero introducido ya esta en la Base de Datos
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${esNumero == false}">
+            	<div class="alert alert-danger alert-dismissable" role="alert">
+					No has introducido un numero de telefono valido
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${warningUpdate == true}">
+            	<div class="alert alert-warning alert-dismissable" role="alert">
+					Se han actualizado los valores del cliente
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${warningUpdate == false}">
+            	<div class="alert alert-danger alert-dismissable" role="alert">
+					No se puede cambiar el numero de telefono por integridad referencial
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${alertDelete == true}">
+            	<div class="alert alert-warning alert-dismissable" role="alert">
+					se elimino el cliente! es posible que se eliminen sus reservas asociadas
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+           
+            
             <main class="content px-3 py-2">
                 <div class="container-fluid">
                     <div class="mb-3">
@@ -122,7 +166,7 @@
                                                             <label for="TelefonoAgregar" class="form-label"
                                                                 style="font-size: 14px;">Telefono:</label>
                                                             <input type="text" class="form-control"
-                                                                id="telefono" name="telefono" maxlength="9"
+                                                                id="telefono" name="telefono" maxlength="9" minlength="9"
                                                                 required >
                                                         </div>
                                                         <div class="mb-3">
@@ -171,7 +215,7 @@
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <!-- Aquí puedes mostrar los datos -->
+                                                                <!-- AquÃ­ puedes mostrar los datos -->
 
                                                                 <p style="font-size: 14px;">Nombre: ${cliente.nombre}</p>
                                                                 <p style="font-size: 14px;">Telefono: ${cliente.telefono}</p>
@@ -215,7 +259,7 @@
                                                                     <label for="telefonoModificar" class="form-label"
                                                                         style="font-size: 14px;">Telefono:</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="telefono" name="telefono"
+                                                                        id="telefonoNuevo" name="telefonoNuevo"
                                                                         required value="${cliente.telefono}">
                                                                 </div>
                                                                 <div class="mb-3">
@@ -258,7 +302,7 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body" style="font-size: 14px;">
-                                                            ¿Estas seguro de que quieres eliminar este elemento?
+                                                            Â¿Estas seguro de que quieres eliminar este elemento?
                                                         </div>
                                                         <div class="modal-footer">
 
