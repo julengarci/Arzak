@@ -55,8 +55,13 @@ public class CreateIngrediente extends HttpServlet {
 		IngredienteModelo im = new IngredienteModelo();
 		im.insert(ingrediente);
 		
+		//booleano para mostrar mensajes de validacion
+		boolean alertaInsert = true;
+		
+		request.setAttribute("alertaInsert", alertaInsert);
+		
 		//redirigir al panel
-		response.sendRedirect("PanelIngrediente");
+		request.getRequestDispatcher("PanelIngrediente").forward(request, response);
 	}
 
 }
