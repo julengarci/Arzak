@@ -36,7 +36,13 @@ public class DeletePlato extends HttpServlet {
 		
 		pm.delete(id);
 		
-		response.sendRedirect("PanelPlato");
+		//bolean para validacion
+		boolean alertDelete = true;
+		
+		request.setAttribute("alertDelete", alertDelete);
+		
+		//redirigir al panel
+		request.getRequestDispatcher("PanelPlato").forward(request, response);
 	}
 
 	/**
