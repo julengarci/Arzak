@@ -52,10 +52,33 @@ public class CreateCliente extends HttpServlet {
 		
 		//insertar en BBDD
 		ClienteModelo cm = new ClienteModelo();
-		cm.insert(cliente);
+		
+		//atributo para mostrar alertas
+		boolean esNumero;
+		if (cm.checkInt(telefono) == true) {
+			esNumero = true;
+		}
+		else {
+			esNumero = false;
+		}
+		
+		if (esNumero == true) {
+			boolean numeroDisponible;
+			if (cm.checkNumeroDisponible(telefono) == true) {
+				cm.insert(cliente);
+				numeroDisponible = true;
+			}
+			else {
+				numeroDisponible = false;
+			}
+			
+			request.setAttribute("numeroDisponible", numeroDisponible);
+		}
+		
+		request.setAttribute("esNumero", esNumero);
 		
 		//redirigir al panel
-		response.sendRedirect("PanelCliente");
+		request.getRequestDispatcher("PanelCliente").forward(request, response);
 	}
 
 }
