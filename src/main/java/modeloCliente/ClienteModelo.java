@@ -74,12 +74,12 @@ public class ClienteModelo extends Conector{
 	 
 	 public int update(Cliente cliente) {
 	     try {
-	         PreparedStatement pst = this.conexion.prepareStatement("CALL update_cliente(?,?,?)");
+	         PreparedStatement pst = this.conexion.prepareStatement("UPDATE CLIENTES SET NOMBRE_CLIENTE = ?, EMAIL = ? WHERE TELEFONO = ?");
 	         
 	         pst.setString(1, cliente.getNombre());
-	         pst.setString(2, cliente.getTelefono());
-	         pst.setString(3, cliente.getEmail());
-
+	         pst.setString(3, cliente.getTelefono());
+	         pst.setString(2, cliente.getEmail());
+	         
 	         return pst.executeUpdate();
 	     } catch (SQLException e) {
 	         e.printStackTrace();
@@ -100,4 +100,38 @@ public class ClienteModelo extends Conector{
 		        e.printStackTrace();
 		    }
 		}
+	 
+	 public boolean checkNumeroDisponible(String telefono) {
+		 
+		 try {
+	            PreparedStatement st = conexion.prepareStatement("SELECT * FROM CLIENTES WHERE TELEFONO = ?");
+	            
+	            st.setString(1, telefono);
+	            
+	            ResultSet rs = st.executeQuery();
+	            
+	            if (rs.next()) {
+					return false;
+				}
+	            else {
+					return true;
+				}
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+		 return false;
+	 }
+	 
+	 public boolean checkInt(String telefono) {
+		 
+		 try {
+	            int numero = Integer.parseInt(telefono);
+
+	            return true;
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+	 }
 }
