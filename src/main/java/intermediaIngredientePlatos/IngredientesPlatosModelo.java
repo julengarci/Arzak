@@ -1,7 +1,9 @@
-package modelo;
+package intermediaIngredientePlatos;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import modelo.Conector;
 
 public class IngredientesPlatosModelo extends Conector{
 

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.IngredientesPlatosModelo;
+import intermediaIngredientePlatos.IngredientesPlatosModelo;
 import modelo.Tipo;
 import modeloCliente.Cliente;
 import modeloCliente.ClienteModelo;

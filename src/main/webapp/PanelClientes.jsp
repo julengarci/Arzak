@@ -156,7 +156,8 @@
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                     data-bs-target="#modalDatos${cliente.telefono}">
                                                     <i class="fa-solid fa-eye"></i>
-                                                </button> <!-- Modal para visualizar datos -->
+                                                </button> 
+                                                <!-- Modal para visualizar datos -->
 
                                                 <div class="modal fade" id="modalDatos${cliente.telefono}" tabindex="-1"
 
@@ -183,7 +184,8 @@
                                                         </div>
                                                     </div>
 
-                                                </div> <!-- Boton que abre el modal para modificar -->
+                                                </div> 
+                                            <!-- Boton que abre el modal para modificar -->
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#modalModificar${cliente.telefono}">
                                                 <i class="fa-solid fa-square-pen"></i>
