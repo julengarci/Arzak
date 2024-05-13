@@ -115,7 +115,7 @@
                                                 <div class="modal-body">
                                                     <form id="formularioAgregar" method="post" action="CreateReserva">
                                                         <div class="mb-3">
-                                                                        <label for="emailModificar" class="form-label"
+                                                                        <label for="horaModificar" class="form-label"
                                                                             style="font-size: 14px;">Hora:</label>
                                                                         <select class="form-select" id="hora"
                                                                             name="hora" required>

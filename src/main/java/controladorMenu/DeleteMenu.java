@@ -1,4 +1,4 @@
-package controlador;
+package controladorMenu;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,17 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modeloMenu.MenuModelo;
+import modeloPlato.PlatoModelo;
+
 /**
- * Servlet implementation class UpdateMenu
+ * Servlet implementation class DeleteMenu
  */
-@WebServlet("/UpdateMenu")
-public class UpdateMenu extends HttpServlet {
+@WebServlet("/DeleteMenu")
+public class DeleteMenu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateMenu() {
+    public DeleteMenu() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +29,14 @@ public class UpdateMenu extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		MenuModelo mm = new MenuModelo();
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		mm.delete(id);
+		
+		response.sendRedirect("PanelMenu");
 	}
 
 	/**

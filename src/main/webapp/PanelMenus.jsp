@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
@@ -51,7 +51,7 @@
                             aria-expanded="false"><i class="fa-solid fa-clock-rotate-left"></i>
                             Historico
                         </a>  
-                        </ul>
+                    </li>
                 </ul>
             </div>
         </aside>
@@ -94,19 +94,210 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${menus}" var="menu" >
-                                    <tr>
-                                        <td>${menu.id}</td>
-                                        <td>${menu.precio}</td>
-                                        <td>${menu.fechaInicio}</td>
-                                        <td>${menu.fechaFin}</td>
-                                        <td class="acciones"> 
-                                            <a href="ReservaCrear.html"><i class="fa-solid fa-square-plus"></i></a>
-                                            <a href="ReservaModificar.html"><i class="fa-solid fa-square-pen"></i></a>
-                                            <a href="ReservaEliminar.html"><i class="fa-solid fa-square-minus"></i></a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
+                                    <!-- Boton de agregar reserva -->
+                                    <button type="button" class="btn btn-primary mb-3"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalAgregarMenu">Agregar menu</button>
+                                    <!-- Modal para agregar -->
+                                    <div class="modal fade" id="modalAgregarMenu${menu.id}" tabindex="-1"
+                                        aria-labelledby="modalAgregarMenuLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalAgregarMenuLabel"
+                                                        style="font-size: 16px;">Agregar Menu</h5>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="formularioAgregar" method="post" action="CreateMenu">
+                                                        <div class="mb-3">
+                                                            <label for="precioAgregar" class="form-label" style="font-size: 14px;">Precio:</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">$</span>
+        														<input type="number" class="form-control" id="precio" name="precio"  maxlength="3" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="fechaAgregar" class="form-label"
+                                                                style="font-size: 14px;">Fecha Inicio:</label>
+                                                            <input type="date" class="form-control"
+                                                                id="fechaInicio" name="fechaInicio" pattern="\d{4}/\d{2}/\d{2}" placeholder="YYYY/MM/DD" required"
+                                                                required value="${menu.fechaInicio}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="fechaAgregar2" class="form-label"
+                                                                style="font-size: 14px;">Fecha Fin:</label>
+                                                            <input type="date" class="form-control"
+                                                                id="fechaFin" name="fechaFin" maxlenght="3" placeholder="YYYY/MM/DD" required"
+                                                                required value="${menu.fechaFin}">
+                                                        </div>
+                                                        <div class="mb-3 row">
+														    <c:forEach var="plato" items="${platos}" varStatus="status">
+														        <div class="col-md-6">
+														            <div class="form-check">
+														                <input class="form-check-input" type="checkbox" value="${plato.id}" id="flexCheckDefault${status.index}" name="platos[]"
+														                <c:forEach items="${menu.platos}" var="platoMenu">
+														                    <c:if test="${plato.id == platoMenu.id}">
+														                        checked
+														                    </c:if>
+														                </c:forEach> 
+														                />
+														                <label class="form-check-label" style="font-size: 14px">${plato.nombre}</label>
+														            </div>
+														        </div>
+														    </c:forEach>
+														</div>				
+														                                                        <div class="mb-3">
+                                                            <!-- Boton para cancelar -->
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                style="font-size: 14px;">Cancelar</button>
+                                                            <!-- Boton para enviar el formulario -->
+                                                            <button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <c:forEach items="${menus}" var="menu" >
+                                        <tr>
+                                            <td>${menu.id}</td>
+                                            <td>${menu.precio}$</td>
+                                            <td>${menu.fechaInicio}</td>
+                                            <td>${menu.fechaFin}</td>
+                                            <td class="acciones"> 
+                                                <!-- Boton que abre el modal para visualizar datos -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#modalDatos${menu.id}">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button> 
+                                                <!-- Modal para visualizar datos -->
+                                                <div class="modal fade" id="modalDatos${menu.id}" tabindex="-1"
+                                                    aria-labelledby="modalDatosLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="modalDatosLabel"
+                                                                    style="font-size: 16px;">Datos</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <!-- Aquí puedes mostrar los datos -->
+                                                                <p style="font-size: 14px;">Precio: ${menu.precio}$</p>
+                                                                <p style="font-size: 14px;">Fecha Inicio: ${menu.fechaInicio}</p>
+                                                                <p style="font-size: 14px;">Fecha Fin: ${menu.fechaFin}</p>
+																<p style="font-size: 14px;">Platos: ${menu.platos}</p>
+                                                                
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal" style="font-size: 14px;">Cerrar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <!-- Boton que abre el modal para modificar -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#modalModificar${menu.id}">
+                                                    <i class="fa-solid fa-square-pen"></i>
+                                                </button>
+                                                <!-- Modal para modificar -->
+                                                <div class="modal fade" id="modalModificar${menu.id}" tabindex="-1"
+                                                    aria-labelledby="modalModificarLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="modalModificarLabel"
+                                                                    style="font-size: 16px;">Modificar</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form id="formularioModificar" method="post" action="UpdateMenu?id=${menu.id}">
+                                                                    <div class="mb-3">
+                                                                        <label for="precioModificar" class="form-label" style="font-size: 14px;">Precio:</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-text">$</span>
+                                                                            <input type="text" class="form-control" id="precio" name="precio"  maxlength="3" required value="${menu.precio} ${precio.equals(menu.precio) ? 'selected' : ''}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="fechaModificar" class="form-label"
+                                                                            style="font-size: 14px;">Fecha Inicio:</label>
+                                                                        <input type="date" class="form-control"
+                                                                            id="fechaModificar" name="fechaModificar" pattern="\d{4}/\d{2}/\d{2}" placeholder="YYYY/MM/DD" required"
+                                                                            required value="${menu.fechaInicio}">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="fechaModificar2" class="form-label"
+                                                                            style="font-size: 14px;">Fecha Fin:</label>
+                                                                        <input type="date" class="form-control"
+                                                                            id="fechaModificar2" name="fechaModificar2" pattern="\d{4}/\d{2}/\d{2}" placeholder="YYYY/MM/DD" required"
+                                                                            required value="${menu.fechaFin}">
+                                                                    </div>
+	                                                                    <div class="mb-3 row">
+																		        <c:forEach var="plato" items="${platos}" varStatus="status">
+																		            <div class="col-md-6">
+																		                <input type="checkbox" value="${plato.id}" name="platos[]"
+																		                <c:forEach items="${menu.platos}" var="platoMenu">
+																		                    <c:if test="${plato.id == platoMenu.id}">
+																		                        checked
+																		                    </c:if>
+																		                </c:forEach> 
+																		                /> <span style="font-size: 14px">${plato.nombre}</span>
+																		            </div>
+																		        </c:forEach>													    
+																		</div>                                                                
+																	 <!-- Boton para cancelar -->
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal"
+                                                                            style="font-size: 14px;">Cancelar</button>
+                                                                        <!-- Boton para enviar el formulario -->
+                                                                        <button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Boton que abre el modal de eliminacion -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#modalEliminar${menu.id}">
+                                                    <i class="fa-solid fa-square-minus"></i>
+                                                </button>
+                                                <!-- Modal de eliminacion -->
+                                                <div class="modal fade" id="modalEliminar${menu.id}" tabindex="-1"
+                                                    aria-labelledby="modalEliminarLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="modalEliminarLabel"
+                                                                    style="font-size: 16px;">Confirmacion de eliminacion
+                                                                </h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body" style="font-size: 14px;">
+                                                                ¿Estas seguro de que quieres eliminar este elemento?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <!-- Boton para cancelar -->
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal"
+                                                                    style="font-size: 14px;">Cancelar</button>
+                                                                <!-- Boton para confirmar la eliminacion -->
+                                                                <a href="DeleteMenu?id=${menu.id}" class="btn btn-danger"
+                                                                    style="font-size: 14px;">Eliminar</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>
