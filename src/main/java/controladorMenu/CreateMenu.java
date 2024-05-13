@@ -86,7 +86,7 @@ public class CreateMenu extends HttpServlet {
 		}
 				
 		//redirigir al panel
-		response.sendRedirect("PanelMenu");
+		response.sendRedirect("PanelMenus");
 	}
 
 }

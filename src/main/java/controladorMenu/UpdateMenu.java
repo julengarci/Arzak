@@ -93,7 +93,7 @@ public class UpdateMenu extends HttpServlet {
 		}
 				
 		//redirigir al panel
-		response.sendRedirect("PanelMenu");
+		response.sendRedirect("PanelMenus");
 	}
 
 }
