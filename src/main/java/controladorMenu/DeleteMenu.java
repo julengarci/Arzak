@@ -36,7 +36,7 @@ public class DeleteMenu extends HttpServlet {
 		
 		mm.delete(id);
 		
-		response.sendRedirect("PanelMenu");
+		response.sendRedirect("PanelMenus");
 	}
 
 	/**
