@@ -61,20 +61,30 @@ public class UpdatePlato extends HttpServlet {
 		
 		//insertar en BBDD
 		PlatoModelo pm = new PlatoModelo();
-				
-		pm.update(plato);
-		
-		//eliminar todas las lineas de codigo que hay en la tabla intermedia
-		IngredientesPlatosModelo ipm = new IngredientesPlatosModelo();
-		ipm.deletePlatosIngredientes(Integer.parseInt(request.getParameter("id")));
-		
-		//insertar los datos a la tabla intermedia
-		for (String string : ingredientes) {
-			ipm.insertIngredientesPlatos(Integer.parseInt(string), Integer.parseInt(request.getParameter("id")));
+			
+		//validacion de ingredientes != null
+		boolean updateNull;
+		if (ingredientes == null) {
+			updateNull = true;
 		}
-				
+		else {
+			updateNull = false;
+			pm.update(plato);
+			
+			//eliminar todas las lineas de codigo que hay en la tabla intermedia
+			IngredientesPlatosModelo ipm = new IngredientesPlatosModelo();
+			ipm.deletePlatosIngredientes(Integer.parseInt(request.getParameter("id")));
+			
+			//insertar los datos a la tabla intermedia
+			for (String string : ingredientes) {
+				ipm.insertIngredientesPlatos(Integer.parseInt(string), Integer.parseInt(request.getParameter("id")));
+			}
+		}
+		
+		request.setAttribute("updateNull", updateNull);
+		
 		//redirigir al panel
-		response.sendRedirect("PanelPlato");
+		request.getRequestDispatcher("PanelPlato").forward(request, response);
 	}
 
 }
