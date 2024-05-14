@@ -71,35 +71,35 @@
             </nav>
             
             <c:if test="${fechaIsAfter == false}">
-            	<div class="alert alert-danger alert-dismissable" role="alert">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
 					No puedes hacer una reserva en una fecha pasada
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
-            <c:if test="${fechaIsAfter == true}">
-            	<div class="alert alert-success alert-dismissable" role="alert">
+            <c:if test="${fechaIsAfter == true}"> 
+            	<div class="alert alert-success alert-dismissable mx-4" role="alert">
 					Reserva hecha con exito
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${alertDelete == true}">
-            	<div class="alert alert-success alert-dismissable" role="alert">
+            	<div class="alert alert-success alert-dismissable mx-4" role="alert">
 					Reserva anulada!
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${fechaIsAfterUpdate == true}">
-            	<div class="alert alert-warning alert-dismissable" role="alert">
+            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
 					Reserva actualizada
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${fechaIsAfterUpdate == false}">
-            	<div class="alert alert-danger alert-dismissable" role="alert">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
 					No puedes cambiar la fecha a una anterior
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>

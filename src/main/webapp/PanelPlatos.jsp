@@ -67,35 +67,35 @@
             </nav>
             
             <c:if test="${alertNull == true}">
-            	<div class="alert alert-danger alert-dismissable" role="alert">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
 					No puedes crear un plato sin ingredientes
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${alertNull == false}">
-            	<div class="alert alert-success alert-dismissable" role="alert">
+            	<div class="alert alert-success alert-dismissable mx-4" role="alert">
 					Plato creado con exito!
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${alertDelete == true}">
-            	<div class="alert alert-warning alert-dismissable" role="alert">
+            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
 					se elimino el plato! es posible que se eliminen sus menus asociados
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${updateNull == true}">
-            	<div class="alert alert-warning alert-dismissable" role="alert">
+            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
 					No puedes dejar un plato sin ingredientes
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${updateNull == false}">
-            	<div class="alert alert-warning alert-dismissable" role="alert">
+            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
 					Plato actualizado con exito!
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>

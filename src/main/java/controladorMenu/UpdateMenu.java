@@ -81,19 +81,45 @@ public class UpdateMenu extends HttpServlet {
 		//insertar en BBDD
 		MenuModelo mm = new MenuModelo();
 				
-		mm.update(menu);
-		
-		//eliminar todas las lineas de codigo que hay en la tabla intermedia
-		PlatosMenuModelo ppm = new PlatosMenuModelo();
-		ppm.deleteMenuPlatos(id);
-		
-		//insertar los datos a la tabla intermedia
-		for (String string : platos) {
-			ppm.insertPlatosMenu(Integer.parseInt(string),id);
+		//booleano para validacion de menus
+		boolean isNullPlatosUpdate;
+		boolean fecha;
+		if (platos != null) {
+			isNullPlatosUpdate = false;
+			if (fechaFin.after(fechaInicio)) {
+				fecha = true;
+				
+				mm.update(menu);
+				
+				//eliminar todas las lineas de codigo que hay en la tabla intermedia
+				PlatosMenuModelo ppm = new PlatosMenuModelo();
+				ppm.deleteMenuPlatos(id);
+				
+				//insertar los datos a la tabla intermedia
+				for (String string : platos) {
+					ppm.insertPlatosMenu(Integer.parseInt(string),id);
+				}
+			}
+			else {
+				fecha = false;
+			}
+			
 		}
+		else {
+			isNullPlatosUpdate = true;
+			if (fechaFin.after(fechaInicio)) {
+				fecha = true;
+			}
+			else {
+				fecha = false;
+			}
+		}
+		
+		request.setAttribute("isNullPlatosUpdate", isNullPlatosUpdate);
+		request.setAttribute("fecha", fecha);
 				
 		//redirigir al panel
-		response.sendRedirect("PanelMenu");
+		request.getRequestDispatcher("PanelMenu").forward(request, response);
 	}
 
 }
