@@ -34,9 +34,14 @@ public class DeleteMenu extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
+		//booleano de validacion de delete
+		boolean alertDelete = true;
+		
 		mm.delete(id);
 		
-		response.sendRedirect("PanelMenu");
+		request.setAttribute("alertDelete", alertDelete);
+		
+		request.getRequestDispatcher("PanelMenu").forward(request, response);
 	}
 
 	/**
