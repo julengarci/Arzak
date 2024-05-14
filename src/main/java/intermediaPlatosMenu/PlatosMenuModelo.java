@@ -7,11 +7,11 @@ import modelo.Conector;
 
 public class PlatosMenuModelo extends Conector{
 
-	public void insertPlatosMenu(int idPlato , int idMenu) {
+	public void insertPlatosMenu(int idPlatos , int idMenu) {
 		try {
 			PreparedStatement pst = this.conexion.prepareStatement("CALL insert_menu_platos(?,?)");
 			
-			pst.setInt(1, idPlato);
+			pst.setInt(1, idPlatos);
 			pst.setInt(2, idMenu);
 			pst.execute();
 		} catch (SQLException e) {

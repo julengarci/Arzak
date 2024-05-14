@@ -81,12 +81,13 @@ public class CreateMenu extends HttpServlet {
 				
 		//insertar los datos a la tabla intermedia
 		PlatosMenuModelo pmm = new PlatosMenuModelo();
+		int idUltimoMenu = mm.getUltimoMenu();
 		for (String string : platos) {
-			pmm.insertPlatosMenu(Integer.parseInt(string), mm.getUltimoMenu());
+			pmm.insertPlatosMenu(Integer.parseInt(string), idUltimoMenu);
 		}
 				
 		//redirigir al panel
-		response.sendRedirect("PanelMenus");
+		response.sendRedirect("PanelMenu");
 	}
 
 }
