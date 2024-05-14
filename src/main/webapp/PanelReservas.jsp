@@ -129,7 +129,6 @@
                                         <th scope="col">Numero de personas</th>
                                         <th scope="col">Observaciones</th>
                                         <th scope="col">Telefono</th>
-                                        <th scope="col">Id Menu</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
@@ -230,7 +229,6 @@
                                             <td>${reserva.numPersonas}</td>
                                             <td>${reserva.observaciones}</td>
                                             <td>${reserva.cliente.telefono}</td>
-                                            <td>${reserva.menu}</td>
                                             <td class="acciones"> 
                                                 <!-- Boton que abre el modal para visualizar datos -->
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -255,6 +253,7 @@
                                                                 <p style="font-size: 14px;">Numero de personas: ${reserva.numPersonas}</p>
                                                                 <p style="font-size: 14px;">Observaciones: ${reserva.observaciones}</p>
                                                                 <p style="font-size: 14px;">Telefono: ${reserva.cliente.telefono}</p>
+                                                                <p style="font-size: 14px;">Menu: ${reserva.menu.id} , ${reserva.menu.precio} $</p>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"

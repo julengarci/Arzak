@@ -163,5 +163,29 @@ public class MenuModelo extends Conector {
 	        e.printStackTrace();
 	    }
 	}
+	
+	public Menu getMenuFecha(String fecha) {
+		try {
+	        PreparedStatement pst = this.conexion.prepareStatement("SELECT * FROM MENU WHERE ? BETWEEN FECHA_INICIO AND FECHA_FIN;");
+	        
+	        pst.setString(1, fecha);
+	        
+	        ResultSet rs = pst.executeQuery();
+	        
+	        Menu menu = new Menu();
+	        
+	        while (rs.next()) {
+				menu.setId(rs.getInt("ID_MENU"));
+				menu.setPrecio(rs.getDouble("PRECIO"));
+				menu.setFechaInicio(rs.getDate("FECHA_INICIO"));
+				menu.setFechaFin(rs.getDate("FECHA_FIN"));
+			}
+	        
+	        return menu;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return null;
+	}
 
 }

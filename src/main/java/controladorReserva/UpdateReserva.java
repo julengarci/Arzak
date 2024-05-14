@@ -16,6 +16,8 @@ import modelo.Alergeno;
 import modeloCliente.Cliente;
 import modeloIngrediente.Ingrediente;
 import modeloIngrediente.IngredienteModelo;
+import modeloMenu.Menu;
+import modeloMenu.MenuModelo;
 import modeloReserva.Reserva;
 import modeloReserva.ReservaModelo;
 
@@ -83,6 +85,12 @@ public class UpdateReserva extends HttpServlet {
 		cliente.setTelefono(telefono);
 		
 		reserva.setCliente(cliente);
+		
+		//insertar el menu asociado a la fecha
+		MenuModelo mm = new MenuModelo();
+		Menu menu = mm.getMenuFecha(fechaString);
+		
+		reserva.setMenu(menu);
 
 		// Obtener la fecha actual
         LocalDate fechaActual = LocalDate.now();
