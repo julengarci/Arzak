@@ -259,7 +259,7 @@
                                                                     <label for="telefonoModificar" class="form-label"
                                                                         style="font-size: 14px;">Telefono:</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="telefonoNuevo" name="telefonoNuevo"
+                                                                        id="telefonoNuevo"  maxlength="9" minlength="9" name="telefonoNuevo"
                                                                         required value="${cliente.telefono}">
                                                                 </div>
                                                                 <div class="mb-3">
