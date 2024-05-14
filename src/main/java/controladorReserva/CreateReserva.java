@@ -3,6 +3,7 @@ package controladorReserva;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -75,12 +76,27 @@ public class CreateReserva extends HttpServlet {
 		
 		reserva.setCliente(cliente);
 		
-		//insertar en bbdd
-		ReservaModelo rm = new ReservaModelo();
-		rm.insert(reserva, telefono);
+		// Obtener la fecha actual
+        LocalDate fechaActual = LocalDate.now();
+
+        // Obtener la fecha del formulario (deberías obtenerla desde tu formulario JSP)
+        LocalDate fechaFormularioParsed = LocalDate.parse(fechaString);
+
+        // Verificar si la fecha del formulario es posterior a la fecha actual
+        boolean fechaIsAfter;
+        if (fechaFormularioParsed.isAfter(fechaActual)) {
+            fechaIsAfter = true;
+            //insertar en bbdd
+    		ReservaModelo rm = new ReservaModelo();
+    		rm.insert(reserva, telefono);
+        } else {
+            fechaIsAfter = false;
+        }
+		
+        request.setAttribute("fechaIsAfter", fechaIsAfter);
 		
 		//redirigir al panel
-		response.sendRedirect("PanelReserva");
+		request.getRequestDispatcher("PanelReserva").forward(request, response);
 	}
 
 }
