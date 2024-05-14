@@ -34,9 +34,15 @@ public class DeleteReserva extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		rm.delete(id);
+		//boolean para mostrar mensajes de validacion
+		boolean alertDelete = true;
 		
-		response.sendRedirect("PanelReserva");
+		rm.delete(id);
+
+	    request.setAttribute("alertDelete", alertDelete);
+	
+		//redirigir al panel
+		request.getRequestDispatcher("PanelReserva").forward(request, response);
 	}
 
 	/**
