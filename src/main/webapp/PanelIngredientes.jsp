@@ -71,21 +71,21 @@
             </nav>
             
             <c:if test="${alertaInsert == true}">
-            	<div class="alert alert-success alert-dismissable" role="alert">
+            	<div class="alert alert-success alert-dismissable mx-4" role="alert">
 					El ingrediente fue introducido con exito
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${alertaUpdate == true}">
-            	<div class="alert alert-warning alert-dismissable" role="alert">
+            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
 					El ingrediente fue actualizado con exito en cascada!
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${alertaDelete == true}">
-            	<div class="alert alert-danger alert-dismissable" role="alert">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
 					Se ha eliminado el ingrediente y su presencia en los platos
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>

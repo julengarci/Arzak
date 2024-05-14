@@ -69,6 +69,50 @@
                     </ul>
                 </div>
             </nav>
+            
+			<c:if test="${isNullPlatos == true}">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
+					No puedes crear un menu sin platos
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${fecha == false}">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
+					La fecha de fin no puede ser posterior a la fecha de inicio
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+             <c:if test="${fecha == true && isNullPlatos == false}">
+            	<div class="alert alert-success alert-dismissable mx-4" role="alert">
+					Menu insertado correctamente
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${alertDelete}">
+            	<div class="alert alert-success alert-dismissable mx-4" role="alert">
+					Menu eliminado correctamente
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${isNullPlatosUpdate == true}">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
+					No puedes dejar un menu sin platos
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+             <c:if test="${fecha == true && isNullPlatosUpdate == false}">
+            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
+					Menu actualizado correctamente! Las reservas realcionadas se han actualizado!
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            
             <main class="content px-3 py-2">
                 <div class="container-fluid">
                     <div class="mb-3">
@@ -189,7 +233,7 @@
                                                                 <p style="font-size: 14px;">Precio: ${menu.precio}$</p>
                                                                 <p style="font-size: 14px;">Fecha Inicio: ${menu.fechaInicio}</p>
                                                                 <p style="font-size: 14px;">Fecha Fin: ${menu.fechaFin}</p>
-                                                               <p style="font-size: 14px;">Platos:
+                                                                <p style="font-size: 14px;">Platos:
 																    <c:forEach items="${menu.platos}" var="plato" varStatus="status">
 																        ${plato.nombre}<c:if test="${not status.last}">,</c:if>
 																    </c:forEach>

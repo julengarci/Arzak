@@ -58,16 +58,26 @@ public class CreatePlato extends HttpServlet {
 		//insertar en BBDD
 		PlatoModelo pm = new PlatoModelo();
 		
-		pm.insert(plato);
-		
-		//insertar los datos a la tabla intermedia
-		IngredientesPlatosModelo ipm = new IngredientesPlatosModelo();
-		for (String string : ingredientes) {
-			ipm.insertIngredientesPlatos(Integer.parseInt(string), pm.getUltimoPlato());
+		//validacion de ingredientes != null
+		boolean alertNull;
+		if (ingredientes == null) {
+			alertNull = true;
+		}
+		else {
+			alertNull = false;
+			pm.insert(plato);
+			
+			//insertar los datos a la tabla intermedia
+			IngredientesPlatosModelo ipm = new IngredientesPlatosModelo();
+			for (String string : ingredientes) {
+				ipm.insertIngredientesPlatos(Integer.parseInt(string), pm.getUltimoPlato());
+			}
 		}
 		
+		request.setAttribute("alertNull", alertNull);
+		
 		//redirigir al panel
-		response.sendRedirect("PanelPlato");
+		request.getRequestDispatcher("PanelPlato").forward(request, response);
 	}
 
 }

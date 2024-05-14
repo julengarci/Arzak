@@ -69,6 +69,43 @@
                     </ul>
                 </div>
             </nav>
+            
+            <c:if test="${fechaIsAfter == false}">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
+					No puedes hacer una reserva en una fecha pasada
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${fechaIsAfter == true}"> 
+            	<div class="alert alert-success alert-dismissable mx-4" role="alert">
+					Reserva hecha con exito
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${alertDelete == true}">
+            	<div class="alert alert-success alert-dismissable mx-4" role="alert">
+					Reserva anulada!
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${fechaIsAfterUpdate == true}">
+            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
+					Reserva actualizada
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${fechaIsAfterUpdate == false}">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
+					No puedes cambiar la fecha a una anterior
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            
             <main class="content px-3 py-2">
                 <div class="container-fluid">
                     <div class="mb-3">
@@ -92,7 +129,6 @@
                                         <th scope="col">Numero de personas</th>
                                         <th scope="col">Observaciones</th>
                                         <th scope="col">Telefono</th>
-                                        <th scope="col">Id Menu</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
@@ -193,7 +229,6 @@
                                             <td>${reserva.numPersonas}</td>
                                             <td>${reserva.observaciones}</td>
                                             <td>${reserva.cliente.telefono}</td>
-                                            <td>${reserva.menu}</td>
                                             <td class="acciones"> 
                                                 <!-- Boton que abre el modal para visualizar datos -->
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -218,6 +253,7 @@
                                                                 <p style="font-size: 14px;">Numero de personas: ${reserva.numPersonas}</p>
                                                                 <p style="font-size: 14px;">Observaciones: ${reserva.observaciones}</p>
                                                                 <p style="font-size: 14px;">Telefono: ${reserva.cliente.telefono}</p>
+                                                                <p style="font-size: 14px;">Menu: ${reserva.menu.id} , ${reserva.menu.precio} $</p>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"

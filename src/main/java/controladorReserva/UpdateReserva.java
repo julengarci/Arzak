@@ -3,6 +3,7 @@ package controladorReserva;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,8 @@ import modelo.Alergeno;
 import modeloCliente.Cliente;
 import modeloIngrediente.Ingrediente;
 import modeloIngrediente.IngredienteModelo;
+import modeloMenu.Menu;
+import modeloMenu.MenuModelo;
 import modeloReserva.Reserva;
 import modeloReserva.ReservaModelo;
 
@@ -71,9 +74,6 @@ public class UpdateReserva extends HttpServlet {
 		
 		String telefono = request.getParameter("telefono");
 
-		//Menu menu = request.getParameter
-		
-		
 		//introducir los datos en el objeto
 		reserva.setId(id);
 		reserva.setHora(hora);
@@ -85,13 +85,35 @@ public class UpdateReserva extends HttpServlet {
 		cliente.setTelefono(telefono);
 		
 		reserva.setCliente(cliente);
+		
+		//insertar el menu asociado a la fecha
+		MenuModelo mm = new MenuModelo();
+		Menu menu = mm.getMenuFecha(fechaString);
+		
+		reserva.setMenu(menu);
 
-		//insertar en bbdd
-		ReservaModelo rm = new ReservaModelo();
-		rm.update(reserva);
+		// Obtener la fecha actual
+        LocalDate fechaActual = LocalDate.now();
+
+        // Obtener la fecha del formulario (deberías obtenerla desde tu formulario JSP)
+        LocalDate fechaFormularioParsed = LocalDate.parse(fechaString);
+
+        // Verificar si la fecha del formulario es posterior a la fecha actual
+        boolean fechaIsAfterUpdate;
+        if (fechaFormularioParsed.isAfter(fechaActual)) {
+        	fechaIsAfterUpdate = true;
+            //insertar en bbdd
+    		ReservaModelo rm = new ReservaModelo();
+    		rm.update(reserva);
+        } else {
+        	fechaIsAfterUpdate = false;
+        }
+		
+        request.setAttribute("fechaIsAfterUpdate", fechaIsAfterUpdate);
 		
 		//redirigir al panel
-		response.sendRedirect("PanelReserva");
+		request.getRequestDispatcher("PanelReserva").forward(request, response);
+		
 	}
 
 }

@@ -142,7 +142,7 @@ public class MenuModelo extends Conector {
 	         pst.setDouble(2, menu.getPrecio());
 		     pst.setDate(3, new java.sql.Date(menu.getFechaInicio().getTime()));
 	         pst.setDate(4, new java.sql.Date(menu.getFechaFin().getTime()));
-	         System.out.println("donete");
+
 	         return pst.executeUpdate();
 	     } catch (SQLException e) {
 	         e.printStackTrace();
@@ -162,6 +162,30 @@ public class MenuModelo extends Conector {
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
+	}
+	
+	public Menu getMenuFecha(String fecha) {
+		try {
+	        PreparedStatement pst = this.conexion.prepareStatement("SELECT * FROM MENU WHERE ? BETWEEN FECHA_INICIO AND FECHA_FIN;");
+	        
+	        pst.setString(1, fecha);
+	        
+	        ResultSet rs = pst.executeQuery();
+	        
+	        Menu menu = new Menu();
+	        
+	        while (rs.next()) {
+				menu.setId(rs.getInt("ID_MENU"));
+				menu.setPrecio(rs.getDouble("PRECIO"));
+				menu.setFechaInicio(rs.getDate("FECHA_INICIO"));
+				menu.setFechaFin(rs.getDate("FECHA_FIN"));
+			}
+	        
+	        return menu;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return null;
 	}
 
 }

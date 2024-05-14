@@ -72,42 +72,42 @@
             </nav>
             
             <c:if test="${numeroDisponible == true}">
-            	<div class="alert alert-success alert-dismissable" role="alert">
+            	<div class="alert alert-success alert-dismissable mx-4" role="alert">
 					El cliente fue introducido con exito
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${numeroDisponible == false}">
-            	<div class="alert alert-danger alert-dismissable" role="alert">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
 					El numero introducido ya esta en la Base de Datos
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${esNumero == false}">
-            	<div class="alert alert-danger alert-dismissable" role="alert">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
 					No has introducido un numero de telefono valido
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${warningUpdate == true}">
-            	<div class="alert alert-warning alert-dismissable" role="alert">
+            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
 					Se han actualizado los valores del cliente
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${warningUpdate == false}">
-            	<div class="alert alert-danger alert-dismissable" role="alert">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
 					No se puede cambiar el numero de telefono por integridad referencial
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
             
             <c:if test="${alertDelete == true}">
-            	<div class="alert alert-warning alert-dismissable" role="alert">
+            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
 					se elimino el cliente! es posible que se eliminen sus reservas asociadas
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
