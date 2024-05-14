@@ -191,8 +191,11 @@
                                                                 <!-- Aqui puedes mostrar los datos -->
                                                                 <p style="font-size: 14px;">Nombre: ${plato.nombre}</p>
                                                                 <p style="font-size: 14px;">Tipo: ${plato.tipo}</p>	
-                                                                <p style="font-size: 14px;">ingredientes: ${plato.ingredientes}</p>
-                                                            </div>
+																<p style="font-size: 14px;">Ingredientes:
+																    <c:forEach items="${plato.ingredientes}" var="ingrediente" varStatus="status">
+																        ${ingrediente.nombre}<c:if test="${not status.last}">,</c:if>
+																    </c:forEach>
+																</p>                                                            </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 14px;">Cerrar</button>
                                                             </div>
@@ -228,19 +231,17 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="mb-3">
-                                                                        <label for="ingredientes${plato.id}" class="form-label" style="font-size: 14px;">Ingredientes:</label>
-                                                                        <c:forEach var="ingrediente" items="${ingredientes}">
-                                                                        
-                                                                        	<input type="checkbox" value="${ingrediente.id}" name="ingredientes[]"
-                                                                        	<c:forEach items="${plato.ingredientes}" var="ingredientePlato">
-                                                                        		<c:if test="${ingrediente.id == ingredientePlato.id}">
-                                                                        			checked
-                                                                        		</c:if>
-                                                                        	</c:forEach> 
-                                                                        	/> ${ingrediente.nombre}
-                                                                        	
-                                                                        </c:forEach>
-                                                                    </div>
+																	    <label for="ingredientes${plato.id}" class="form-label" style="font-size: 14px;"></label>
+																	    <c:forEach var="ingrediente" items="${ingredientes}">
+																	        <input type="checkbox" value="${ingrediente.id}" name="ingredientes[]"
+																	        <c:forEach items="${plato.ingredientes}" var="ingredientePlato">
+																	            <c:if test="${ingrediente.id == ingredientePlato.id}">
+																	                checked
+																	            </c:if>
+																	        </c:forEach> 
+																	        /> <span style="font-size: 14px">${ingrediente.nombre}</span>
+																	    </c:forEach>
+																	</div>
                                                                     <div class="mb-3">
 			                                                            <!-- Boton para cancelar -->
 			                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 14px;">Cancelar</button>

@@ -85,15 +85,15 @@ public class UpdateMenu extends HttpServlet {
 		
 		//eliminar todas las lineas de codigo que hay en la tabla intermedia
 		PlatosMenuModelo ppm = new PlatosMenuModelo();
-		ppm.deleteMenuPlatos(Integer.parseInt(request.getParameter("id")));
+		ppm.deleteMenuPlatos(id);
 		
 		//insertar los datos a la tabla intermedia
 		for (String string : platos) {
-			ppm.insertPlatosMenu(Integer.parseInt(request.getParameter("id")),Integer.parseInt(string));
+			ppm.insertPlatosMenu(id,Integer.parseInt(string));
 		}
 				
 		//redirigir al panel
-		response.sendRedirect("PanelMenus");
+		response.sendRedirect("PanelMenu");
 	}
 
 }
