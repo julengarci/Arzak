@@ -142,7 +142,7 @@ public class MenuModelo extends Conector {
 	         pst.setDouble(2, menu.getPrecio());
 		     pst.setDate(3, new java.sql.Date(menu.getFechaInicio().getTime()));
 	         pst.setDate(4, new java.sql.Date(menu.getFechaFin().getTime()));
-	         System.out.println("donete");
+
 	         return pst.executeUpdate();
 	     } catch (SQLException e) {
 	         e.printStackTrace();

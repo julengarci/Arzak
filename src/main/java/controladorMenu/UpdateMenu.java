@@ -69,7 +69,7 @@ public class UpdateMenu extends HttpServlet {
 				
 		//conseguir los valores del checkbox
 		String[] platos = request.getParameterValues("platos[]");
-				
+		
 		//añadir los valores al ojeto plato
 		Menu menu = new Menu();
 		
@@ -89,7 +89,7 @@ public class UpdateMenu extends HttpServlet {
 		
 		//insertar los datos a la tabla intermedia
 		for (String string : platos) {
-			ppm.insertPlatosMenu(id,Integer.parseInt(string));
+			ppm.insertPlatosMenu(Integer.parseInt(string),id);
 		}
 				
 		//redirigir al panel
