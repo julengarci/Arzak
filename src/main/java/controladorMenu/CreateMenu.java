@@ -77,17 +77,44 @@ public class CreateMenu extends HttpServlet {
 		//insertar en BBDD
 		MenuModelo mm = new MenuModelo();
 				
-		mm.insert(menu);
+		//booleano para validacion de menus
+		boolean isNullPlatos;
+		boolean fecha;
+		if (platos != null) {
+			isNullPlatos = false;
+			if (fechaFin.after(fechaInicio)) {
+				fecha = true;
 				
-		//insertar los datos a la tabla intermedia
-		PlatosMenuModelo pmm = new PlatosMenuModelo();
-		int idUltimoMenu = mm.getUltimoMenu();
-		for (String string : platos) {
-			pmm.insertPlatosMenu(Integer.parseInt(string), idUltimoMenu);
+				mm.insert(menu);
+				
+				//insertar los datos a la tabla intermedia
+				PlatosMenuModelo pmm = new PlatosMenuModelo();
+				int idUltimoMenu = mm.getUltimoMenu();
+				for (String string : platos) {
+					pmm.insertPlatosMenu(Integer.parseInt(string), idUltimoMenu);
+				}
+			}
+			else {
+				fecha = false;
+			}
+			
 		}
+		else {
+			isNullPlatos = true;
+			if (fechaFin.after(fechaInicio)) {
+				fecha = true;
+			}
+			else {
+				fecha = false;
+			}
+		}
+		
+		request.setAttribute("isNullPlatos", isNullPlatos);
+		request.setAttribute("fecha", fecha);
 				
 		//redirigir al panel
-		response.sendRedirect("PanelMenu");
-	}
+		request.getRequestDispatcher("PanelMenu").forward(request, response);
+		
+		}
 
 }
