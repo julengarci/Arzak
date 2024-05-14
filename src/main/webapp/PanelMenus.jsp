@@ -219,7 +219,7 @@
                                                                 <p style="font-size: 14px;">Precio: ${menu.precio}$</p>
                                                                 <p style="font-size: 14px;">Fecha Inicio: ${menu.fechaInicio}</p>
                                                                 <p style="font-size: 14px;">Fecha Fin: ${menu.fechaFin}</p>
-                                                               <p style="font-size: 14px;">Platos:
+                                                                <p style="font-size: 14px;">Platos:
 																    <c:forEach items="${menu.platos}" var="plato" varStatus="status">
 																        ${plato.nombre}<c:if test="${not status.last}">,</c:if>
 																    </c:forEach>
