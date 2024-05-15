@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Historico;
-import modelo.HistoricoModelo;
 import modeloCliente.Cliente;
 import modeloCliente.ClienteModelo;
+import modeloHistorico.Historico;
+import modeloHistorico.HistoricoModelo;
 
 /**
  * Servlet implementation class PanelHistorico

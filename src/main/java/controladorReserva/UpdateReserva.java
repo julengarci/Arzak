@@ -104,7 +104,8 @@ public class UpdateReserva extends HttpServlet {
         	fechaIsAfterUpdate = true;
             //insertar en bbdd
     		ReservaModelo rm = new ReservaModelo();
-    		rm.update(reserva);
+    		boolean peticion = rm.update(reserva);
+    		request.setAttribute("peticion", peticion);
         } else {
         	fechaIsAfterUpdate = false;
         }

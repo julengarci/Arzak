@@ -97,7 +97,7 @@ public class UpdateMenu extends HttpServlet {
 				
 				//insertar los datos a la tabla intermedia
 				for (String string : platos) {
-					ppm.insertPlatosMenu(Integer.parseInt(string),id);
+					ppm.insertPlatosMenu(id,Integer.parseInt(string));
 				}
 			}
 			else {
