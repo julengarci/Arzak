@@ -77,7 +77,7 @@
 				</div>
             </c:if>
             
-            <c:if test="${fechaIsAfter == true}"> 
+            <c:if test="${fechaIsAfter == true  && peticion == true}"> 
             	<div class="alert alert-success alert-dismissable mx-4" role="alert">
 					Reserva hecha con exito
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -91,7 +91,7 @@
 				</div>
             </c:if>
             
-            <c:if test="${fechaIsAfterUpdate == true}">
+            <c:if test="${fechaIsAfterUpdate == true && peticion == true}">
             	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
 					Reserva actualizada
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -101,6 +101,20 @@
             <c:if test="${fechaIsAfterUpdate == false}">
             	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
 					No puedes cambiar la fecha a una anterior
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${fechaIsAfter == true && peticion == false}">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
+					Aforo maximo
+					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+            </c:if>
+            
+            <c:if test="${fechaIsAfterUpdate == true && peticion == false}">
+            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
+					Aforo maximo
 					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
             </c:if>
