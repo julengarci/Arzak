@@ -91,7 +91,7 @@ public class CreateMenu extends HttpServlet {
 				PlatosMenuModelo pmm = new PlatosMenuModelo();
 				int idUltimoMenu = mm.getUltimoMenu();
 				for (String string : platos) {
-					pmm.insertPlatosMenu(Integer.parseInt(string), idUltimoMenu);
+					pmm.insertPlatosMenu(idUltimoMenu, Integer.parseInt(string));
 				}
 			}
 			else {

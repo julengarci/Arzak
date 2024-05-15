@@ -2,33 +2,40 @@ package modeloIngrediente;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
+
+import modelo.Alergeno;
 
 class IngredienteModeloTest {
 
 	@Test
-	void testGetTodos() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGet() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testDelete() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testUpdate() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testInsert() {
-		fail("Not yet implemented");
+	void testIngrediente() {
+		//test insert
+		IngredienteModelo im = new IngredienteModelo();
+		Ingrediente ingrediente = new Ingrediente();
+		
+		//set id
+		ingrediente.setId(10);
+		
+		//set nombre
+		ingrediente.setNombre("Quesito");
+		
+		//set alergeno string y transformarlo en Objeto
+		String alergenoString = "leche";
+		Alergeno alergeno = Alergeno.valueOf(alergenoString);
+		ingrediente.setAlergeno(alergeno);
+		
+		//insertar en bbdd
+		im.insert(ingrediente);
+		
+		//test update
+		ingrediente.setId(9);
+		im.update(ingrediente);
+		
+		//test delete
+		im.delete(ingrediente.getId());
 	}
 
 }
