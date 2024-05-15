@@ -53,7 +53,7 @@ class PlatoTest {
 		plato.setTipo(tipo);
 		ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
 		plato.setIngredientes(ingredientes);
-		assertEquals("Plato [id=" + 1 + ", nombre=" + "plato" + ", tipo=" + "primero" + ", ingredientes=" + ingredientes + "]", plato.toString());
+		assertEquals("Plato [id=" + 1 + ", nombre=" + "plato" + ", tipo=" + tipo.getNombre().toLowerCase() + ", ingredientes=" + ingredientes + "]", plato.toString());
 	}
 
 
