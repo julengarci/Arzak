@@ -137,7 +137,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
+                                        <th scope="col" class="d-none" >Id</th>
                                         <th scope="col">Hora</th>
                                         <th scope="col">Fecha</th>
                                         <th scope="col">Numero de personas</th>
@@ -237,7 +237,7 @@
                                     </div>
                                     <c:forEach items="${reservas}" var="reserva">
                                         <tr>
-                                            <td>${reserva.id}</td>
+                                            <td class="d-none">${reserva.id}</td>
                                             <td>${reserva.hora}</td>
                                             <td>${reserva.fecha}</td>
                                             <td>${reserva.numPersonas}</td>

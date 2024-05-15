@@ -67,38 +67,38 @@
             </nav>
             
             <c:if test="${alertNull == true}">
-            	<div class="alert alert-danger alert-dismissable mx-4" role="alert">
-					No puedes crear un plato sin ingredientes
-					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
+                <div class="alert alert-danger alert-dismissable mx-4" role="alert">
+                    No puedes crear un plato sin ingredientes
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </c:if>
             
             <c:if test="${alertNull == false}">
-            	<div class="alert alert-success alert-dismissable mx-4" role="alert">
-					Plato creado con exito!
-					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
+                <div class="alert alert-success alert-dismissable mx-4" role="alert">
+                    Plato creado con exito!
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </c:if>
             
             <c:if test="${alertDelete == true}">
-            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
-					se elimino el plato! es posible que se eliminen sus menus asociados
-					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
+                <div class="alert alert-warning alert-dismissable mx-4" role="alert">
+                    Se elimino el plato! Es posible que se eliminen sus menus asociados.
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </c:if>
             
             <c:if test="${updateNull == true}">
-            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
-					No puedes dejar un plato sin ingredientes
-					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
+                <div class="alert alert-warning alert-dismissable mx-4" role="alert">
+                    No puedes dejar un plato sin ingredientes.
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </c:if>
             
             <c:if test="${updateNull == false}">
-            	<div class="alert alert-warning alert-dismissable mx-4" role="alert">
-					Plato actualizado con exito!
-					<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
+                <div class="alert alert-warning alert-dismissable mx-4" role="alert">
+                    Plato actualizado con exito!
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </c:if>
             
             <main class="content px-3 py-2">
@@ -118,7 +118,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
+                                        <th scope="col" class="d-none">Id</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Tipo</th>
                                         <th scope="col">Acciones</th>
@@ -157,7 +157,7 @@
                                                                     <label class="form-check-label" for="flexCheckDefault">${ingrediente.nombre}</label>
                                                                 </div>
                                                             </c:forEach>
-                                                        </div>								
+                                                        </div>                                
                                                         <div class="mb-3">
                                                             <!-- Boton para cancelar -->
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 14px;">Cancelar</button>
@@ -172,7 +172,7 @@
 
                                     <c:forEach items="${platos}" var="plato">
                                         <tr>
-                                            <td>${plato.id}</td>
+                                            <td class="d-none">${plato.id}</td>
                                             <td>${plato.nombre}</td>
                                             <td>${plato.tipo}</td> 
                                             <td class="acciones"> 
@@ -190,12 +190,12 @@
                                                             <div class="modal-body">
                                                                 <!-- Aqui puedes mostrar los datos -->
                                                                 <p style="font-size: 14px;">Nombre: ${plato.nombre}</p>
-                                                                <p style="font-size: 14px;">Tipo: ${plato.tipo}</p>	
-																<p style="font-size: 14px;">Ingredientes:
-																    <c:forEach items="${plato.ingredientes}" var="ingrediente" varStatus="status">
-																        ${ingrediente.nombre}<c:if test="${not status.last}">,</c:if>
-																    </c:forEach>
-																</p>                                                            </div>
+                                                                <p style="font-size: 14px;">Tipo: ${plato.tipo}</p>    
+                                                                <p style="font-size: 14px;">Ingredientes:
+                                                                    <c:forEach items="${plato.ingredientes}" var="ingrediente" varStatus="status">
+                                                                        ${ingrediente.nombre}<c:if test="${not status.last}">,</c:if>
+                                                                    </c:forEach>
+                                                                </p>                                                            </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 14px;">Cerrar</button>
                                                             </div>
@@ -231,23 +231,23 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="mb-3">
-																	    <label for="ingredientes${plato.id}" class="form-label" style="font-size: 14px;"></label>
-																	    <c:forEach var="ingrediente" items="${ingredientes}">
-																	        <input type="checkbox" value="${ingrediente.id}" name="ingredientes[]"
-																	        <c:forEach items="${plato.ingredientes}" var="ingredientePlato">
-																	            <c:if test="${ingrediente.id == ingredientePlato.id}">
-																	                checked
-																	            </c:if>
-																	        </c:forEach> 
-																	        /> <span style="font-size: 14px">${ingrediente.nombre}</span>
-																	    </c:forEach>
-																	</div>
+                                                                        <label for="ingredientes${plato.id}" class="form-label" style="font-size: 14px;"></label>
+                                                                        <c:forEach var="ingrediente" items="${ingredientes}">
+                                                                            <input type="checkbox" value="${ingrediente.id}" name="ingredientes[]"
+                                                                            <c:forEach items="${plato.ingredientes}" var="ingredientePlato">
+                                                                                <c:if test="${ingrediente.id == ingredientePlato.id}">
+                                                                                    checked
+                                                                                </c:if>
+                                                                            </c:forEach> 
+                                                                            /> <span style="font-size: 14px">${ingrediente.nombre}</span>
+                                                                        </c:forEach>
+                                                                    </div>
                                                                     <div class="mb-3">
-			                                                            <!-- Boton para cancelar -->
-			                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 14px;">Cancelar</button>
-			                                                            <!-- Boton para enviar el formulario -->
-			                                                            <button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
-			                                                        </div>
+                                                                        <!-- Boton para cancelar -->
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 14px;">Cancelar</button>
+                                                                        <!-- Boton para enviar el formulario -->
+                                                                        <button type="submit" class="btn btn-primary" style="font-size: 14px;">Enviar</button>
+                                                                    </div>
                                                                 </form>
                                                             </div>
                                                         </div>
