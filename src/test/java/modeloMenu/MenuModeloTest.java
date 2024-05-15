@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -11,11 +13,12 @@ import org.junit.jupiter.api.Test;
 import modelo.Alergeno;
 import modeloIngrediente.Ingrediente;
 import modeloIngrediente.IngredienteModelo;
+import modeloPlato.Plato;
 
 class MenuModeloTest {
 
 	@Test
-	void testDelete() throws ParseException {
+	void testMenu() throws ParseException {
 		//test insert
 		MenuModelo mm = new MenuModelo();
 		Menu menu = new Menu();
@@ -42,6 +45,12 @@ class MenuModeloTest {
 		
 		//insertar en bbdd
 		mm.insert(menu);
+		
+		ArrayList<Menu> menus = mm.getTodos();
+		Menu menu2 = mm.get(menus.get(0).getId());
+		ArrayList<Plato> platos = mm.getPlatosMenu(menus.get(0).getId());
+		int id = mm.getUltimoMenu();
+		Menu menu3 = mm.getMenuFecha(menus.get(0).getFechaInicio().toString());
 		
 		//test update
 		menu.setId(9);

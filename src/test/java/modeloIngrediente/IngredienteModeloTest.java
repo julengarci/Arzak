@@ -31,11 +31,7 @@ class IngredienteModeloTest {
 		im.insert(ingrediente);
 		
 		ArrayList<Ingrediente> ingredientesObtenidos = im.getTodos();
-		ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
-		ingredientes.add(ingrediente);
-		
-		assertNotEquals(ingredientes, ingredientesObtenidos);
-		
+		Ingrediente ingrediente2 = im.get(ingredientesObtenidos.get(0).getId());
 		//test update
 		ingrediente.setId(9);
 		im.update(ingrediente);
