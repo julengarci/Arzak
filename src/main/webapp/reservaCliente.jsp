@@ -27,6 +27,25 @@
                     <img src="img/Logotipo-Arzak-Since-1897.webp" alt="" style="max-width: 50%; height: auto; float: left;">
                 </a>
             </div>
+            
+            <div class="col-4 offset-2">
+            	<c:if test="${fechaIsAfter == true}">
+            		<div class="alert alert-success alert-dismissable mx-4" role="alert">
+						Reserva creada
+						<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+            	</c:if>
+            </div>
+            
+            <div class="col-4 offset-2">
+            	<c:if test="${fechaIsAfter == false}">
+            		<div class="alert alert-danger alert-dismissable mx-4" role="alert">
+						No se pudo crear la reserva
+						<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+            	</c:if>
+            </div>
+            
         </div>
 
         <div class="row" id="main">

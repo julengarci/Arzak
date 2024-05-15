@@ -87,7 +87,7 @@ public class ReservaModelo extends Conector{
  }
 
  
- public int update(Reserva reserva) {
+ public boolean update(Reserva reserva) {
      try {
          PreparedStatement pst = this.conexion.prepareStatement("CALL update_reserva(?,?,?,?,?,?,?)");
          
@@ -100,14 +100,16 @@ public class ReservaModelo extends Conector{
          pst.setString(6, reserva.getCliente().getTelefono());
          pst.setInt(7, reserva.getMenu().getId());
 
-         return pst.executeUpdate();
+         pst.executeUpdate();
      } catch (SQLException e) {
-         e.printStackTrace();
-         return 0;
+    	 if (e.getMessage().equalsIgnoreCase("No se pueden agregar más de 50 comensales para esta hora")) {
+				return false;
+			}
      }
+     return true;
  }
  
- public void insert(Reserva reserva, String telefono) {
+ public boolean insert(Reserva reserva, String telefono) {
 	    try {
 	        PreparedStatement pst = this.conexion.prepareStatement("CALL insert_reserva(?, ?, ?, ?, ?, ?);");
 	        
@@ -119,9 +121,13 @@ public class ReservaModelo extends Conector{
 	        pst.setInt(6, reserva.getMenu().getId());
 	        
 	        pst.execute();
-	    } catch (SQLException e) {
+	    } catch (Exception e) {
 	        e.printStackTrace();
+	        if (e.getMessage().equalsIgnoreCase("No se pueden agregar más de 50 comensales para esta hora")) {
+				return false;
+			}
 	    }
+		return true;
 	}
 
 }

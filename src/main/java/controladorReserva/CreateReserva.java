@@ -96,7 +96,8 @@ public class CreateReserva extends HttpServlet {
             fechaIsAfter = true;
             //insertar en bbdd
     		ReservaModelo rm = new ReservaModelo();
-    		rm.insert(reserva, telefono);
+    		boolean peticion = rm.insert(reserva, telefono);
+            request.setAttribute("peticion", peticion);
         } else {
             fechaIsAfter = false;
         }

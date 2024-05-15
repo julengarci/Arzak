@@ -7,12 +7,12 @@ import modelo.Conector;
 
 public class PlatosMenuModelo extends Conector{
 
-	public void insertPlatosMenu(int idPlatos , int idMenu) {
+	public void insertPlatosMenu(int idMenu, int idPlatos) {
 		try {
 			PreparedStatement pst = this.conexion.prepareStatement("CALL insert_menu_platos(?,?)");
 			
-			pst.setInt(1, idPlatos);
-			pst.setInt(2, idMenu);
+			pst.setInt(1, idMenu);
+			pst.setInt(2, idPlatos);
 			pst.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -22,7 +22,7 @@ public class PlatosMenuModelo extends Conector{
 	public void deleteMenuPlatos(int idMenu) {
 		
 			try {
-		         PreparedStatement pst = this.conexion.prepareStatement("CALL delete_menu_platos(?)");
+		         PreparedStatement pst = this.conexion.prepareStatement("DELETE FROM MENU_PLATOS WHERE ID_MENU = ?");
 		         pst.setInt(1, idMenu);
 		         pst.execute();
 		     } catch (SQLException e) {
