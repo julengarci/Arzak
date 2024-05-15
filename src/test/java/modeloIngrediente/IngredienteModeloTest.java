@@ -17,7 +17,7 @@ class IngredienteModeloTest {
 		Ingrediente ingrediente = new Ingrediente();
 		
 		//set id
-		ingrediente.setId(10);
+		ingrediente.setId(20);
 		
 		//set nombre
 		ingrediente.setNombre("Quesito");
@@ -30,6 +30,8 @@ class IngredienteModeloTest {
 		//insertar en bbdd
 		im.insert(ingrediente);
 		
+		ArrayList<Ingrediente> ingredientesObtenidos = im.getTodos();
+		Ingrediente ingrediente2 = im.get(ingredientesObtenidos.get(0).getId());
 		//test update
 		ingrediente.setId(9);
 		im.update(ingrediente);
