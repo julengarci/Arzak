@@ -16,25 +16,6 @@ public class Reserva {
 	private Cliente cliente;
 	private Menu menu;
 	
-	
-	public Reserva() {
-		
-	}
-	
-	
-	public Reserva(int id, Date fecha, String hora, int numPersonas, String observaciones,
-			Cliente cliente, Menu menu) {
-		this.id = id;
-		this.fecha = fecha;
-		this.hora = hora;
-		this.numPersonas = numPersonas;
-		this.observaciones = observaciones;
-		this.cliente = cliente;
-		this.menu = menu;
-	}
-
-
-
 
 	public int getId() {
 		return id;
