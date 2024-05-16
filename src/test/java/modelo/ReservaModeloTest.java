@@ -1,4 +1,4 @@
-package modeloReserva;
+package modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,18 +7,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.apache.catalina.mbeans.NamingResourcesMBean;
 import org.junit.jupiter.api.Test;
 
 import modeloCliente.Cliente;
 import modeloCliente.ClienteModelo;
 import modeloMenu.Menu;
 import modeloMenu.MenuModelo;
+import modeloReserva.Reserva;
+import modeloReserva.ReservaModelo;
 
 class ReservaModeloTest {
 
 	@Test
-	void testReserva() throws ParseException {
+	void testReservaModelo() throws ParseException {
+		
 		//test insert
 		Reserva reserva = new Reserva();
 		reserva.setId(1);
@@ -42,9 +44,9 @@ class ReservaModeloTest {
 		Menu menu = mm.get(mm.getUltimoMenu());
 		reserva.setMenu(menu);
 		
-		ReservaModelo rm = new ReservaModelo();
+		modelo.ReservaModelo rm = new modelo.ReservaModelo();
 		
-		rm.insert(reserva, cliente.getTelefono());
+		rm.insert(reserva);
 		
 		ArrayList<Reserva> reservas = rm.getTodos();
 		Reserva reserva2 = rm.get(reservas.get(0).getId());
