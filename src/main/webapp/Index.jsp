@@ -15,7 +15,7 @@
     crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="estiloLanding.css">
+  <link rel="stylesheet" href="landing.css">
 </head>
 
 <body>
