@@ -31,7 +31,6 @@ h4 {
     color: var(--bs-emphasis-color);
 }
 
-/* Layout for admin dashboard skeleton */
 
 .wrapper {
     align-items: stretch;
@@ -57,7 +56,6 @@ h4 {
     background: var(--bs-dark-bg-subtle);
 }
 
-/* Sidebar Elements Style */
 
 .sidebar-logo {
     padding: 1.15rem;
@@ -109,10 +107,6 @@ a.sidebar-link {
     transition: all .2s ease-out;
 }
 
-.avatar {
-    height: 40px;
-    width: 40px;
-}
 
 .navbar-expand .navbar-nav {
     margin-left: auto;
@@ -136,17 +130,6 @@ a.sidebar-link {
     margin-bottom: 24px;
 }
 
-.illustration {
-    background-color: var(--bs-primary-bg-subtle);
-    color: var(--bs-emphasis-color);
-}
-
-.illustration-img {
-    max-width: 150px;
-    width: 100%;
-}
-
-/* Sidebar Toggle */
 
 #sidebar.collapsed {
     margin-left: -264px;
@@ -169,21 +152,6 @@ a.sidebar-link {
         width: 100vw;
     }
 }
-
-/* Theme Toggler */
-
-.theme-toggle {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-65%);
-    text-align: center;
-    z-index: 10;
-    right: 0;
-    left: auto;
-    border: none;
-    background-color: var(--bs-body-color);
-}
-
 
 
 .acciones{

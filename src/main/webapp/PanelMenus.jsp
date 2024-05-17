@@ -130,7 +130,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
+                                        <th scope="col" class="d-none">Id</th>
                                         <th scope="col">Precio</th>
                                         <th scope="col">Fecha inicio</th>
                                         <th scope="col">Fecha fin</th>
@@ -207,7 +207,7 @@
                                     </div>
                                     <c:forEach items="${menus}" var="menu" >
                                         <tr>
-                                            <td>${menu.id}</td>
+                                            <td class="d-none">${menu.id}</td>
                                             <td>${menu.precio}$</td>
                                             <td>${menu.fechaInicio}</td>
                                             <td>${menu.fechaFin}</td>
